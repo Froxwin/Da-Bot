@@ -4,11 +4,6 @@ const { disambiguation } = require('../../node_modules/discord.js-commando/src/u
 const { Client, Message, MessageEmbed, TextChannel, Channel, TextBasedChannel, User, MessageAttachment, Emoji, Guild, GuildChannel, DiscordAPIError, GuildChannelManager, DMChannel } = require ('discord.js');
 var randColor = Math.floor(Math.random()*16777215).toString(16);
 
-
-
-
-
-
 module.exports = class HelpCommand extends Command {
 	constructor(client) {
 		super(client, {

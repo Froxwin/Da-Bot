@@ -1,5 +1,5 @@
 const { Command } = require('discord.js-commando');
-const { Client, Message, MessageEmbed, TextChannel, Channel, TextBasedChannel, User, MessageAttachment, Emoji, Guild, GuildChannel, DiscordAPIError, GuildChannelManager, DMChannel } = require ('discord.js');
+const { MessageEmbed } = require ('discord.js');
 var randColor = Math.floor(Math.random()*16777215).toString(16);
 
 module.exports = class MeowCommand extends Command {
@@ -8,7 +8,7 @@ module.exports = class MeowCommand extends Command {
 			name: 'ban',
 			group: 'moderation',
 			memberName: 'ban',
-			description: 'bans the specified user',
+			description: 'Bans the specified user',
 		});
 	}
 
@@ -16,7 +16,9 @@ module.exports = class MeowCommand extends Command {
         const [cmd, ...args] = message.content
         .trim()
         .split(/\s+/);
+
 		const user = message.mentions.users.first();
+
                 if (user) {
                 const member = message.guild.member(user);
                     if (member.roles.highest.position >= message.member.roles.highest.position) {
@@ -72,8 +74,6 @@ module.exports = class MeowCommand extends Command {
                                 message.channel.send(eEmbed);
                             }
                         }
-            
-                    
                     }
                 } else {
                     const eEmbed = new MessageEmbed()
@@ -84,9 +84,5 @@ module.exports = class MeowCommand extends Command {
 
                     message.channel.send(eEmbed);
                 }
-
-                
-    
-
 	}
 };

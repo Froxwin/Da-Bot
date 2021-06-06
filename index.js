@@ -29,7 +29,6 @@ bot = function(){
         console.log('The bot has logged in')
     });
     
-    
     client.on('message',async(message) => {
     
         if (message.channel.type === 'dm'){
@@ -40,89 +39,65 @@ bot = function(){
         }
     
         //Bot Triggers 
-        
-        triggers = function(){
-            if (message.content === 'sup shawty bae' ) {
-                message.channel.send('fuck you')
-            };
-            if (message.content === 'hello there' ) {
-                message.channel.send('general kakyoin')
-            };
-            if (message.content === '.bu3nds code' ) {
-                message.channel.send('stupid af')
-            };
-            if (message.content === 'Les go' || message.content === 'les go') {
-                message.channel.send('Da bebe')
-            };
-            if (message.content === 'kaka' || message.content === 'かか' || message.content === 'Kaka' ) {
-                message.channel.send(':kekw:')
-            };
-            if (message.content === 'nodemon' ) {
-                message.channel.send('fuck nodemon')
-            };
-            if (message.content === 'e') {
-                const exampleEmbed = new MessageEmbed()
-                                            .setColor(randColor)
-                                            .setTitle('Ricked')
-                                            .setURL('https://www.youtube.com/watch?v=dQw4w9WgXcQ')
-                                            .setAuthor('god', 'https://static.wikia.nocookie.net/037f608a-cc92-43c6-ae3a-7f09d463b423')
-                                            .setDescription('Get ricked lmao')
-                                            .setTimestamp()
-        
-                message.channel.send(exampleEmbed);
-            };
-            if (message.content === 'sup' ) {
-                message.channel.send('https://tenor.com/view/rick-astley-rick-roll-dancing-dance-moves-gif-14097983')
-            };
-            if (message.content.includes('gay') === true) {
-                message.channel.send('no u')
-            };
-            if (message.content === 'jojo' ) {
-                message.channel.send('dio')
-            };
-            if (message.content === 'go touch some grass' ) {
-                message.channel.send('i smoke plenty grass')
-            };
-            if (message.content.includes('the jojo fanbase is shit') === true ) {
-                message.channel.send('https://cdn.discordapp.com/attachments/840862245055234049/840864007476346910/IMG_20210506_211336_323.jpg')
-            };
-            /*
-            if (message.content.includes('frox') === true || message.content.includes('froxwin') === true) {
-                message.channel.send('*you mean **Lord Froxwin**')
-            };
-            */
-            if (message.content.includes('new discord update') === true) {
-                message.channel.send('gay')
-            };
-            if (message.content.includes('pucci') === true) {
-                message.channel.send('https://i.ytimg.com/vi/CMOA1e2_qF0/maxresdefault.jpg')
-            };
-            if (message.content === 'ay') {
-                const user = message.mentions.users.first();
-                message.channel.send(`<@384664284401106956>hOw aRe yOu`)
-            };
-            if (message.content === 'attach test') {
-                const attachment = new MessageAttachment('./test.png');
-                message.channel.send(attachment);
-            };
-            if (message.content === 'burn') {
-                message.delete()
-                message.channel.send(` <:elmofire:743509390073528461>`)
-                message.channel.send(`burn`)
-            };
-            if (message.author.bot === true) {
-                return
-            };
-            if (message.content.toLowerCase === 'hello') {
-                message.channel.send('hello');
-            };
-            if (message.content === 'banana') {
-                const attachment = new MessageAttachment('./ba.png');
-                message.channel.send(attachment);
-            };
-        }
-        triggers();
+
+        if (message.content.toLowerCase() === 'hello there' ) {
+            message.channel.send('general kakyoin')
+        };
+        if (message.content.toLowerCase() === 'Les go' || message.content === 'les go') {
+            message.channel.send('Da bebe')
+        };
+        if (message.content.toLowerCase() === 'e') {
+            const eEmbed = new MessageEmbed()
+                                        .setColor(randColor)
+                                        .setTitle('Ricked')
+                                        .setURL('https://www.youtube.com/watch?v=dQw4w9WgXcQ')
+                                        .setAuthor('god', 'https://static.wikia.nocookie.net/037f608a-cc92-43c6-ae3a-7f09d463b423')
+                                        .setDescription('Get ricked lmao')
+                                        .setTimestamp()
     
+            message.channel.send(eEmbed);
+        };
+        if (message.content.toLowerCase() === 'sup' ) {
+            message.channel.send('https://tenor.com/view/rick-astley-rick-roll-dancing-dance-moves-gif-14097983')
+        };
+        if (message.content.toLowerCase().includes('gay') === true) {
+            message.channel.send('no u')
+        };
+        if (message.content.toLowerCase().includes('the jojo fanbase is shit') === true ) {
+            message.channel.send('https://cdn.discordapp.com/attachments/840862245055234049/840864007476346910/IMG_20210506_211336_323.jpg')
+        };
+        /*
+        if (message.content.includes('frox') === true || message.content.includes('froxwin') === true) {
+            message.channel.send('*you mean **Lord Froxwin**')
+        };
+        */
+        if (message.content.toLowerCase().includes('pucci') === true) {
+            message.channel.send('https://i.ytimg.com/vi/CMOA1e2_qF0/maxresdefault.jpg')
+        };
+        if (message.content.toLowerCase() === 'ay') {
+            const user = message.mentions.users.first();
+            message.channel.send(`<@384664284401106956>hOw aRe yOu`)
+        };
+        if (message.content.toLowerCase() === 'attach test') {
+            const attachment = new MessageAttachment('./test.png');
+            message.channel.send(attachment);
+        };
+        if (message.content.toLowerCase() === 'burn') {
+            message.delete()
+            message.channel.send(` <:elmofire:743509390073528461>`)
+            message.channel.send(`burn`)
+        };
+        if (message.content.toLowerCase() === 'banana') {
+            const attachment = new MessageAttachment('./ba.png');
+            message.channel.send(attachment);
+        };
+        if (message.author.bot === true) {
+            return
+        };
+        if (message.content.toLowerCase() === 'hello') {
+            message.channel.send('hello');
+        };
+            
         // Commands Walmart Version lmao
     
         if (message.content.startsWith(prefixx)) {
@@ -204,6 +179,7 @@ bot = function(){
                 
             }
             */
+
             if (cmd === 'osu'){
                 message.channel.send(`https://osu.ppy.sh/home`)
             }

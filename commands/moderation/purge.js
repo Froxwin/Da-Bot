@@ -18,9 +18,20 @@ module.exports = class MeowCommand extends Command {
         .split(/\s+/);
 
         var messageCount = args [0];
-                var messageCountInt = parseInt(messageCount) 
-                var messageCountFinal = messageCountInt + 1;
-                message.channel.bulkDelete(messageCountFinal)
+		var messageCountInt = parseInt(messageCount) 
+		var messageCountFinal = messageCountInt + 1;
+			
+		if (!message.member.hasPermission('MANAGE_MESSAGES')){
+			const eEmbed = new MessageEmbed()
+									.setColor('#ff1100')
+									.setTitle('Delete Unsuccessfull')
+									.setDescription(`**${message.author.tag}** you dont have permission to use this command`)
+									.setTimestamp()
 
+				message.channel.send(eEmbed);
+				return
+		}else{
+			message.channel.bulkDelete(messageCountFinal)
+		}
     }
 }

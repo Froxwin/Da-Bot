@@ -1,5 +1,5 @@
 const { Command } = require('discord.js-commando');
-const { Client, Message, MessageEmbed, TextChannel, Channel, TextBasedChannel, User, MessageAttachment, Emoji, Guild, GuildChannel, DiscordAPIError, GuildChannelManager, DMChannel } = require ('discord.js');
+const { MessageEmbed } = require ('discord.js');
 var randColor = Math.floor(Math.random()*16777215).toString(16);
 
 module.exports = class MeowCommand extends Command {
@@ -8,7 +8,7 @@ module.exports = class MeowCommand extends Command {
 			name: 'delete-channel',
 			group: 'moderation',
 			memberName: 'delete-channel',
-			description: 'deletes the channel in which the command is called',
+			description: 'Deletes the channel in which the command is called',
 		});
 	}
 
@@ -28,6 +28,5 @@ module.exports = class MeowCommand extends Command {
 		}else{
 			message.channel.delete();
 		}
-
     }
 }
