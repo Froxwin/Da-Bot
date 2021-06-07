@@ -1,5 +1,5 @@
 {
-  "name": "bot",
+  "name": "Da-Bot",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -9,7 +9,7 @@
     "dev": "nodemon ./src/index.js"
   },
   "keywords": [],
-  "author": "",
+  "author": "Froxwin",
   "license": "ISC",
   "dependencies": {
     "discord-command-parser": "^1.5.3",

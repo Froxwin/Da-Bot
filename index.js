@@ -97,6 +97,13 @@ bot = function(){
         if (message.content.toLowerCase() === 'hello') {
             message.channel.send('hello');
         };
+        if (message.content.toLowerCase() === 'edgy' ) {
+            const eEmbed = new MessageEmbed()
+                            .setColor(randColor)
+                            .setTitle('***EDGY***')
+                            .setDescription('**EDGY NGL**')
+            message.channel.send(eEmbed)
+        };
             
         // Commands Walmart Version lmao
     
