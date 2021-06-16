@@ -44,18 +44,7 @@ client.on('message', async (message) => {
   }
 
   // Bot Triggers
-  /*
-  message.channel.awaitMessages(m => m.author.id === message.author.id,
-    { max: 2 }).then(collected => {
-    // eslint-disable-next-line no-var
-    var c1 = parseInt(collected.first())
-    // eslint-disable-next-line no-var
-    var c2 = parseInt(collected.last())
-    if (c2 !== c1 + 1) {
-      collected.last().delete()
-    }
-  })
-  */
+
   if (message.content.toLowerCase() === 'hello there') {
     message.channel.send('general kakyoin')
   };
@@ -100,11 +89,9 @@ client.on('message', async (message) => {
     const attachment = new MessageAttachment('./ba.png')
     message.channel.send(attachment)
   };
-  /*
   if (message.author.bot === true) {
     return
   };
-  */
   if (message.content.toLowerCase() === 'hello') {
     message.channel.send('hello')
   };
@@ -117,23 +104,6 @@ client.on('message', async (message) => {
   };
   if (message.content.toLowerCase() === 'smth') {
     message.channel.send('<@740932612096262214>hOw aRe yOu')
-  }
-  if (message.content.toLowerCase() === 'sus') {
-    message.channel.send('<@384664284401106956> sup')
-    message.channel.send('ee')
-  }
-  if (message.content === 'ee') {
-    const eEmbed = new MessageEmbed()
-      .setColor(randColor)
-      .setTitle('Ricked')
-      .setURL('https://www.youtube.com/watch?v=dQw4w9WgXcQ')
-      .setAuthor('god', oneLineTrim`https://static.wikia.nocookie.net/037f608a
-                                  -cc92-43c6-ae3a-7f09d463b423`)
-      .setDescription('Get ricked lmao')
-      .setTimestamp()
-
-    message.channel.send(eEmbed)
-    message.channel.send('sus')
   }
 
   // Commands Walmart Version lmao
