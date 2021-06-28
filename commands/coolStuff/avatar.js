@@ -1,6 +1,5 @@
 const { Command } = require('discord.js-commando')
 const { MessageEmbed } = require('discord.js')
-const randColor = Math.floor(Math.random() * 16777215).toString(16)
 
 module.exports = class MeowCommand extends Command {
   constructor (client) {
@@ -31,7 +30,7 @@ module.exports = class MeowCommand extends Command {
     }
     if (args.length !== 0) {
       const embed = new MessageEmbed()
-        .setColor(randColor)
+        .setColor(color)
         .setImage(message.mentions.users.first().displayAvatarURL())
         .setTitle(`${message.first().tag}`)
         .setTimestamp()

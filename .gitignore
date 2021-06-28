@@ -1,7 +1,7 @@
 node_modules/
 .env
-ba.png
-summon.jpg
-test.png
+images/
 package-lock.json
 package.json
+.eslintrc.json
+.vs/

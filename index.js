@@ -2,19 +2,20 @@ require('dotenv').config()
 const { MessageEmbed, MessageAttachment } = require('discord.js')
 const Commando = require('discord.js-commando')
 const client = new Commando.Client({
-  commandPrefix: '=',
+  commandPrefix: '.',
   owner: ['627801784219336718', '384664284401106956']
 })
 const prefixx = '-'
 const path = require('path')
 const randColor = Math.floor(Math.random() * 16777215).toString(16)
 const { oneLine, oneLineTrim } = require('common-tags')
+const os = require('os')
 
 client.registry
   .registerDefaultTypes()
   .registerGroups([
-    ['moderation', 'Commands'],
-    ['cool stuff', 'Commands']
+    ['moderation', 'Hmm'],
+    ['cool stuff', 'More-Commands']
   ])
   .registerDefaultGroups()
   .registerDefaultCommands({
@@ -24,7 +25,7 @@ client.registry
   .registerCommandsIn(path.join(__dirname, 'commands'))
 
 client.on('ready', () => {
-  console.log('The bot has logged in')
+  console.log(`${client.user.tag} has logged in`)
 })
 
 client.on('message', async (message) => {
@@ -44,7 +45,12 @@ client.on('message', async (message) => {
   }
 
   // Bot Triggers
-
+  if (message.content === 'm') {
+    console.log(os.cpus())
+    console.log(os.hostname())
+    console.log(os.platform())
+    console.log(os.networkInterfaces())
+  }
   if (message.content.toLowerCase() === 'hello there') {
     message.channel.send('general kakyoin')
   };
@@ -77,7 +83,7 @@ client.on('message', async (message) => {
     message.channel.send('<@384664284401106956>hOw aRe yOu')
   };
   if (message.content.toLowerCase() === 'attach test') {
-    const attachment = new MessageAttachment('./test.png')
+    const attachment = new MessageAttachment('./images/test.png')
     message.channel.send(attachment)
   };
   if (message.content.toLowerCase() === 'burn') {
@@ -86,7 +92,7 @@ client.on('message', async (message) => {
     message.channel.send('burn')
   };
   if (message.content.toLowerCase() === 'banana') {
-    const attachment = new MessageAttachment('./ba.png')
+    const attachment = new MessageAttachment('./images/ba.png')
     message.channel.send(attachment)
   };
   if (message.author.bot === true) {
@@ -126,11 +132,17 @@ client.on('message', async (message) => {
     if (cmd === 'summon') {
       message.delete()
       message.channel.send('<@!384664284401106956>')
-      const attachment = new MessageAttachment('./summon.jpg')
+      const attachment = new MessageAttachment('./images/summon.jpg')
       message.channel.send(attachment)
     }
     if (cmd === 'osu') {
       message.channel.send('https://osu.ppy.sh/home')
+    }
+
+    if (cmd === 'water') {
+      message.channel.send('Running....')
+      console.log(client.registry.commands.entries())
+      message.channel.send(client.registry.commands.array().toString())
     }
   };
 })
