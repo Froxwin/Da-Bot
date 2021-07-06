@@ -7,14 +7,16 @@ const client = new Commando.Client({
 })
 const prefixx = '-'
 const path = require('path')
-const randColor = Math.floor(Math.random() * 16777215).toString(16)
-const { oneLine, oneLineTrim } = require('common-tags')
+const randBlue = Math.floor(Math.random() * 255)
+const randGreen = Math.floor(Math.random() * 255)
+const randColor = '#' + (0).toString(16) + (randGreen).toString(16) + (randBlue).toString(16)
+const { stripIndents, oneLine, oneLineTrim } = require('common-tags')
 const os = require('os')
+const fs = require('fs')
 
 client.registry
   .registerDefaultTypes()
   .registerGroups([
-    ['moderation', 'Hmm'],
     ['cool stuff', 'More-Commands']
   ])
   .registerDefaultGroups()
@@ -25,7 +27,21 @@ client.registry
   .registerCommandsIn(path.join(__dirname, 'commands'))
 
 client.on('ready', () => {
-  console.log(`${client.user.tag} has logged in`)
+  if (client.readyAt.getHours() > 12) {
+    console.log(oneLine`${oneLineTrim`@${client.user.tag} has logged in at 
+                ${client.readyAt.getHours() - 12}:
+                ${client.readyAt.getMinutes()}:
+                ${client.readyAt.getSeconds()} pm`}`)
+  } else {
+    console.log(oneLine`${oneLineTrim`@${client.user.tag} has logged in at 
+                ${client.readyAt.getHours()}:
+                ${client.readyAt.getMinutes()}:
+                ${client.readyAt.getSeconds()}: am`}`)
+  }
+})
+
+client.on('off', () => {
+  console.log(`${client.user.tag} has disconnected`)
 })
 
 client.on('message', async (message) => {
@@ -50,6 +66,11 @@ client.on('message', async (message) => {
     console.log(os.hostname())
     console.log(os.platform())
     console.log(os.networkInterfaces())
+    if (os.hostname() === 'Da-PC') {
+      return
+    } else {
+      message.channel.send(`no ${os.hostname()}`)
+    }
   }
   if (message.content.toLowerCase() === 'hello there') {
     message.channel.send('general kakyoin')
@@ -140,11 +161,55 @@ client.on('message', async (message) => {
     }
 
     if (cmd === 'water') {
-      message.channel.send('Running....')
-      console.log(client.registry.commands.entries())
-      message.channel.send(client.registry.commands.array().toString())
+      message.channel.send('***__Please select a module__***')
+      const groups = client.registry.groups
+      const showAll = args.command && args.command.toLowerCase() === 'all'
+      const messages = []
+      const eEmbed = new MessageEmbed()
+        .setColor(randColor)
+        .setTitle('_**Commands**_')
+        .setDescription(stripIndents`\n\n${groups.filter((grp) => grp.commands.some((cmd) => !cmd.hidden && (showAll || cmd.isUsable(message)))).map((grp) => stripIndents` \n ${grp.commands.filter((cmd) => !cmd.hidden && (showAll || cmd.isUsable(message))).map((cmd) => `**${cmd.name}:** ${cmd.description}${cmd.nsfw ? ' (NSFW)' : ''}`).join('\n')}`)}`)
+      try {
+        messages.push(message.channel.send(eEmbed))
+        message.channel.send('__**To fetch a module type the command name exactly as it is withing 10 seconds**__')
+      } catch (err) {
+        message.channel.send('broken lmao')
+        console.log(err)
+        message.channel.send(err.toString())
+      }
+      message.channel.awaitMessages(m => m.author.id === message.author.id,
+        { max: 1, time: 30000 }).then(collected => {
+        // eslint-disable-next-line no-unused-vars
+        const [...arg] = collected.first().content
+          .trim()
+          .split(/\s+/)
+        try {
+          const file = (`${arg}.js`)
+          const path = `./commands/coolStuff/${file}`
+          const attachment = new MessageAttachment(`${path}`)
+          if (!fs.existsSync(path)) {
+            const eEmbed = new MessageEmbed()
+              .setColor(randColor)
+              .setDescription('An error occured make sure you typed the name correctly')
+            message.channel.send(eEmbed)
+            return
+          }
+          message.channel.send(attachment)
+        } catch (err) {
+          message.channel.send('An error occured make sure you typed the name correctly')
+          message.channel.send(`\n${err}`)
+        }
+      })
     }
   };
 })
+
+// Cool Error Fetcher/Debugger
+// Yeh I made it
+/*
+messages.push(await message.channel.send('nah man its broken'))
+console.log(err)
+message.channel.send(err.toString())
+*/
 
 client.login(process.env.DISCORDJS_BOT_TOKEN)

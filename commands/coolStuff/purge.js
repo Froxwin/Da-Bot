@@ -5,7 +5,7 @@ module.exports = class MeowCommand extends Command {
   constructor (client) {
     super(client, {
       name: 'purge',
-      group: 'moderation',
+      group: 'cool stuff',
       memberName: 'purge',
       description: 'deletes the amount if specified messages'
     })

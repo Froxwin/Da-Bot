@@ -6,7 +6,7 @@ module.exports = class MeowCommand extends Command {
   constructor (client) {
     super(client, {
       name: 'delete-channel',
-      group: 'moderation',
+      group: 'cool stuff',
       memberName: 'delete-channel',
       description: 'Deletes the channel in which the command is called'
     })

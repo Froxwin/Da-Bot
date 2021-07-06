@@ -1,13 +1,14 @@
 const { Command } = require('discord.js-commando')
 const { MessageEmbed } = require('discord.js')
+const { oneLine } = require('common-tags')
 
 module.exports = class MeowCommand extends Command {
   constructor (client) {
     super(client, {
-      name: 'kick',
-      group: 'moderation',
-      memberName: 'kick',
-      description: 'kicks the specified user'
+      name: 'ban',
+      group: 'cool stuff',
+      memberName: 'ban',
+      description: 'Bans the specified user'
     })
   }
 
@@ -16,6 +17,7 @@ module.exports = class MeowCommand extends Command {
     const [cmd, ...args] = message.content
       .trim()
       .split(/\s+/)
+
     const user = message.mentions.users.first()
 
     if (user) {
@@ -23,29 +25,34 @@ module.exports = class MeowCommand extends Command {
       if (member.roles.highest.position >= message.member.roles.highest.position) {
         const eEmbed = new MessageEmbed()
           .setColor('#ff1100')
-          .setTitle('Kick Unsuccessfull')
-          .setDescription(`**${message.author.tag}** you are not high enough in the hierchy to do that`)
+          .setTitle('Ban Unsuccessfull')
+          .setDescription(`**${message.author.tag}** ${oneLine`you are not high
+                                                      enough in the hierchy to
+                                                      do that`}`)
           .setTimestamp()
 
         message.channel.send(eEmbed)
       } else {
-        if (!message.member.hasPermission('KICK_MEMBERS')) {
+        if (!message.member.hasPermission('BAN_MEMBERS')) {
           const eEmbed = new MessageEmbed()
             .setColor('#ff1100')
-            .setTitle('Kick Unsuccessfull')
-            .setDescription(`**${message.author.tag}** you dont have permission to use this command`)
+            .setTitle('Ban Unsuccessfull')
+            .setDescription(`**${message.author.tag}** ${oneLine`you dont have 
+                                                        permission to use this 
+                                                        command`}`)
             .setTimestamp()
 
           message.channel.send(eEmbed)
         } else {
           if (member) {
             member
-              .kick({ reason: args[1] })
+              .ban({ reason: args[1] })
               .then(() => {
                 const eEmbed = new MessageEmbed()
                   .setColor('#00ff04')
-                  .setTitle('Kick Successful')
-                  .setDescription(`Successfully kicked **${user.tag}**`)
+                  .setTitle('Ban Successfull')
+                  .setDescription(oneLine`**${message.author.tag}**
+                                          Successfully banned ${user.tag} `)
                   .setTimestamp()
 
                 message.channel.send(eEmbed)
@@ -53,8 +60,9 @@ module.exports = class MeowCommand extends Command {
               .catch(err => {
                 const eEmbed = new MessageEmbed()
                   .setColor('#ff1100')
-                  .setTitle('Kick Unsuccessfull')
-                  .setDescription(`**${message.author.tag}** I was unable to kick ${user.tag} `)
+                  .setTitle('Ban Unsuccessfull')
+                  .setDescription(oneLine`**${message.author.tag}**
+                                          I was unable to ban ${user.tag} `)
                   .setTimestamp()
 
                 message.channel.send(eEmbed)
@@ -63,8 +71,9 @@ module.exports = class MeowCommand extends Command {
           } else {
             const eEmbed = new MessageEmbed()
               .setColor('#ff1100')
-              .setTitle('Kick Unsuccessfull')
-              .setDescription(`**${message.author.tag}** That user isn't in this server `)
+              .setTitle('Ban Unsuccessfull')
+              .setDescription(oneLine`**${message.author.tag}** 
+                                      That user isn't in this guild! `)
               .setTimestamp()
 
             message.channel.send(eEmbed)
@@ -74,8 +83,9 @@ module.exports = class MeowCommand extends Command {
     } else {
       const eEmbed = new MessageEmbed()
         .setColor('#ff1100')
-        .setTitle('Kick Unsuccessfull')
-        .setDescription(`**${message.author.tag}** You didn't mention the user to kick `)
+        .setTitle('Ban Unsuccessfull')
+        .setDescription(oneLine`**${message.author.tag}**
+                                You didn't mention the user to ban! `)
         .setTimestamp()
 
       message.channel.send(eEmbed)
