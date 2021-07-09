@@ -12,5 +12,6 @@ module.exports = class MeowCommand extends Command {
 
   run (message) {
     message.channel.send("get nae nae'd")
+    console.log("get nae nae'd")
   }
 }

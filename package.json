@@ -6,7 +6,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "nodemon ./src/index.js",
-    "dev": "nodemon ./src/index.js"
+    "dev": "nodemon ./src/index.js",
+    "devv": "nodemon --watch './**/*.ts' --exec 'ts-node' server.ts"
   },
   "keywords": [],
   "author": "Froxwin",
@@ -18,8 +19,12 @@
     "discord.js": "^12.5.3",
     "discord.js-commando": "^0.12.3",
     "dotenv": "^9.0.2",
-    "nodemon": "^2.0.7",
-    "random-anime": "^1.0.6"
+    "get-pixels": "^3.3.2",
+    "nodemon": "^2.0.9",
+    "random-anime": "^1.0.6",
+    "terminal-kit": "^2.1.5",
+    "ts-node": "^10.0.0",
+    "typescript": "^4.3.5"
   },
   "devDependencies": {
     "@typescript-eslint/eslint-plugin": "^4.26.1",
