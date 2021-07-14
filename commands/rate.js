@@ -1,18 +1,14 @@
-const { Command } = require('discord.js-commando')
 const { MessageEmbed } = require('discord.js')
 
-module.exports = class MeowCommand extends Command {
-  constructor (client) {
-    super(client, {
-      name: 'rate',
-      group: 'cool stuff',
-      aliases: ['rate'],
-      memberName: 'rate',
-      description: 'Rates stuff'
-    })
-  }
+module.exports = {
 
-  run (message) {
+  name: 'rate',
+  group: 'cool stuff',
+  aliases: ['rate'],
+  memberName: 'rate',
+  description: 'Rates stuff',
+
+  execute (message) {
     // eslint-disable-next-line no-unused-vars
     const [cmd, ...args] = message.content
       .trim()
@@ -36,6 +32,6 @@ module.exports = class MeowCommand extends Command {
       .setDescription(`${message.author} I'd rate ${s} a ${x}/10`)
       .setTimestamp()
 
-    message.channel.send(eEmbed)
+    message.channel.send({ embeds: [eEmbed] })
   }
 }

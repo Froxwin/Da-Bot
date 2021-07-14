@@ -1,23 +1,14 @@
-const { Command } = require('discord.js-commando')
 const { MessageEmbed } = require('discord.js')
 const { oneLine } = require('common-tags')
 
-module.exports = class MeowCommand extends Command {
-  constructor (client) {
-    super(client, {
-      name: 'ban',
-      group: 'cool stuff',
-      memberName: 'ban',
-      description: 'Bans the specified user'
-    })
-  }
+module.exports = {
 
-  run (message) {
-    // eslint-disable-next-line no-unused-vars
-    const [cmd, ...args] = message.content
-      .trim()
-      .split(/\s+/)
+  name: 'ban',
+  group: 'cool stuff',
+  memberName: 'ban',
+  description: 'Bans the specified user',
 
+  execute (message, args) {
     const user = message.mentions.users.first()
 
     if (user) {
@@ -31,7 +22,7 @@ module.exports = class MeowCommand extends Command {
                                                       do that`}`)
           .setTimestamp()
 
-        message.channel.send(eEmbed)
+        message.channel.send({ embeds: [eEmbed] })
       } else {
         if (!message.member.hasPermission('BAN_MEMBERS')) {
           const eEmbed = new MessageEmbed()
@@ -42,7 +33,7 @@ module.exports = class MeowCommand extends Command {
                                                         command`}`)
             .setTimestamp()
 
-          message.channel.send(eEmbed)
+          message.channel.send({ embeds: [eEmbed] })
         } else {
           if (member) {
             member
@@ -55,7 +46,7 @@ module.exports = class MeowCommand extends Command {
                                           Successfully banned ${user.tag} `)
                   .setTimestamp()
 
-                message.channel.send(eEmbed)
+                message.channel.send({ embeds: [eEmbed] })
               })
               .catch(err => {
                 const eEmbed = new MessageEmbed()
@@ -65,7 +56,7 @@ module.exports = class MeowCommand extends Command {
                                           I was unable to ban ${user.tag} `)
                   .setTimestamp()
 
-                message.channel.send(eEmbed)
+                message.channel.send({ embeds: [eEmbed] })
                 console.error(err)
               })
           } else {
@@ -76,7 +67,7 @@ module.exports = class MeowCommand extends Command {
                                       That user isn't in this guild! `)
               .setTimestamp()
 
-            message.channel.send(eEmbed)
+            message.channel.send({ embeds: [eEmbed] })
           }
         }
       }
@@ -88,7 +79,7 @@ module.exports = class MeowCommand extends Command {
                                 You didn't mention the user to ban! `)
         .setTimestamp()
 
-      message.channel.send(eEmbed)
+      message.channel.send({ embeds: [eEmbed] })
     }
   }
 }

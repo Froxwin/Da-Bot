@@ -1,52 +1,34 @@
 // #region Imports
 require('dotenv').config()
 const fs = require('fs')
-const path = require('path')
 const term = require('terminal-kit').terminal
-const Commando = require('discord.js-commando')
 const colors = require('./node_modules/colors/lib/index')
-const { MessageEmbed, MessageAttachment } = require('discord.js')
+const { MessageEmbed, MessageAttachment, Client, Collection } = require('discord.js')
 const { stripIndents, oneLine, oneLineTrim } = require('common-tags')
-// #endregion
-
-// #region Constants
-const prefixx = '-'
+const prefix = '='
 const randBlue = Math.floor(Math.random() * 255)
 const randGreen = Math.floor(Math.random() * 255)
 const randColor = '#' + (0).toString(16) + (randGreen).toString(16) + (randBlue).toString(16)
-// #endregion
-
-// #region Initialization
-const client = new Commando.Client({
-  commandPrefix: '=',
-  owner: [
-    '627801784219336718',
-    '384664284401106956'
-  ]
-})
-
-client.registry
-  .registerDefaultTypes()
-  .registerDefaultGroups()
-  .registerGroups(['cool stuff'])
-  .registerCommandsIn(path.join(__dirname, 'commands'))
-  .registerDefaultCommands({
-    unknownCommand: false,
-    help: false
-  })
-// #endregion
+const client = new Client({ intents: ['GUILDS', 'GUILD_MESSAGES'] })
+client.commands = new Collection()
+const commandFiles = fs.readdirSync('./commands').filter(file => file.endsWith('.js'))
+for (const file of commandFiles) {
+  // eslint-disable-next-line no-var
+  var command = require(`./commands/${file}`)
+  client.commands.set(command.name, command)
+}
 
 // #region Login Ritual
 client.on('ready', () => {
   if (client.readyAt.getHours() > 12) {
     console.log(colors.bold.cyan(oneLine`
-                ${oneLineTrim`@${client.user.tag} has logged in at 
+                ${oneLineTrim`@${client.user.tag} has logged in at
                 ${client.readyAt.getHours() - 12}:
                 ${client.readyAt.getMinutes()}:
                 ${client.readyAt.getSeconds()} pm`}`))
   } else {
     console.log(colors.bold.blue(oneLine`
-                ${oneLineTrim`@${client.user.tag} has logged in at 
+                ${oneLineTrim`@${client.user.tag} has logged in at
                 ${client.readyAt.getHours()}:
                 ${client.readyAt.getMinutes()}:
                 ${client.readyAt.getSeconds()}: am`}`))
@@ -55,7 +37,7 @@ client.on('ready', () => {
 // #endregion
 
 // #region Triggers/Commands
-client.on('message', async (message) => {
+client.on('messageCreate', async (message) => {
   // #region Logger
   if (message.channel.type === 'dm') {
     console.log(colors.bold(oneLine`
@@ -95,7 +77,7 @@ client.on('message', async (message) => {
       .setDescription('Get ricked lmao')
       .setTimestamp()
 
-    message.channel.send(eEmbed)
+    message.channel.send({ embeds: [eEmbed] })
   }
   if (message.content.toLowerCase() === 'sup') {
     message.channel.send(oneLineTrim`https://tenor.com/view/rick-astley-rick
@@ -128,7 +110,7 @@ client.on('message', async (message) => {
       .setColor(randColor)
       .setTitle('***EDGY***')
       .setDescription('**EDGY NGL**')
-    message.channel.send(eEmbed)
+    message.channel.send({ embeds: [eEmbed] })
   }
   if (message.author.bot === true) {
     return
@@ -136,30 +118,24 @@ client.on('message', async (message) => {
   if (message.content.toLowerCase() === 'hello') {
     message.channel.send('hello')
   }
+
   // #endregion
 
   // #region Commands Walmart Version lmao
-  if (message.content.startsWith(prefixx)) {
-    // eslint-disable-next-line no-unused-vars
-    const [cmd, ...args] = message.content
+  if (message.content.startsWith(prefix)) {
+    const [command, ...args] = message.content
       .trim()
-      .substring(prefixx.length)
+      .substring(prefix.length)
       .split(/\s+/)
 
-    if (cmd === 'brr') {
-      message.delete()
-      message.channel.send(' <a:brr:848564739285319700>')
+    try {
+      client.commands.get(command).execute(client, message, args)
+    } catch (error) {
+      console.error(error)
+      const eEmbed = new MessageEmbed().setColor(randColor).setTitle('Unknown Command').setDescription(`${command} is not a valid command`)
+      message.channel.send({ embeds: [eEmbed] })
     }
-    if (cmd === 'summon') {
-      message.delete()
-      message.channel.send('<@!384664284401106956>')
-      const attachment = new MessageAttachment('./images/summon.jpg')
-      message.channel.send(attachment)
-    }
-    if (cmd === 'osu') {
-      message.channel.send('https://osu.ppy.sh/home')
-    }
-    if (cmd === 'water') {
+    if (command === 'water') {
       message.channel.send('***__Please select a module__***')
       const groups = client.registry.groups
       const showAll = args.command && args.command.toLowerCase() === 'all'
@@ -169,7 +145,7 @@ client.on('message', async (message) => {
         .setTitle('_**Commands**_')
         .setDescription(stripIndents`\n\n${groups.filter((grp) => grp.commands.some((cmd) => !cmd.hidden && (showAll || cmd.isUsable(message)))).map((grp) => stripIndents` \n ${grp.commands.filter((cmd) => !cmd.hidden && (showAll || cmd.isUsable(message))).map((cmd) => `**${cmd.name}:** ${cmd.description}${cmd.nsfw ? ' (NSFW)' : ''}`).join('\n')}`)}`)
       try {
-        messages.push(message.channel.send(eEmbed))
+        messages.push(message.channel.send({ embeds: [eEmbed] }))
         message.channel.send('__**To fetch a module type the command name exactly as it is within 10 seconds**__')
       } catch (err) {
         message.channel.send('broken lmao')
@@ -179,11 +155,11 @@ client.on('message', async (message) => {
       message.channel.awaitMessages(m => m.author.id === message.author.id,
         { max: 1, time: 10000 }).then(collected => {
         // eslint-disable-next-line no-unused-vars
-        if (collected.array.length === 0) {
+        if (collected.array.length !== 0) {
           const eEmbed = new MessageEmbed()
             .setColor(randColor)
             .setDescription('No messages were recieved')
-          message.channel.send(eEmbed)
+          message.channel.send({ embeds: [eEmbed] })
         } else {
           const [...arg] = collected.first().content
             .trim()
@@ -196,7 +172,7 @@ client.on('message', async (message) => {
               const eEmbed = new MessageEmbed()
                 .setColor(randColor)
                 .setDescription('An error occured make sure you typed the name correctly')
-              message.channel.send(eEmbed)
+              message.channel.send({ embeds: [eEmbed] })
               return
             }
 
@@ -212,13 +188,5 @@ client.on('message', async (message) => {
   // #endregion
 })
 // #endregion
-
-/*
-Cool Error Fetcher/Debugger
-Yeh I made it
-
-console.log(err)
-message.channel.send(err.toString())
-*/
 
 client.login(process.env.DISCORDJS_BOT_TOKEN)

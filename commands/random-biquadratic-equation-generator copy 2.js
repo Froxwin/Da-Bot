@@ -1,17 +1,12 @@
-const { Command } = require('discord.js-commando')
+module.exports = {
 
-module.exports = class MeowCommand extends Command {
-  constructor (client) {
-    super(client, {
-      name: 'random-biquadratic-equation-generator',
-      aliases: ['random-biquadratic-equation-generator', 'rand-4-eq', 'r-4-eq', 'r4eq'],
-      group: 'cool stuff',
-      memberName: 'random-biquadratic-equation-generator',
-      description: 'sends a random equation with degree 4'
-    })
-  }
+  name: 'random-biquadratic-equation-generator',
+  aliases: ['random-biquadratic-equation-generator', 'rand-4-eq', 'r-4-eq', 'r4eq'],
+  group: 'cool stuff',
+  memberName: 'random-biquadratic-equation-generator',
+  description: 'sends a random equation with degree 4',
 
-  run (message) {
+  execute (message) {
     // x^4 - (a+b+c+d)x^3 + (ab+bc+ca++cd+ad+bd)x^2 - (abc+acd+bcd+abd)x +abcd
     const a = Math.floor(Math.random() * 9)
     const b = Math.floor(Math.random() * 9)

@@ -1,18 +1,14 @@
-const { Command } = require('discord.js-commando')
 const { MessageEmbed } = require('discord.js')
 
-module.exports = class MeowCommand extends Command {
-  constructor (client) {
-    super(client, {
-      name: 'direct-message',
-      aliases: ['direct-message', 'dm'],
-      group: 'cool stuff',
-      memberName: 'direct-message',
-      description: 'sends a dorect message to the mentioned user'
-    })
-  }
+module.exports = {
 
-  run (message) {
+  name: 'direct-message',
+  aliases: ['direct-message', 'dm'],
+  group: 'cool stuff',
+  memberName: 'direct-message',
+  description: 'sends a dorect message to the mentioned user',
+
+  execute (message) {
     // eslint-disable-next-line no-unused-vars
     const [cmd, ...args] = message.content
       .trim()
@@ -31,7 +27,7 @@ module.exports = class MeowCommand extends Command {
             .setTitle('DM Unsuccessfull')
             .setDescription(`${message.author.tag} I can not send a DM to a bot`)
             .setTimestamp()
-          message.channel.send(eEmbed)
+          message.channel.send({ embeds: [eEmbed] })
         } else {
           if (s.length === 0) {
             const eEmbed = new MessageEmbed()
@@ -40,7 +36,7 @@ module.exports = class MeowCommand extends Command {
               .setDescription('I cannot send a empty DM')
               .setTimestamp()
 
-            message.channel.send(eEmbed)
+            message.channel.send({ embeds: [eEmbed] })
           } else {
             const messsagggee = args.slice(1, args.length)
             const sendd = messsagggee.toString()
@@ -52,7 +48,7 @@ module.exports = class MeowCommand extends Command {
               .setDescription(`Successfully sent DM to ${user.tag}`)
               .setTimestamp()
 
-            message.channel.send(eEmbed)
+            message.channel.send({ embeds: [eEmbed] })
           }
         }
       } else {
@@ -62,7 +58,7 @@ module.exports = class MeowCommand extends Command {
           .setDescription(`**${message.author.tag}** That user isn't in this guild! `)
           .setTimestamp()
 
-        message.channel.send(eEmbed)
+        message.channel.send({ embeds: [eEmbed] })
       }
     } else {
       const eEmbed = new MessageEmbed()
@@ -71,7 +67,7 @@ module.exports = class MeowCommand extends Command {
         .setDescription(`**${message.author.tag}** You didn't mention the user to DM! `)
         .setTimestamp()
 
-      message.channel.send(eEmbed)
+      message.channel.send({ embeds: [eEmbed] })
     }
   }
 }

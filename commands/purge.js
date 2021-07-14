@@ -1,17 +1,13 @@
-const { Command } = require('discord.js-commando')
 const { MessageEmbed } = require('discord.js')
 
-module.exports = class MeowCommand extends Command {
-  constructor (client) {
-    super(client, {
-      name: 'purge',
-      group: 'cool stuff',
-      memberName: 'purge',
-      description: 'deletes the amount if specified messages'
-    })
-  }
+module.exports = {
 
-  run (message) {
+  name: 'purge',
+  group: 'cool stuff',
+  memberName: 'purge',
+  description: 'deletes the amount if specified messages',
+
+  execute (message) {
     // eslint-disable-next-line no-unused-vars
     const [cmd, ...args] = message.content
       .trim()
@@ -28,7 +24,7 @@ module.exports = class MeowCommand extends Command {
         .setDescription(`**${message.author.tag}** you dont have permission to use this command`)
         .setTimestamp()
 
-      message.channel.send(eEmbed)
+      message.channel.send({ embeds: [eEmbed] })
     } else {
       message.channel.bulkDelete(messageCountFinal)
 
@@ -37,7 +33,7 @@ module.exports = class MeowCommand extends Command {
           .setColor('#00ff04')
           .setTitle('Messages Deleted')
           .setDescription(`Deleted ${messageCount} messages`)
-        message.channel.send(eEmbed)
+        message.channel.send({ embeds: [eEmbed] })
       }
     }
   }

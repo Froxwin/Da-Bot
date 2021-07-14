@@ -1,17 +1,13 @@
-const { Command } = require('discord.js-commando')
 const { MessageEmbed } = require('discord.js')
 
-module.exports = class MeowCommand extends Command {
-  constructor (client) {
-    super(client, {
-      name: 'kick',
-      group: 'cool stuff',
-      memberName: 'kick',
-      description: 'kicks the specified user'
-    })
-  }
+module.exports = {
 
-  run (message) {
+  name: 'kick',
+  group: 'cool stuff',
+  memberName: 'kick',
+  description: 'kicks the specified user',
+
+  execute (message) {
     // eslint-disable-next-line no-unused-vars
     const [cmd, ...args] = message.content
       .trim()
@@ -27,7 +23,7 @@ module.exports = class MeowCommand extends Command {
           .setDescription(`**${message.author.tag}** you are not high enough in the hierchy to do that`)
           .setTimestamp()
 
-        message.channel.send(eEmbed)
+        message.channel.send({ embeds: [eEmbed] })
       } else {
         if (!message.member.hasPermission('KICK_MEMBERS')) {
           const eEmbed = new MessageEmbed()
@@ -36,7 +32,7 @@ module.exports = class MeowCommand extends Command {
             .setDescription(`**${message.author.tag}** you dont have permission to use this command`)
             .setTimestamp()
 
-          message.channel.send(eEmbed)
+          message.channel.send({ embeds: [eEmbed] })
         } else {
           if (member) {
             member
@@ -48,7 +44,7 @@ module.exports = class MeowCommand extends Command {
                   .setDescription(`Successfully kicked **${user.tag}**`)
                   .setTimestamp()
 
-                message.channel.send(eEmbed)
+                message.channel.send({ embeds: [eEmbed] })
               })
               .catch(err => {
                 const eEmbed = new MessageEmbed()
@@ -57,7 +53,7 @@ module.exports = class MeowCommand extends Command {
                   .setDescription(`**${message.author.tag}** I was unable to kick ${user.tag} `)
                   .setTimestamp()
 
-                message.channel.send(eEmbed)
+                message.channel.send({ embeds: [eEmbed] })
                 console.error(err)
               })
           } else {
@@ -67,7 +63,7 @@ module.exports = class MeowCommand extends Command {
               .setDescription(`**${message.author.tag}** That user isn't in this server `)
               .setTimestamp()
 
-            message.channel.send(eEmbed)
+            message.channel.send({ embeds: [eEmbed] })
           }
         }
       }
@@ -78,7 +74,7 @@ module.exports = class MeowCommand extends Command {
         .setDescription(`**${message.author.tag}** You didn't mention the user to kick `)
         .setTimestamp()
 
-      message.channel.send(eEmbed)
+      message.channel.send({ embeds: [eEmbed] })
     }
   }
 }

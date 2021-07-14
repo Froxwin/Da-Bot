@@ -1,17 +1,12 @@
-const { Command } = require('discord.js-commando')
+module.exports = {
 
-module.exports = class MeowCommand extends Command {
-  constructor (client) {
-    super(client, {
-      name: 'random-cubic-equation-generator',
-      aliases: ['random-cubic-equation-generator', 'rand-cu-eq', 'r-cu-eq', 'r3eq'],
-      group: 'cool stuff',
-      memberName: 'random-cubic-equation-generator',
-      description: 'sends a random cubic equation'
-    })
-  }
+  name: 'random-cubic-equation-generator',
+  aliases: ['random-cubic-equation-generator', 'rand-cu-eq', 'r-cu-eq', 'r3eq'],
+  group: 'cool stuff',
+  memberName: 'random-cubic-equation-generator',
+  description: 'sends a random cubic equation',
 
-  run (message) {
+  execute (message) {
     // x^3 - (a+b+c)x^2 + (ab+bc+ca)x - abc
     const a = Math.floor(Math.random() * 10)
     const b = Math.floor(Math.random() * 15)

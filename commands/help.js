@@ -1,4 +1,4 @@
-const { stripIndents, oneLine } = require('common-tags')
+/* const { stripIndents, oneLine } = require('common-tags')
 const Command = require('../../node_modules/discord.js-commando/src/commands/base')
 const { disambiguation } = require('../../node_modules/discord.js-commando/src/util')
 // eslint-disable-next-line no-unused-vars
@@ -13,8 +13,8 @@ module.exports = class HelpCommand extends Command {
       aliases: ['commands'],
       description: oneLine`Displays a list of available commands,
                           or detailed information for a specified command.`,
-      details: oneLine`The command may be part of a command name or a whole 
-                      command name. If it isn't specified, all available 
+      details: oneLine`The command may be part of a command name or a whole
+                      command name. If it isn't specified, all available
                       commands will be listed.`,
       examples: ['help', 'help prefix'],
       guarded: true,
@@ -84,3 +84,4 @@ module.exports = class HelpCommand extends Command {
     }
   }
 }
+*/
