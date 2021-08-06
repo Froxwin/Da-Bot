@@ -7,7 +7,7 @@ module.exports = {
   memberName: 'avatar',
   description: "displays the mentioned users avatar, if no argumants are provided displays the message author's avatar",
 
-  execute (message, args) {
+  execute (client, message, args) {
     const randBlue = Math.floor(Math.random() * 255)
     const randGreen = Math.floor(Math.random() * 255)
     const color = '#' + (0).toString(16) + (randGreen).toString(16) + (randBlue).toString(16)
@@ -18,7 +18,7 @@ module.exports = {
         .setImage(message.author.displayAvatarURL())
         .setTitle(`${message.author.tag}`)
         .setTimestamp()
-      message.channel.send({ embeds: [eEmbed] })
+      message.channel.send(eEmbed)
     }
     if (args.length !== 0) {
       const eEmbed = new MessageEmbed()
@@ -26,7 +26,7 @@ module.exports = {
         .setImage(message.mentions.users.first().displayAvatarURL())
         .setTitle(`${message.first().tag}`)
         .setTimestamp()
-      message.channel.send({ embeds: [eEmbed] })
+      message.channel.send(eEmbed)
     }
   }
 }

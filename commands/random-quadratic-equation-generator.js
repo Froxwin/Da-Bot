@@ -6,7 +6,7 @@ module.exports = {
   memberName: 'random-quadratic-equation-generator',
   description: 'sends a random quadratic equation',
 
-  execute (message) {
+  execute (client, message, args) {
     // ax^2 - ex + c
     const a = Math.floor(Math.random() * 10)
     const b = Math.floor(Math.random() * 15)

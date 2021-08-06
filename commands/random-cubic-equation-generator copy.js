@@ -6,7 +6,7 @@ module.exports = {
   memberName: 'random-cubic-equation-generator',
   description: 'sends a random cubic equation',
 
-  execute (message) {
+  execute (client, message, args) {
     // x^3 - (a+b+c)x^2 + (ab+bc+ca)x - abc
     const a = Math.floor(Math.random() * 10)
     const b = Math.floor(Math.random() * 15)

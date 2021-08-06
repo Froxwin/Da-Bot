@@ -5,7 +5,7 @@ module.exports = {
   memberName: 'hello',
   description: 'Replies with a hello',
 
-  execute (message) {
+  execute (client, message, args) {
     message.channel.send('Hello World')
   }
 }

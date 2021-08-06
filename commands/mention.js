@@ -5,7 +5,7 @@ module.exports = {
   memberName: 'mention',
   description: 'pings the message author',
 
-  execute (message) {
+  execute (client, message, args) {
     message.channel.send(`<@!${message.author.id}>`)
   }
 }

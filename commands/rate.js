@@ -8,12 +8,7 @@ module.exports = {
   memberName: 'rate',
   description: 'Rates stuff',
 
-  execute (message) {
-    // eslint-disable-next-line no-unused-vars
-    const [cmd, ...args] = message.content
-      .trim()
-      .split(/\s+/)
-
+  execute (client, message, args) {
     if (args.length === 0) {
       message.channel.send('provide arguments')
       return
@@ -32,6 +27,6 @@ module.exports = {
       .setDescription(`${message.author} I'd rate ${s} a ${x}/10`)
       .setTimestamp()
 
-    message.channel.send({ embeds: [eEmbed] })
+    message.channel.send(eEmbed)
   }
 }

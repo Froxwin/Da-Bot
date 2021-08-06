@@ -3,7 +3,7 @@ const fs = require('fs')
 module.exports = {
   name: 'moni',
   description: 'moni lmao',
-  execute (message, args) {
+  execute (client, message, args) {
     message.channel.send('(beta)')
     if (!fs.existsSync(`./data/${message.author.id}.txt`)) {
       message.channel.send('New Player Detected')

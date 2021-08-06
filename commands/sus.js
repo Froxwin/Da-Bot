@@ -7,7 +7,7 @@ module.exports = {
   memberName: 'sus',
   description: 'fights you',
 
-  execute (message) {
+  execute (client, message, args) {
     const randBlue = Math.floor(Math.random() * 255)
     const randGreen = Math.floor(Math.random() * 255)
     const color = '#' + (0).toString(16) + (randGreen).toString(16) + (randBlue).toString(16)
@@ -17,6 +17,6 @@ module.exports = {
       .setDescription(`**${message.mentions.users.first()} IS KINDA SUS NGL**`)
       .setTimestamp()
 
-    message.channel.send({ embeds: [eEmbed] })
+    message.channel.send(eEmbed)
   }
 }

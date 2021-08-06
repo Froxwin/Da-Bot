@@ -4,7 +4,7 @@ module.exports = {
   memberName: 'nodemon',
   description: 'NA',
 
-  execute (message) {
+  execute (client, message, args) {
     message.channel.send('fuck nodemon all ma hommies hate nodemon')
   }
 }

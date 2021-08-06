@@ -7,12 +7,7 @@ module.exports = {
   memberName: 'purge',
   description: 'deletes the amount if specified messages',
 
-  execute (message) {
-    // eslint-disable-next-line no-unused-vars
-    const [cmd, ...args] = message.content
-      .trim()
-      .split(/\s+/)
-
+  execute (client, message, args) {
     const messageCount = args[0]
     const messageCountInt = parseInt(messageCount)
     const messageCountFinal = messageCountInt + 1
@@ -24,7 +19,7 @@ module.exports = {
         .setDescription(`**${message.author.tag}** you dont have permission to use this command`)
         .setTimestamp()
 
-      message.channel.send({ embeds: [eEmbed] })
+      message.channel.send(eEmbed)
     } else {
       message.channel.bulkDelete(messageCountFinal)
 
@@ -33,7 +28,7 @@ module.exports = {
           .setColor('#00ff04')
           .setTitle('Messages Deleted')
           .setDescription(`Deleted ${messageCount} messages`)
-        message.channel.send({ embeds: [eEmbed] })
+        message.channel.send(eEmbed)
       }
     }
   }

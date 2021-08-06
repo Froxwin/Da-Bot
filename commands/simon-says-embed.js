@@ -9,11 +9,7 @@ module.exports = {
   memberName: 'simon-says-embed',
   description: 'says what you want me to say',
 
-  execute (message) {
-    // eslint-disable-next-line no-unused-vars
-    const [cmd, ...args] = message.content
-      .trim()
-      .split(/\s+/)
+  execute (client, message, args) {
     // message.delete()
     const messsaggge = args.slice(0, args.length)
     const send = messsaggge.toString()
@@ -33,7 +29,7 @@ module.exports = {
         .setColor(randColor)
         .setTitle(b)
         .setDescription(s)
-      message.channel.send({ embeds: [eEmbed] })
+      message.channel.send(eEmbed)
     })
   }
 }

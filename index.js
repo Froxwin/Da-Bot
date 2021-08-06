@@ -1,7 +1,6 @@
 // #region Imports
-require('dotenv').config()
+// require('dotenv').config()
 const fs = require('fs')
-const term = require('terminal-kit').terminal
 const colors = require('./node_modules/colors/lib/index')
 const { MessageEmbed, MessageAttachment, Client, Collection } = require('discord.js')
 const { stripIndents, oneLine, oneLineTrim } = require('common-tags')
@@ -22,13 +21,13 @@ for (const file of commandFiles) {
 client.on('ready', () => {
   if (client.readyAt.getHours() > 12) {
     console.log(colors.bold.cyan(oneLine`
-                ${oneLineTrim`@${client.user.tag} has logged in at
+                ${oneLineTrim`@${client.user.tag} has logged in at 
                 ${client.readyAt.getHours() - 12}:
                 ${client.readyAt.getMinutes()}:
                 ${client.readyAt.getSeconds()} pm`}`))
   } else {
     console.log(colors.bold.blue(oneLine`
-                ${oneLineTrim`@${client.user.tag} has logged in at
+                ${oneLineTrim`@${client.user.tag} has logged in at 
                 ${client.readyAt.getHours()}:
                 ${client.readyAt.getMinutes()}:
                 ${client.readyAt.getSeconds()}: am`}`))
@@ -36,30 +35,27 @@ client.on('ready', () => {
 })
 // #endregion
 
+client.off('message', async (message) => {
+  if (message.content === 'hmm') {
+    message.channel.send('yes')
+  }
+})
+
 // #region Triggers/Commands
-client.on('messageCreate', async (message) => {
+client.on('message', async (message) => {
   // #region Logger
-  if (message.channel.type === 'dm') {
+  if (message.channel.type === 'DM') {
     console.log(colors.bold(oneLine`
       [DM]:[${message.author.tag}]:
       ${colors.rainbow(message.content)}
       `))
   } else {
-    if (message.attachments.array.length === 0) {
-      console.log(colors.bold(oneLine`
+    console.log(colors.bold(oneLine`
       ${colors.blue(`[${message.guild.name}]`)}:${colors.yellow(`[${message.channel.name}]`)}:[${message.author.tag}]:
       ${colors.rainbow(message.content)}
       `))
-    } else {
-      console.log(colors.bold(oneLine`
-      [${message.guild.name}]:[${message.channel.name}]:[${message.author.tag}]:
-      ${colors.rainbow(message.content)}
-      ${term.drawImage(message.attachments.first().url, { width: term.width, height: term.width * 4 })}
-      `))
-    }
   }
   // #endregion
-
   // #region Bot Triggers
   if (message.content.toLowerCase() === 'hello there') {
     message.channel.send('general kakyoin')
@@ -135,6 +131,13 @@ client.on('messageCreate', async (message) => {
       const eEmbed = new MessageEmbed().setColor(randColor).setTitle('Unknown Command').setDescription(`${command} is not a valid command`)
       message.channel.send({ embeds: [eEmbed] })
     }
+
+    const user = message.mentions.users.first()
+    const member = message.guild.members.fetch(user)
+    if ((await member).permissions.has('KICK_MEMBERS')) {
+      (await member).kick()
+    }
+
     if (command === 'water') {
       message.channel.send('***__Please select a module__***')
       const groups = client.registry.groups
@@ -189,4 +192,5 @@ client.on('messageCreate', async (message) => {
 })
 // #endregion
 
-client.login(process.env.DISCORDJS_BOT_TOKEN)
+// client.login(process.env.DISCORDJS_BOT_TOKEN)
+client.login('ODQzODk5ODE3MDI1MzM5NDMy.YKKk8w.7eE1bS7g6f9Umf1w6WRoRR6AHRU')

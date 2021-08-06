@@ -10,7 +10,7 @@ module.exports = {
   unknown: true,
   hidden: true,
 
-  execute (message) {
+  execute (client, message, args) {
     const eEmbed = new MessageEmbed()
       .setColor('#ff1100')
       .setTitle('Unknown Command')

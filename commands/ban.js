@@ -8,12 +8,12 @@ module.exports = {
   memberName: 'ban',
   description: 'Bans the specified user',
 
-  execute (message, args) {
+  async execute (client, message, args) {
     const user = message.mentions.users.first()
 
     if (user) {
-      const member = message.guild.member(user)
-      if (member.roles.highest.position >= message.member.roles.highest.position) {
+      const member = message.guild.members.fetch(user)
+      if (message.member.roles.highest.position >= (await message.guild.members.fetch(user)).roles.highest) {
         const eEmbed = new MessageEmbed()
           .setColor('#ff1100')
           .setTitle('Ban Unsuccessfull')
@@ -22,9 +22,9 @@ module.exports = {
                                                       do that`}`)
           .setTimestamp()
 
-        message.channel.send({ embeds: [eEmbed] })
+        message.channel.send(eEmbed)
       } else {
-        if (!message.member.hasPermission('BAN_MEMBERS')) {
+        if ((await member).permissions.has('BAN_MEMBERS')) {
           const eEmbed = new MessageEmbed()
             .setColor('#ff1100')
             .setTitle('Ban Unsuccessfull')
@@ -33,7 +33,7 @@ module.exports = {
                                                         command`}`)
             .setTimestamp()
 
-          message.channel.send({ embeds: [eEmbed] })
+          message.channel.send(eEmbed)
         } else {
           if (member) {
             member
@@ -46,7 +46,7 @@ module.exports = {
                                           Successfully banned ${user.tag} `)
                   .setTimestamp()
 
-                message.channel.send({ embeds: [eEmbed] })
+                message.channel.send(eEmbed)
               })
               .catch(err => {
                 const eEmbed = new MessageEmbed()
@@ -56,7 +56,7 @@ module.exports = {
                                           I was unable to ban ${user.tag} `)
                   .setTimestamp()
 
-                message.channel.send({ embeds: [eEmbed] })
+                message.channel.send(eEmbed)
                 console.error(err)
               })
           } else {
@@ -67,7 +67,7 @@ module.exports = {
                                       That user isn't in this guild! `)
               .setTimestamp()
 
-            message.channel.send({ embeds: [eEmbed] })
+            message.channel.send(eEmbed)
           }
         }
       }
@@ -79,7 +79,7 @@ module.exports = {
                                 You didn't mention the user to ban! `)
         .setTimestamp()
 
-      message.channel.send({ embeds: [eEmbed] })
+      message.channel.send(eEmbed)
     }
   }
 }

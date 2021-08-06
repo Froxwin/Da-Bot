@@ -8,7 +8,7 @@ module.exports = {
   memberName: 'delete-channel',
   description: 'Deletes the channel in which the command is called',
 
-  execute (message) {
+  execute (client, message, args) {
     // eslint-disable-next-line no-unused-vars
     const member = message.author
     if (!message.member.hasPermission('MANAGE_CHANNELS')) {
@@ -20,7 +20,7 @@ module.exports = {
                                 to use this command`)
         .setTimestamp()
 
-      message.channel.send({ embeds: [eEmbed] })
+      message.channel.send(eEmbed)
     } else {
       message.channel.delete()
     }

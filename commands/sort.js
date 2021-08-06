@@ -11,7 +11,7 @@ module.exports = {
   name: 'sort',
   description: 'well its bubble sort what else can i say',
 
-  execute (message, args) {
+  execute (client, message, args) {
     try {
     // eslint-disable-next-line no-unused-vars
       const [command, ...args] = message.content
@@ -50,7 +50,7 @@ module.exports = {
             )
 
           if (!swapped) {
-            message.channel.send({ embeds: [eEmbed] })
+            message.channel.send(eEmbed)
             return
           }
         }
@@ -69,7 +69,7 @@ module.exports = {
               inline: true
             }
           )
-        message.channel.send({ embeds: [eEmbed] })
+        message.channel.send(eEmbed)
       }
 
       bubbleSort(argsInt)

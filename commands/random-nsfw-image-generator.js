@@ -9,7 +9,7 @@ module.exports = {
   memberName: 'random-nsfw-image-generator',
   description: 'sends a random nsfw image',
 
-  execute (message) {
+  execute (client, message, args) {
     const randBlue = Math.floor(Math.random() * 255)
     const randGreen = Math.floor(Math.random() * 255)
     const color = '#' + (0).toString(16) + (randGreen).toString(16) + (randBlue).toString(16)
