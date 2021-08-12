@@ -1,23 +1,29 @@
-// #region Imports
-// require('dotenv').config()
+require('dotenv').config()
 const fs = require('fs')
 const colors = require('./node_modules/colors/lib/index')
-const { MessageEmbed, MessageAttachment, Client, Collection } = require('discord.js')
-const { stripIndents, oneLine, oneLineTrim } = require('common-tags')
+const { oneLine, oneLineTrim } = require('common-tags')
+
+const {
+  MessageEmbed, MessageAttachment,
+  Client, Collection
+} = require('discord.js')
+const client = new Client({ intents: ['GUILDS', 'GUILD_MESSAGES'] })
+
 const prefix = '='
 const randBlue = Math.floor(Math.random() * 255)
 const randGreen = Math.floor(Math.random() * 255)
-const randColor = '#' + (0).toString(16) + (randGreen).toString(16) + (randBlue).toString(16)
-const client = new Client({ intents: ['GUILDS', 'GUILD_MESSAGES'] })
+const randColor =
+('#' + (0).toString(16) + (randGreen).toString(16) + (randBlue).toString(16))
+// require('ur mom');
+
 client.commands = new Collection()
-const commandFiles = fs.readdirSync('./commands').filter(file => file.endsWith('.js'))
+const commandFiles =
+fs.readdirSync('./commands').filter(file => file.endsWith('.js'))
 for (const file of commandFiles) {
-  // eslint-disable-next-line no-var
-  var command = require(`./commands/${file}`)
+  const command = require(`./commands/${file}`)
   client.commands.set(command.name, command)
 }
 
-// #region Login Ritual
 client.on('ready', () => {
   if (client.readyAt.getHours() > 12) {
     console.log(colors.bold.cyan(oneLine`
@@ -33,17 +39,8 @@ client.on('ready', () => {
                 ${client.readyAt.getSeconds()}: am`}`))
   }
 })
-// #endregion
 
-client.off('message', async (message) => {
-  if (message.content === 'hmm') {
-    message.channel.send('yes')
-  }
-})
-
-// #region Triggers/Commands
-client.on('message', async (message) => {
-  // #region Logger
+client.on('messageCreate', async (message) => {
   if (message.channel.type === 'DM') {
     console.log(colors.bold(oneLine`
       [DM]:[${message.author.tag}]:
@@ -51,12 +48,11 @@ client.on('message', async (message) => {
       `))
   } else {
     console.log(colors.bold(oneLine`
-      ${colors.blue(`[${message.guild.name}]`)}:${colors.yellow(`[${message.channel.name}]`)}:[${message.author.tag}]:
+      ${colors.blue(`[${message.guild.name}]`)}:
+      ${colors.yellow(`[${message.channel.name}]`)}:[${message.author.tag}]:
       ${colors.rainbow(message.content)}
       `))
   }
-  // #endregion
-  // #region Bot Triggers
   if (message.content.toLowerCase() === 'hello there') {
     message.channel.send('general kakyoin')
   }
@@ -108,16 +104,15 @@ client.on('message', async (message) => {
       .setDescription('**EDGY NGL**')
     message.channel.send({ embeds: [eEmbed] })
   }
+  /*
   if (message.author.bot === true) {
     return
   }
+  */
   if (message.content.toLowerCase() === 'hello') {
-    message.channel.send('hello')
+    message.channel.send('.hello')
   }
 
-  // #endregion
-
-  // #region Commands Walmart Version lmao
   if (message.content.startsWith(prefix)) {
     const [command, ...args] = message.content
       .trim()
@@ -128,69 +123,12 @@ client.on('message', async (message) => {
       client.commands.get(command).execute(client, message, args)
     } catch (error) {
       console.error(error)
-      const eEmbed = new MessageEmbed().setColor(randColor).setTitle('Unknown Command').setDescription(`${command} is not a valid command`)
+      const eEmbed = new MessageEmbed().setColor(randColor)
+        .setTitle('Unknown Command')
+        .setDescription(`${command} is not a valid command`)
       message.channel.send({ embeds: [eEmbed] })
     }
-
-    const user = message.mentions.users.first()
-    const member = message.guild.members.fetch(user)
-    if ((await member).permissions.has('KICK_MEMBERS')) {
-      (await member).kick()
-    }
-
-    if (command === 'water') {
-      message.channel.send('***__Please select a module__***')
-      const groups = client.registry.groups
-      const showAll = args.command && args.command.toLowerCase() === 'all'
-      const messages = []
-      const eEmbed = new MessageEmbed()
-        .setColor(randColor)
-        .setTitle('_**Commands**_')
-        .setDescription(stripIndents`\n\n${groups.filter((grp) => grp.commands.some((cmd) => !cmd.hidden && (showAll || cmd.isUsable(message)))).map((grp) => stripIndents` \n ${grp.commands.filter((cmd) => !cmd.hidden && (showAll || cmd.isUsable(message))).map((cmd) => `**${cmd.name}:** ${cmd.description}${cmd.nsfw ? ' (NSFW)' : ''}`).join('\n')}`)}`)
-      try {
-        messages.push(message.channel.send({ embeds: [eEmbed] }))
-        message.channel.send('__**To fetch a module type the command name exactly as it is within 10 seconds**__')
-      } catch (err) {
-        message.channel.send('broken lmao')
-        console.log(err)
-        message.channel.send(err.toString())
-      }
-      message.channel.awaitMessages(m => m.author.id === message.author.id,
-        { max: 1, time: 10000 }).then(collected => {
-        // eslint-disable-next-line no-unused-vars
-        if (collected.array.length !== 0) {
-          const eEmbed = new MessageEmbed()
-            .setColor(randColor)
-            .setDescription('No messages were recieved')
-          message.channel.send({ embeds: [eEmbed] })
-        } else {
-          const [...arg] = collected.first().content
-            .trim()
-            .split(/\s+/)
-          try {
-            const file = (`${arg}.js`)
-            const path = `./commands/coolStuff/${file}`
-            const attachment = new MessageAttachment(`${path}`)
-            if (!fs.existsSync(path)) {
-              const eEmbed = new MessageEmbed()
-                .setColor(randColor)
-                .setDescription('An error occured make sure you typed the name correctly')
-              message.channel.send({ embeds: [eEmbed] })
-              return
-            }
-
-            message.channel.send(attachment)
-          } catch (err) {
-            message.channel.send('An error occured make sure you typed the name correctly')
-            message.channel.send(`\n${err}`)
-          }
-        }
-      })
-    }
   };
-  // #endregion
 })
-// #endregion
 
-// client.login(process.env.DISCORDJS_BOT_TOKEN)
-client.login('ODQzODk5ODE3MDI1MzM5NDMy.YKKk8w.7eE1bS7g6f9Umf1w6WRoRR6AHRU')
+client.login(process.env.DISCORDJS_BOT_TOKEN)
