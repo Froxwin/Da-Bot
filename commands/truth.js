@@ -1,10 +1,9 @@
 module.exports = {
   name: 'truth',
-  aliases: ['8ball', 'truth'],
   memberName: 'truth',
   description: 'magic 8 ball',
 
-  execute (message, args) {
+  execute (client, message, args) {
     if (args.length === 0) {
       message.channel.send('provide arguments')
     };

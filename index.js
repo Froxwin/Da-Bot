@@ -40,6 +40,21 @@ client.on('ready', () => {
   }
 })
 
+client.on('interactionCreate', button => {
+  if (!button.isButton()) return
+  if (button.customId === 'color') {
+    const randRedd = Math.floor(Math.random() * 255)
+    const randBluee = Math.floor(Math.random() * 255)
+    const randGreenn = Math.floor(Math.random() * 255)
+    const randColorr = ('#' + (randRedd).toString(16) + (randGreenn).toString(16) + (randBluee).toString(16))
+    const eEmbed = new MessageEmbed()
+      .setColor(randColorr.toUpperCase())
+      .setTitle(randColorr.toUpperCase())
+
+    button.update({ embeds: [eEmbed] })
+  }
+})
+
 client.on('messageCreate', async (message) => {
   if (message.channel.type === 'DM') {
     console.log(colors.bold(oneLine`
