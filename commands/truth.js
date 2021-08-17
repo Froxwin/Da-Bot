@@ -7,7 +7,7 @@ module.exports = {
     if (args.length === 0) {
       message.channel.send('provide arguments')
     };
-    const x = Math.floor(Math.random() * 2)
+    const x = Math.floor(Math.random() * 3)
     if (args.length !== 0 && x === 0) {
       message.channel.send('Yes')
     };

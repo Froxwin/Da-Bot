@@ -12,8 +12,6 @@ module.exports = {
           .setStyle('PRIMARY')
       )
 
-    const canvas = require('canvas')
-
     const randRed = Math.floor(Math.random() * 255)
     const randBlue = Math.floor(Math.random() * 255)
     const randGreen = Math.floor(Math.random() * 255)
