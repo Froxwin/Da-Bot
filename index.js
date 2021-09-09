@@ -1,14 +1,12 @@
 require('dotenv').config()
 const fs = require('fs')
-const colors = require('./node_modules/colors/lib/index')
+const colors = require('colors')
 const { oneLine, oneLineTrim } = require('common-tags')
-
 const {
   MessageEmbed, MessageAttachment,
   Client, Collection
 } = require('discord.js')
 const client = new Client({ intents: ['GUILDS', 'GUILD_MESSAGES'] })
-
 const prefix = '='
 const randBlue = Math.floor(Math.random() * 255)
 const randGreen = Math.floor(Math.random() * 255)
@@ -46,7 +44,9 @@ client.on('interactionCreate', button => {
     const randRedd = Math.floor(Math.random() * 255)
     const randBluee = Math.floor(Math.random() * 255)
     const randGreenn = Math.floor(Math.random() * 255)
-    const randColorr = ('#' + (randRedd).toString(16) + (randGreenn).toString(16) + (randBluee).toString(16))
+    const randColorr = ('#' + (randRedd).toString(16) +
+                              (randGreenn).toString(16) +
+                              (randBluee).toString(16))
     const eEmbed = new MessageEmbed()
       .setColor(randColorr.toUpperCase())
       .setTitle(randColorr.toUpperCase())
@@ -119,11 +119,9 @@ client.on('messageCreate', async (message) => {
       .setDescription('**EDGY NGL**')
     message.channel.send({ embeds: [eEmbed] })
   }
-  /*
   if (message.author.bot === true) {
     return
   }
-  */
   if (message.content.toLowerCase() === 'hello') {
     message.channel.send('.hello')
   }
