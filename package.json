@@ -9,7 +9,7 @@
     "update": "npm update"
   },
   "keywords": [],
-  "author": "Froxwin",
+  "authors": ["Froxwin", "Buns"],
   "license": "ISC",
   "dependencies": {
     "agent-base": "^6.0.2",
