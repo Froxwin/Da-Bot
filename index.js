@@ -2,10 +2,7 @@ require('dotenv').config()
 const fs = require('fs')
 const colors = require('colors')
 const { oneLine, oneLineTrim } = require('common-tags')
-const {
-  MessageEmbed, MessageAttachment,
-  Client, Collection
-} = require('discord.js')
+const { MessageEmbed, MessageAttachment, Client, Collection } = require('discord.js')
 const client = new Client({ intents: ['GUILDS', 'GUILD_MESSAGES'] })
 const prefix = '='
 const randBlue = Math.floor(Math.random() * 255)
@@ -15,8 +12,8 @@ const randColor =
 // require('ur mom');
 
 client.commands = new Collection()
-const commandFiles =
-fs.readdirSync('./commands').filter(file => file.endsWith('.js'))
+const commandFiles = fs.readdirSync('./commands').filter(file => file.endsWith('.js'))
+
 for (const file of commandFiles) {
   const command = require(`./commands/${file}`)
   client.commands.set(command.name, command)
@@ -119,9 +116,11 @@ client.on('messageCreate', async (message) => {
       .setDescription('**EDGY NGL**')
     message.channel.send({ embeds: [eEmbed] })
   }
+  /*
   if (message.author.bot === true) {
     return
   }
+  */
   if (message.content.toLowerCase() === 'hello') {
     message.channel.send('.hello')
   }

@@ -1,11 +1,7 @@
 module.exports = {
-
   name: 'simon-says',
-  aliases: ['simon-says', 'say'],
-  group: 'cool stuff',
-  memberName: 'simon-says',
   description: 'says what you want me to say',
-
+  alias: 'hmm',
   execute (client, message, args) {
     message.delete()
     const messsaggge = args.slice(0, args.length)
