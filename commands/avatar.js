@@ -1,11 +1,7 @@
 const { MessageEmbed } = require('discord.js')
 
 module.exports = {
-
   name: 'avatar',
-  group: 'cool stuff',
-  memberName: 'avatar',
-  description: "displays the mentioned users avatar, if no argumants are provided displays the message author's avatar",
 
   execute (client, message, args) {
     const randBlue = Math.floor(Math.random() * 255)
@@ -15,18 +11,18 @@ module.exports = {
     if (args.length === 0) {
       const eEmbed = new MessageEmbed()
         .setColor(color)
-        .setImage(message.author.displayAvatarURL())
+        .setImage(message.author.displayAvatarURL({ size: 1024, dynamic: true }))
         .setTitle(`${message.author.tag}`)
         .setTimestamp()
-      message.channel.send(eEmbed)
+      message.channel.send({ embeds: [eEmbed] })
     }
     if (args.length !== 0) {
       const eEmbed = new MessageEmbed()
         .setColor(color)
-        .setImage(message.mentions.users.first().displayAvatarURL())
-        .setTitle(`${message.first().tag}`)
+        .setImage(message.mentions.users.first().displayAvatarURL({ size: 1024, dynamic: true }))
+        .setTitle(`${message.mentions.users.first().tag}`)
         .setTimestamp()
-      message.channel.send(eEmbed)
+      message.channel.send({ embeds: [eEmbed] })
     }
   }
 }

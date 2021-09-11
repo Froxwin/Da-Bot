@@ -2,11 +2,7 @@ const { MessageEmbed } = require('discord.js')
 const { oneLine } = require('common-tags')
 
 module.exports = {
-
   name: 'ban',
-  group: 'cool stuff',
-  memberName: 'ban',
-  description: 'Bans the specified user',
 
   async execute (client, message, args) {
     const user = message.mentions.users.first()
@@ -22,7 +18,7 @@ module.exports = {
                                                       do that`}`)
           .setTimestamp()
 
-        message.channel.send(eEmbed)
+        message.channel.send({ embeds: [eEmbed] })
       } else {
         if ((await member).permissions.has('BAN_MEMBERS')) {
           const eEmbed = new MessageEmbed()
@@ -33,7 +29,7 @@ module.exports = {
                                                         command`}`)
             .setTimestamp()
 
-          message.channel.send(eEmbed)
+          message.channel.send({ embeds: [eEmbed] })
         } else {
           if (member) {
             member
@@ -46,7 +42,7 @@ module.exports = {
                                           Successfully banned ${user.tag} `)
                   .setTimestamp()
 
-                message.channel.send(eEmbed)
+                message.channel.send({ embeds: [eEmbed] })
               })
               .catch(err => {
                 const eEmbed = new MessageEmbed()
@@ -56,7 +52,7 @@ module.exports = {
                                           I was unable to ban ${user.tag} `)
                   .setTimestamp()
 
-                message.channel.send(eEmbed)
+                message.channel.send({ embeds: [eEmbed] })
                 console.error(err)
               })
           } else {
@@ -67,7 +63,7 @@ module.exports = {
                                       That user isn't in this guild! `)
               .setTimestamp()
 
-            message.channel.send(eEmbed)
+            message.channel.send({ embeds: [eEmbed] })
           }
         }
       }
@@ -79,7 +75,7 @@ module.exports = {
                                 You didn't mention the user to ban! `)
         .setTimestamp()
 
-      message.channel.send(eEmbed)
+      message.channel.send({ embeds: [eEmbed] })
     }
   }
 }
