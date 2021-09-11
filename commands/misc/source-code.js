@@ -3,9 +3,7 @@ const { MessageAttachment } = require('discord.js')
 module.exports = {
 
   name: 'source-code',
-  aliases: ['source-code', 'src-code', 'sc'],
-  group: 'cool stuff',
-  memberName: 'source-code',
+  alias: ['source-code', 'src-code', 'sc'],
   description: 'shows my insides',
 
   execute (client, message, args) {

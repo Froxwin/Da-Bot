@@ -15,7 +15,7 @@ const
   } = require('discord.js')
 
 const client = new Client({ intents: ['GUILDS', 'GUILD_MESSAGES'] })
-const prefix = 'θ'
+const prefix = '='
 
 const randBlue = Math.floor(Math.random() * 255)
 const randGreen = Math.floor(Math.random() * 255)
@@ -23,12 +23,17 @@ const randColor =
   ('#' + (0).toString(16) + (randGreen).toString(16) + (randBlue).toString(16))
 
 client.commands = new Collection()
-const commandFiles =
-  fs.readdirSync('./commands').filter(file => file.endsWith('.js'))
+const folders = ['admin', 'misc', 'test', 'util']
 
-for (const file of commandFiles) {
-  const command = require(`./commands/${file}`)
-  client.commands.set(command.name, command)
+let i
+for (i = 0; i < folders.length; i++) {
+  const commandFiles =
+    fs.readdirSync(`./commands/${folders[i]}`).filter(file => file.endsWith('.js'))
+
+  for (const file of commandFiles) {
+    const command = require(`./commands/${folders[i]}/${file}`)
+    client.commands.set(command.name, command)
+  }
 }
 
 client.on('ready', () => {

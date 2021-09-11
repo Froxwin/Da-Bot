@@ -1,7 +1,5 @@
 module.exports = {
   name: 'nodemon',
-  group: 'cool stuff',
-  memberName: 'nodemon',
   description: 'NA',
 
   execute (client, message, args) {
