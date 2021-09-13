@@ -25,14 +25,26 @@ const randColor =
 client.commands = new Collection()
 const folders = ['admin', 'misc', 'test', 'util']
 
-let i
-for (i = 0; i < folders.length; i++) {
+for (let i = 0; i < folders.length; i++) {
   const commandFiles =
     fs.readdirSync(`./commands/${folders[i]}`).filter(file => file.endsWith('.js'))
 
   for (const file of commandFiles) {
     const command = require(`./commands/${folders[i]}/${file}`)
     client.commands.set(command.name, command)
+  }
+}
+
+client.buttons = new Collection()
+const buttonFolders = ['admin', 'misc', 'test', 'util']
+
+for (let n = 0; n < folders.length; n++) {
+  const buttonFiles =
+    fs.readdirSync(`./modules/${buttonFolders[n]}`).filter(file => file.endsWith('.js'))
+
+  for (const file of buttonFiles) {
+    const button = require(`./modules/${buttonFolders[n]}/${file}`)
+    client.buttons.set(button.name, button)
   }
 }
 
@@ -52,14 +64,13 @@ client.on('ready', () => {
   }
 })
 
-client.on('interactionCreate', button => {
+client.on('interactionCreate', async (button) => {
   if (!button.isButton()) return
-  if (button.customId === 'color') {
-    const eEmbed = new MessageEmbed()
-      .setColor(randColor.toUpperCase())
-      .setTitle(randColor.toUpperCase())
-
-    button.update({ embeds: [eEmbed] })
+  try {
+    const exeButton = client.buttons.get(button.customId)
+    exeButton.execute(button)
+  } catch (error) {
+    console.error(error)
   }
 })
 
@@ -130,7 +141,6 @@ client.on('messageCreate', async (message) => {
     try {
       const exeCommand = client.commands.get(command) ||
       client.commands.find(temp => temp.alias && temp.alias.includes(command))
-
       exeCommand.execute(client, message, args)
     } catch (error) {
       console.error(error)
