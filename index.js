@@ -9,25 +9,22 @@ const
 const
   {
     MessageEmbed,
-    MessageAttachment,
     Client,
     Collection
   } = require('discord.js')
 
 const client = new Client({ intents: ['GUILDS', 'GUILD_MESSAGES'] })
 const prefix = '='
-
-const randBlue = Math.floor(Math.random() * 255)
-const randGreen = Math.floor(Math.random() * 255)
-const randColor =
-  ('#' + (0).toString(16) + (randGreen).toString(16) + (randBlue).toString(16))
+const stuff = require('./exports/stuff')
 
 client.commands = new Collection()
 const folders = ['admin', 'misc', 'test', 'util']
 
 for (let i = 0; i < folders.length; i++) {
   const commandFiles =
-    fs.readdirSync(`./commands/${folders[i]}`).filter(file => file.endsWith('.js'))
+    fs
+      .readdirSync(`./commands/${folders[i]}`)
+      .filter(file => file.endsWith('.js'))
 
   for (const file of commandFiles) {
     const command = require(`./commands/${folders[i]}/${file}`)
@@ -40,7 +37,9 @@ const buttonFolders = ['admin', 'misc', 'test', 'util']
 
 for (let n = 0; n < folders.length; n++) {
   const buttonFiles =
-    fs.readdirSync(`./modules/${buttonFolders[n]}`).filter(file => file.endsWith('.js'))
+    fs
+      .readdirSync(`./modules/${buttonFolders[n]}`)
+      .filter(file => file.endsWith('.js'))
 
   for (const file of buttonFiles) {
     const button = require(`./modules/${buttonFolders[n]}/${file}`)
@@ -87,53 +86,10 @@ client.on('messageCreate', async (message) => {
       ${colors.rainbow(message.content)}
       `))
   }
-  if (message.content.toLowerCase() === 'hello there') {
-    message.channel.send('general kakyoin')
-  }
-  if (message.content.toLowerCase() === 'e') {
-    const eEmbed = new MessageEmbed()
-      .setColor(randColor)
-      .setTitle('Ricked')
-      .setURL('https://www.youtube.com/watch?v=dQw4w9WgXcQ')
-      .setAuthor('god', oneLineTrim`https://static.wikia.nocookie.net/037f608a
-                                    -cc92-43c6-ae3a-7f09d463b423`)
-      .setDescription('Get ricked lmao')
-      .setTimestamp()
-
-    message.channel.send({ embeds: [eEmbed] })
-  }
-  if (message.content.toLowerCase() === 'sup') {
-    message.channel.send(oneLineTrim`https://tenor.com/view/rick-astley-rick
-                                    -roll-dancing-dance-moves-gif-14097983`)
-  }
-  if (message.content.toLowerCase().includes('gay') === true) {
-    message.channel.send('no u')
-  }
-  if (message.content.toLowerCase() === 'ay') {
-    message.channel.send('<@384664284401106956>hOw aRe yOu')
-  }
-  if (message.content.toLowerCase() === 'attach test') {
-    const attachment = new MessageAttachment('./images/test.png')
-    message.channel.send(attachment)
-  }
-  if (message.content.toLowerCase() === 'burn') {
-    message.delete()
-    message.channel.send(' <:elmofire:743509390073528461>')
-    message.channel.send('burn')
-  }
-  if (message.content.toLowerCase() === 'edgy') {
-    const eEmbed = new MessageEmbed()
-      .setColor(randColor)
-      .setTitle('***EDGY***')
-      .setDescription('**EDGY NGL**')
-    message.channel.send({ embeds: [eEmbed] })
-  }
-  /*
+  stuff.execute(message)
   if (message.author.bot === true) {
     return
   }
-  */
-
   if (message.content.toLowerCase().startsWith(prefix)) {
     const [command, ...args] = message.content.toLowerCase().trim()
       .substring(prefix.length).split(/\s+/)

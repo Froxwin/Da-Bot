@@ -27,6 +27,6 @@ module.exports = {
       .setDescription(`${message.author} I'd rate ${s} a ${x}/10`)
       .setTimestamp()
 
-    message.channel.send(eEmbed)
+    message.channel.send({ embeds: [eEmbed] })
   }
 }
