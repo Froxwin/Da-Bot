@@ -1,6 +1,8 @@
 require('dotenv').config()
 const fs = require('fs')
 const colors = require('colors')
+const stuff = require('.\\exports\\stuff')
+const boundRandColor = require('.\\exports\\boundRandColor')
 const
   {
     oneLine,
@@ -13,36 +15,33 @@ const
     Collection
   } = require('discord.js')
 
-const client = new Client({ intents: ['GUILDS', 'GUILD_MESSAGES'] })
 const prefix = '='
-const stuff = require('./exports/stuff')
+const client = new Client({ intents: ['GUILDS', 'GUILD_MESSAGES'] })
 
 client.commands = new Collection()
 const folders = ['admin', 'misc', 'test', 'util']
-
 for (let i = 0; i < folders.length; i++) {
   const commandFiles =
     fs
-      .readdirSync(`./commands/${folders[i]}`)
+      .readdirSync(`.\\commands\\${folders[i]}`)
       .filter(file => file.endsWith('.js'))
 
   for (const file of commandFiles) {
-    const command = require(`./commands/${folders[i]}/${file}`)
+    const command = require(`.\\commands\\${folders[i]}\\${file}`)
     client.commands.set(command.name, command)
   }
 }
 
 client.buttons = new Collection()
 const buttonFolders = ['admin', 'misc', 'test', 'util']
-
 for (let n = 0; n < folders.length; n++) {
   const buttonFiles =
     fs
-      .readdirSync(`./modules/${buttonFolders[n]}`)
+      .readdirSync(`.\\modules\\${buttonFolders[n]}`)
       .filter(file => file.endsWith('.js'))
 
   for (const file of buttonFiles) {
-    const button = require(`./modules/${buttonFolders[n]}/${file}`)
+    const button = require(`.\\modules\\${buttonFolders[n]}\\${file}`)
     client.buttons.set(button.name, button)
   }
 }
@@ -101,13 +100,10 @@ client.on('messageCreate', async (message) => {
     } catch (error) {
       console.error(error)
       const eEmbed = new MessageEmbed()
-        .setColor('#196C7F')
+        .setColor(boundRandColor.execute())
         .setTitle('Unknown Command')
-        .setThumbnail(oneLine`https://static.wikia.nocookie.net/b4c5f56a-e655-4d
-                                09-af0a-7ab2f3fdb9a0/scale-to-width/370`)
-        .setDescription(oneLine`${command} is not a valid command 
-                                            or needs maintanence`)
-
+        .setDescription(oneLine`**${command}** is not a valid command or needs 
+                                                                  maintanence`)
       message.channel.send({ embeds: [eEmbed] })
     }
   };
