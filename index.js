@@ -100,7 +100,7 @@ client.on('messageCreate', async (message) => {
     } catch (error) {
       console.error(error)
       const eEmbed = new MessageEmbed()
-        .setColor(boundRandColor.execute())
+        .setColor(boundRandColor.misc())
         .setTitle('Unknown Command')
         .setDescription(oneLine`**${command}** is not a valid command or needs 
                                                                   maintanence`)
