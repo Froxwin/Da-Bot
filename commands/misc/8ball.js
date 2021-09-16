@@ -6,7 +6,7 @@ module.exports = {
   execute (client, message, args) {
     if (args.length === 0) {
       message.channel.send('provide arguments')
-    };
+    }
     const x = Math.floor(Math.random() * 3)
     switch (x) {
       case 0:

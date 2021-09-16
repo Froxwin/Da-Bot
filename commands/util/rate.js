@@ -12,7 +12,7 @@ module.exports = {
     if (args.length === 0) {
       message.channel.send('provide arguments')
       return
-    };
+    }
     const randBlue = Math.floor(Math.random() * 255)
     const randGreen = Math.floor(Math.random() * 255)
     const color = '#' + (0).toString(16) + (randGreen).toString(16) + (randBlue).toString(16)
