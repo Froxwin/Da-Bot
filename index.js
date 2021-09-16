@@ -51,8 +51,7 @@ atom.typingLogger.execute(client)
 client.on('interactionCreate', async (button) => {
   if (!button.isButton()) return
   try {
-    const exeButton = client.buttons.get(button.customId)
-    exeButton.execute(button)
+    client.buttons.get(button.customId).execute(button)
   } catch (error) {
     console.error(error)
   }
