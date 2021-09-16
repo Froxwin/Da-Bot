@@ -1,13 +1,10 @@
 require('dotenv').config()
 const fs = require('fs')
-const colors = require('colors')
-const stuff = require('.\\exports\\stuff')
-const boundRandColor = require('.\\exports\\boundRandColor')
-const
-  {
-    oneLine,
-    oneLineTrim
-  } = require('common-tags')
+const stuff = require('.\\functions\\stuff')
+const logger = require('.\\functions\\logger')
+const loginRitual = require('.\\functions\\ready')
+const boundRandColor = require('.\\functions\\boundRandColor')
+const oneLine = require('common-tags')
 const
   {
     MessageEmbed,
@@ -46,21 +43,7 @@ for (let n = 0; n < folders.length; n++) {
   }
 }
 
-client.on('ready', () => {
-  if (client.readyAt.getHours() > 12) {
-    console.log(colors.bold.cyan(oneLine`
-                ${oneLineTrim`@${client.user.tag} has logged in at 
-                ${client.readyAt.getHours() - 12}:
-                ${client.readyAt.getMinutes()}:
-                ${client.readyAt.getSeconds()} pm`}`))
-  } else {
-    console.log(colors.bold.blue(oneLine`
-                ${oneLineTrim`@${client.user.tag} has logged in at 
-                ${client.readyAt.getHours()}:
-                ${client.readyAt.getMinutes()}:
-                ${client.readyAt.getSeconds()}: am`}`))
-  }
-})
+loginRitual.execute(client)
 
 client.on('interactionCreate', async (button) => {
   if (!button.isButton()) return
@@ -73,22 +56,8 @@ client.on('interactionCreate', async (button) => {
 })
 
 client.on('messageCreate', async (message) => {
-  if (message.channel.type === 'DM') {
-    console.log(colors.bold(oneLine`
-      [DM]:[${message.author.tag}]:
-      ${colors.rainbow(message.content)}
-      `))
-  } else {
-    console.log(colors.bold(oneLine`
-      ${colors.blue(`[${message.guild.name}]`)}:
-      ${colors.yellow(`[${message.channel.name}]`)}:[${message.author.tag}]:
-      ${colors.rainbow(message.content)}
-      `))
-  }
+  logger.execute(message)
   stuff.execute(message)
-  if (message.author.bot === true) {
-    return
-  }
   if (message.content.toLowerCase().startsWith(prefix)) {
     const [command, ...args] = message.content.toLowerCase().trim()
       .substring(prefix.length).split(/\s+/)
@@ -109,4 +78,4 @@ client.on('messageCreate', async (message) => {
   };
 })
 
-client.login(process.env.DISCORDJS_BOT_TOKEN)
+client.login(process.env.SOFTundWET)

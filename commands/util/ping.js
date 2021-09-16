@@ -8,8 +8,8 @@ module.exports = {
 
   async execute (client, message, args) {
     const pingMsg = await message.channel.send('Pinging...')
-    pingMsg.edit('Ponged')
-    pingMsg.delete()
+    await pingMsg.edit('Ponged')
+    await pingMsg.delete()
 
     const randRed = Math.floor(Math.random() * 255)
     const randBlue = Math.floor(Math.random() * 255)

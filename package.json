@@ -6,7 +6,6 @@
   "scripts": {
     "start": "nodemon ./index.js",
     "dev": "nodemon ./index.js",
-    "install": "npm i",
     "update": "npm update"
   },
   "keywords": [],
