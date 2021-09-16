@@ -1,22 +1,27 @@
 require('dotenv').config()
-const fs = require('fs')
-const stuff = require('.\\functions\\stuff')
-const logger = require('.\\functions\\logger')
-const loginRitual = require('.\\functions\\ready')
-const boundRandColor = require('.\\functions\\boundRandColor')
-const oneLine = require('common-tags')
-const
-  {
-    MessageEmbed,
-    Client,
-    Collection
-  } = require('discord.js')
-
 const prefix = '='
-const client = new Client({ intents: ['GUILDS', 'GUILD_MESSAGES'] })
+const fs = require('fs')
+const atom = require('.\\functions')
+const { oneLine } = require('common-tags')
+const { MessageEmbed, Client, Collection } = require('discord.js')
+const folders = ['admin', 'misc', 'test', 'util']
+const buttonFolders = ['admin', 'misc', 'test', 'util']
+const client = new Client(
+  {
+    intents:
+      [
+        'GUILDS', 'GUILD_MESSAGES', 'GUILD_MESSAGE_TYPING',
+        'DIRECT_MESSAGES', 'DIRECT_MESSAGE_TYPING', 'DIRECT_MESSAGE_REACTIONS'
+      ],
+    partials:
+      [
+        'MESSAGE', 'CHANNEL', 'REACTION'
+      ]
+  })
 
 client.commands = new Collection()
-const folders = ['admin', 'misc', 'test', 'util']
+client.buttons = new Collection()
+
 for (let i = 0; i < folders.length; i++) {
   const commandFiles =
     fs
@@ -29,8 +34,6 @@ for (let i = 0; i < folders.length; i++) {
   }
 }
 
-client.buttons = new Collection()
-const buttonFolders = ['admin', 'misc', 'test', 'util']
 for (let n = 0; n < folders.length; n++) {
   const buttonFiles =
     fs
@@ -43,8 +46,8 @@ for (let n = 0; n < folders.length; n++) {
   }
 }
 
-loginRitual.execute(client)
-
+atom.ready.execute(client)
+atom.typingLogger.execute(client)
 client.on('interactionCreate', async (button) => {
   if (!button.isButton()) return
   try {
@@ -56,8 +59,8 @@ client.on('interactionCreate', async (button) => {
 })
 
 client.on('messageCreate', async (message) => {
-  logger.execute(message)
-  stuff.execute(message)
+  atom.logger.execute(message)
+  atom.stuff.execute(message)
   if (message.content.toLowerCase().startsWith(prefix)) {
     const [command, ...args] = message.content.toLowerCase().trim()
       .substring(prefix.length).split(/\s+/)
@@ -69,7 +72,7 @@ client.on('messageCreate', async (message) => {
     } catch (error) {
       console.error(error)
       const eEmbed = new MessageEmbed()
-        .setColor(boundRandColor.misc())
+        .setColor(atom.boundRandColor.misc())
         .setTitle('Unknown Command')
         .setDescription(oneLine`**${command}** is not a valid command or needs 
                                                                   maintanence`)
