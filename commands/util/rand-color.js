@@ -1,8 +1,16 @@
-const { MessageActionRow, MessageButton, MessageEmbed } = require('discord.js')
+const
+  {
+    MessageActionRow,
+    MessageButton,
+    MessageEmbed
+  } = require('discord.js')
+
+const atom = require('..\\..\\functions')
 
 module.exports = {
   name: 'rand-color',
-  description: 'hmm',
+  alias: ['rc', 'color'],
+  description: 'rand-color in all its glory',
   async execute (client, message, args) {
     const row = new MessageActionRow()
       .addComponents(
@@ -12,14 +20,9 @@ module.exports = {
           .setStyle('PRIMARY')
       )
 
-    const randRed = Math.floor(Math.random() * 255)
-    const randBlue = Math.floor(Math.random() * 255)
-    const randGreen = Math.floor(Math.random() * 255)
-    const randColor = ('#' + (randRed).toString(16) + (randGreen).toString(16) + (randBlue).toString(16))
-
     const eEmbed = new MessageEmbed()
-      .setColor(randColor.toUpperCase())
-      .setTitle(randColor.toUpperCase())
+      .setColor(atom.color.execute().toUpperCase())
+      .setTitle(atom.color.execute().toUpperCase())
 
     await message.channel.send({ embeds: [eEmbed], components: [row] })
   }

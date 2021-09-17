@@ -49,6 +49,22 @@ for (let n = 0; n < folders.length; n++) {
 atom.ready.execute(client)
 atom.typingLogger.execute(client)
 
+client.on('stickerCreate', async (sticker) => {
+  sticker.delete()
+})
+
+client.on('messageDelete', async (message) => {
+  if (message.author.bot) return
+  if (message.content.startsWith('=say')) return
+  const eEmbed = new MessageEmbed()
+    .setColor(atom.boundRandColor.misc())
+    .setTitle('Yout cant hide from god')
+    .setDescription(
+      `**__${message.author.tag}:__** ${message.content}`
+    )
+  message.channel.send({ embeds: [eEmbed] })
+})
+
 client.on('interactionCreate',
   async (button) => {
     if (!button.isButton()) return

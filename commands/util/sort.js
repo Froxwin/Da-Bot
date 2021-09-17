@@ -7,7 +7,6 @@ const color = '#' + (0).toString(16) +
               (randBlue).toString(16)
 
 module.exports = {
-
   name: 'sort',
   description: 'well its bubble sort what else can i say',
 

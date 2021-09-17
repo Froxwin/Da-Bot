@@ -1,9 +1,9 @@
 module.exports = {
-
   name: 'random-cubic-equation-generator',
-  alias: ['random-cubic-equation-generator', 'rand-cu-eq', 'r-cu-eq', 'r3eq'],
-  group: 'cool stuff',
-  memberName: 'random-cubic-equation-generator',
+  alias: [
+    'random-cubic-equation-generator',
+    'rand-cu-eq', 'r-cu-eq', 'r3eq'
+  ],
   description: 'sends a random cubic equation',
 
   execute (client, message, args) {
@@ -17,6 +17,6 @@ module.exports = {
     const f = 'x^3'
     const e = 'x^2'
     const d = 'x'
-    message.channel.send(f + ' - ' + sum + e + ' + ' + sump + d + ' - ' + pro)
+    message.channel.send(`${f} - ${sum}${e} + ${sump}${d} - ${pro}`)
   }
 }

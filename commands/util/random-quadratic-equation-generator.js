@@ -1,9 +1,8 @@
 module.exports = {
-
   name: 'random-quadratic-equation-generator',
-  alias: ['random-quadratic-equation-generator', 'rand-qu-eq', 'r-qu-eq', 'r2eq'],
-  group: 'cool stuff',
-  memberName: 'random-quadratic-equation-generator',
+  alias: [
+    'random-quadratic-equation-generator',
+    'rand-qu-eq', 'r-qu-eq', 'r2eq'],
   description: 'sends a random quadratic equation',
 
   execute (client, message, args) {
@@ -14,6 +13,6 @@ module.exports = {
     const pro = a * b.toString()
     const c = 'x^2'
     const d = 'x'
-    message.channel.send(c + ' - ' + sum + d + ' + ' + pro)
+    message.channel.send(`${c} - ${sum}${d} + ${pro}`)
   }
 }

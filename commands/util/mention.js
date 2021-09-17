@@ -1,5 +1,4 @@
 module.exports = {
-
   name: 'mention',
   description: 'pings the message author',
 

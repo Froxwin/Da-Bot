@@ -1,9 +1,9 @@
 module.exports = {
-
   name: 'random-biquadratic-equation-generator',
-  alias: ['random-biquadratic-equation-generator', 'rand-4-eq', 'r-4-eq', 'r4eq'],
-  group: 'cool stuff',
-  memberName: 'random-biquadratic-equation-generator',
+  alias: [
+    'random-biquadratic-equation-generator',
+    'rand-4-eq', 'r-4-eq', 'r4eq'
+  ],
   description: 'sends a random equation with degree 4',
 
   execute (client, message, args) {
@@ -20,6 +20,8 @@ module.exports = {
     const q = 'x^3'
     const r = 'x^2'
     const s = 'x'
-    message.channel.send(p + ' - ' + sum + q + ' + ' + sump + r + ' - ' + sumq + s + ' + ' + pro)
+    message.channel.send(
+      `${p} - ${sum}${q} + ${sump}${r} - ${sumq}${s} + ${pro}`
+    )
   }
 }

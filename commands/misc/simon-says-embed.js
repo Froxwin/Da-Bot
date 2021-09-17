@@ -1,16 +1,13 @@
 const { MessageEmbed } = require('discord.js')
-const randColor = Math.floor(Math.random() * 16777215).toString(16)
+const atom = require('..\\..\\functions')
 
 module.exports = {
-
   name: 'simon-says-embed',
-  aliases: ['embed-says', 'es'],
-  group: 'cool stuff',
-  memberName: 'simon-says-embed',
+  alias: ['embed-says', 'es'],
   description: 'says what you want me to say',
 
   execute (client, message, args) {
-    // message.delete()
+    message.delete()
     const messsaggge = args.slice(0, args.length)
     const send = messsaggge.toString()
     const s = send.trim().replaceAll(',', ' ')
@@ -26,10 +23,10 @@ module.exports = {
       const b = send.trim().replaceAll(',', ' ')
 
       const eEmbed = new MessageEmbed()
-        .setColor(randColor)
+        .setColor(atom.color.execute())
         .setTitle(b)
         .setDescription(s)
-      message.channel.send(eEmbed)
+      message.channel.send({ embed: [eEmbed] })
     })
   }
 }
