@@ -1,10 +1,8 @@
 const { oneLine } = require('common-tags')
 const colors = require('colors')
 
-module.exports = {
-  name: 'logger',
-  description: 'logs messages',
-  execute (message) {
+module.exports =
+  (message) => {
     if (message.channel.type === 'DM') {
       console.log(
         colors.bold(
@@ -21,4 +19,3 @@ module.exports = {
       )
     }
   }
-}

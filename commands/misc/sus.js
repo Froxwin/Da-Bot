@@ -10,13 +10,13 @@ module.exports = {
   execute (client, message, args) {
     if (!message.mentions.users.first()) {
       const eEmbed = new MessageEmbed()
-        .setColor(atom.color.execute())
+        .setColor(atom.color())
         .setTitle('Failed')
         .setDescription('Mention a user')
       message.channel.send({ embeds: [eEmbed] })
     } else {
       const eEmbed = new MessageEmbed()
-        .setColor(atom.color.execute())
+        .setColor(atom.color())
         .setTitle('SUS')
         .setDescription(
           `**${message.mentions.users.first()} IS KINDA SUS NGL**`

@@ -14,7 +14,7 @@ module.exports = {
       const s = args.toString().replaceAll(',', ' ')
 
       const eEmbed = new MessageEmbed()
-        .setColor(atom.color.execute())
+        .setColor(atom.color())
         .setTitle(`${x}/10`)
         .setDescription(`I'd rate ${s} a ${x}/10`)
       message.channel.send({ embeds: [eEmbed] })

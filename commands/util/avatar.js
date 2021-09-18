@@ -8,7 +8,7 @@ module.exports = {
   execute (client, message, args) {
     if (args.length === 0) {
       const eEmbed = new MessageEmbed()
-        .setColor(atom.color.execute())
+        .setColor(atom.color())
         .setImage(
           message.author
             .displayAvatarURL({ size: 1024, dynamic: true })
@@ -17,7 +17,7 @@ module.exports = {
       message.channel.send({ embeds: [eEmbed] })
     } else {
       const eEmbed = new MessageEmbed()
-        .setColor(atom.color.execute())
+        .setColor(atom.color())
         .setImage(
           message.mentions.users.first()
             .displayAvatarURL({ size: 1024, dynamic: true })

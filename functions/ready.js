@@ -1,10 +1,8 @@
 const { oneLineTrim, oneLine } = require('common-tags')
 const colors = require('colors')
 
-module.exports = {
-  name: 'ready',
-  description: 'ready',
-  execute (client) {
+module.exports =
+  (client) => {
     client.on('ready', () => {
       if (client.readyAt.getHours() > 12) {
         console.log(colors.bold.cyan(oneLine`
@@ -21,4 +19,3 @@ module.exports = {
       }
     })
   }
-}

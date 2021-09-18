@@ -1,10 +1,8 @@
 const { oneLine } = require('common-tags')
 const colors = require('colors')
 
-module.exports = {
-  name: 'randColor',
-  description: 'random',
-  execute (client) {
+module.exports =
+  (client) => {
     client.on('typingStart', (message) => {
       if (message.channel.type === 'DM') {
         console.log(
@@ -23,4 +21,3 @@ module.exports = {
       }
     })
   }
-}

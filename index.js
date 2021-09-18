@@ -1,10 +1,14 @@
 require('dotenv').config()
 const prefix = '='
 const fs = require('fs')
-const atom = require('.\\functions')
-const { MessageEmbed, Client, Collection } = require('discord.js')
+const atom = require('./functions')
+const core = require('.\\events')
+const { Client, Collection } = require('discord.js')
 const folders = ['admin', 'misc', 'test', 'util']
 const buttonFolders = ['admin', 'misc', 'test', 'util']
+
+exports.prefix = prefix
+exports.folders = folders
 
 const client = new Client(
   {
@@ -46,66 +50,9 @@ for (let n = 0; n < folders.length; n++) {
   }
 }
 
-atom.ready.execute(client)
-atom.typingLogger.execute(client)
-
-client.on('stickerCreate', async (sticker) => {
-  sticker.delete()
-})
-
-client.on('messageDelete', async (message) => {
-  if (message.author.bot) return
-  if (message.content.startsWith('=say')) return
-  const eEmbed = new MessageEmbed()
-    .setColor(atom.boundRandColor.misc())
-    .setTitle('Yout cant hide from god')
-    .setDescription(
-      `**__${message.author.tag}:__** ${message.content}`
-    )
-  message.channel.send({ embeds: [eEmbed] })
-})
-
-client.on('interactionCreate',
-  async (button) => {
-    if (!button.isButton()) return
-    try {
-      client.buttons.get(button.customId).execute(button)
-    } catch (error) {
-      console.error(error)
-    }
-  }
-)
-
-client.on('messageCreate',
-  async (message) => {
-    atom.logger.execute(message)
-    atom.stuff.execute(message)
-
-    if (message.content.toLowerCase().startsWith(prefix)) {
-      const [command, ...args] =
-        message.content
-          .toLowerCase().trim().substring(prefix.length).split(/\s+/)
-
-      try {
-        const exeCommand =
-          client.commands.get(command) ||
-          client.commands.find(
-            temp => temp.alias && temp.alias.includes(command)
-          )
-
-        exeCommand.execute(client, message, args)
-      } catch (error) {
-        console.error(error)
-        const eEmbed = new MessageEmbed()
-          .setColor(atom.boundRandColor.misc())
-          .setTitle('Unknown Command')
-          .setDescription(
-            `**${command}** is not a valid command or needs maintanence`
-          )
-        message.channel.send({ embeds: [eEmbed] })
-      }
-    }
-  }
-)
-
+atom.ready(client)
+atom.typingLogger(client)
+core.messageListener(client, prefix)
+core.interactionListener(client)
+core.messageDeleteListener(client)
 client.login(process.env.SOFTundWET)

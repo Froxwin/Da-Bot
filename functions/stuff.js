@@ -1,11 +1,9 @@
 const { oneLineTrim, oneLine } = require('common-tags')
 const { MessageAttachment, MessageEmbed } = require('discord.js')
-const randColor = require('.\\color')
+const randColor = require('./color')
 
-module.exports = {
-  name: 'stuff',
-  description: 'stuff',
-  execute (message) {
+module.exports =
+  (message) => {
     if (message.content.toLowerCase() === 'hello there') {
       message.channel.send('general kakyoin')
     }
@@ -48,4 +46,3 @@ module.exports = {
       message.channel.send({ embeds: [eEmbed] })
     }
   }
-}

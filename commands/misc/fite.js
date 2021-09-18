@@ -9,7 +9,7 @@ module.exports = {
 
   execute (client, message, args) {
     const eEmbed = new MessageEmbed()
-      .setColor(atom.color.execute())
+      .setColor(atom.color())
       .setThumbnail(
         oneLineTrim`https://c.tenor.com/yCKItdYY3scAAAAC/star
                     -platinum-jojos-bizarre-adventure.gif`

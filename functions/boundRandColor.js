@@ -1,7 +1,5 @@
-module.exports = {
-  name: 'boundRandColor',
-  description: 'randColor but with a fixed options of colors',
-  misc () {
+module.exports =
+  () => {
     const colorArray =
         [
           '#FF9600', '#F70F46', '#ECF643', '#C1FFFD',
@@ -15,4 +13,3 @@ module.exports = {
     const color = colorArray[randIndex]
     return color
   }
-}

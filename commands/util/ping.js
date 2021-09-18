@@ -12,7 +12,7 @@ module.exports = {
     await pingMsg.edit('Ponged')
     await pingMsg.delete()
     const eEmbed = new MessageEmbed()
-      .setColor(atom.color.execute())
+      .setColor(atom.color())
       .setDescription(
         oneLine`Ponged
         **${(pingMsg.editedTimestamp || pingMsg.createdTimestamp) -

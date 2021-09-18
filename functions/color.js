@@ -1,9 +1,7 @@
 const { oneLineTrim } = require('common-tags')
 
-module.exports = {
-  name: 'randColor',
-  description: 'random',
-  execute () {
+module.exports =
+  () => {
     const randRed = Math.floor(Math.random() * 255)
     const randGreen = Math.floor(Math.random() * 255)
     const randBlue = Math.floor(Math.random() * 255)
@@ -13,4 +11,3 @@ module.exports = {
     const color = randColor
     return color
   }
-}

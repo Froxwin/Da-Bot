@@ -23,7 +23,7 @@ module.exports = {
       const b = send.trim().replaceAll(',', ' ')
 
       const eEmbed = new MessageEmbed()
-        .setColor(atom.color.execute())
+        .setColor(atom.color())
         .setTitle(b)
         .setDescription(s)
       message.channel.send({ embed: [eEmbed] })

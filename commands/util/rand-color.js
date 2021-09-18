@@ -21,8 +21,8 @@ module.exports = {
       )
 
     const eEmbed = new MessageEmbed()
-      .setColor(atom.color.execute().toUpperCase())
-      .setTitle(atom.color.execute().toUpperCase())
+      .setColor(atom.color().toUpperCase())
+      .setTitle(atom.color().toUpperCase())
 
     await message.channel.send({ embeds: [eEmbed], components: [row] })
   }
