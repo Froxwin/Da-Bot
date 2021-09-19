@@ -14,7 +14,7 @@ module.exports = {
           .setColor('#ff1100')
           .setTitle('Ban Unsuccessfull')
           .setDescription(`**${message.author.tag}** ${oneLine`you are not high
-                                                      enough in the hierchy to
+                                                      enough in the hierarchy to
                                                       do that`}`)
           .setTimestamp()
 
