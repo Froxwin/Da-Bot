@@ -16,13 +16,29 @@ const client = new Client(
     [
       'DIRECT_MESSAGE_REACTIONS', 'DIRECT_MESSAGE_TYPING',
       'DIRECT_MESSAGES', 'GUILD_MESSAGE_TYPING', 'GUILDS',
-      'GUILD_MESSAGES'
+      'GUILD_MESSAGES', 'GUILD_BANS', 'GUILD_WEBHOOKS',
+      'GUILD_EMOJIS_AND_STICKERS', 'GUILD_MEMBERS'
     ],
     partials:
     [
       'MESSAGE', 'CHANNEL', 'REACTION', 'REACTION', 'USER',
       'GUILD_MEMBER'
-    ]
+    ],
+    presence:
+    {
+      status: 'idle',
+      activities:
+      [
+        {
+          name: 'ur mom',
+          type: 'PLAYING'
+        }
+      ]
+    },
+    http:
+    {
+      version: 9
+    }
   }
 )
 
@@ -58,27 +74,24 @@ client.on('messageCreate',
   async (message) => {
     atom.logger(message)
     atom.stuff(message)
-
     if (message.content.toLowerCase().startsWith(prefix)) {
       const [command, ...args] =
-                  message.content
-                    .toLowerCase().trim().substring(prefix.length).split(/\s+/)
-
+      message.content.toLowerCase().trim().substring(prefix.length).split(/\s+/)
       try {
-        const exeCommand =
-              client.commands.get(command) ||
-              client.commands.find(
-                temp => temp.alias && temp.alias.includes(command)
-              )
+        const exeCommand = client.commands.get(command) ||
+            client.commands.find(
+              temp => temp.alias && temp.alias.includes(command)
+            )
         exeCommand.execute(client, message, args, command)
       } catch (error) {
         console.error(error)
-        const eEmbed = new MessageEmbed()
-          .setColor(atom.boundRandColor())
-          .setTitle('Unknown Command')
-          .setDescription(
-            `**${command}** is not a valid command or needs maintanence`
-          )
+        const eEmbed =
+          new MessageEmbed()
+            .setColor(atom.boundRandColor())
+            .setTitle('Unknown Command')
+            .setDescription(
+              `**${command}** is not a valid command or needs maintanence`
+            )
         message.channel.send({ embeds: [eEmbed] })
       }
     }
