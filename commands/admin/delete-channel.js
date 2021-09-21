@@ -4,7 +4,7 @@ module.exports = {
   name: 'delete-channel',
   alias: ['dc'],
 
-  execute (client, message, args) {
+  execute (client, message, args, command) {
     if (!message.member.permissions.has('MANAGE_CHANNELS')) {
       const eEmbed = new MessageEmbed()
         .setColor('#ff1100')

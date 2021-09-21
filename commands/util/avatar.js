@@ -5,7 +5,7 @@ module.exports = {
   name: 'avatar',
   alias: ['pfp'],
 
-  execute (client, message, args) {
+  execute (client, message, args, command) {
     if (args.length === 0) {
       const eEmbed = new MessageEmbed()
         .setColor(atom.color())

@@ -7,7 +7,7 @@ module.exports = {
   alias: ['sus'],
   description: 'idek',
 
-  execute (client, message, args) {
+  execute (client, message, args, command) {
     if (!message.mentions.users.first()) {
       const eEmbed = new MessageEmbed()
         .setColor(atom.color())

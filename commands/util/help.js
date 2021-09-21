@@ -11,7 +11,7 @@ module.exports = {
   name: 'help',
   alias: ['help'],
 
-  async execute (client, message, args) {
+  async execute (client, message, args, command) {
     const row = new MessageActionRow()
     for (const folder of folders.folders) {
       row.addComponents(

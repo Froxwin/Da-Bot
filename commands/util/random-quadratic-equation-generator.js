@@ -5,7 +5,7 @@ module.exports = {
     'rand-qu-eq', 'r-qu-eq', 'r2eq'],
   description: 'sends a random quadratic equation',
 
-  execute (client, message, args) {
+  execute (client, message, args, command) {
     // ax^2 - ex + c
     const a = Math.floor(Math.random() * 10)
     const b = Math.floor(Math.random() * 15)

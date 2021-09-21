@@ -9,7 +9,7 @@ module.exports = {
     'r-nsfw', 'rh', 'rand-unholy', 'r-unholy'],
   description: 'sends a random nsfw image',
 
-  execute (client, message, args) {
+  execute (client, message, args, command) {
     const nsfw = randomanime.nsfw()
     const embed = new MessageEmbed()
       .setImage(nsfw)

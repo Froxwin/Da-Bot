@@ -1,12 +1,14 @@
 const { oneLine } = require('common-tags')
 const { MessageEmbed } = require('discord.js')
+const index = require('..\\..\\index')
+const contentFetcher = require('..\\..\\functions\\contentFetcher')
 
 module.exports = {
   name: 'direct-message',
   alias: ['dm'],
   description: 'sends a dorect message to the mentioned user',
 
-  execute (client, message, args) {
+  execute (client, message, args, command) {
     try {
       const user = message.mentions.users.first()
       if (!user) {
@@ -46,13 +48,7 @@ module.exports = {
                 )
               message.channel.send({ embeds: [eEmbed] })
             } else {
-              const text =
-              args
-                .slice(1, args.length)
-                .toString()
-                .trim()
-                .replaceAll(',', ' ')
-              user.send(text)
+              user.send(contentFetcher(message, index.prefix, command))
               const eEmbed = new MessageEmbed()
                 .setColor('#00FF00')
                 .setTitle('DM sent successfully')

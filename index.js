@@ -2,7 +2,7 @@ require('dotenv').config()
 const prefix = '='
 const fs = require('fs')
 const atom = require('./functions')
-const core = require('.\\events')
+const { MessageEmbed } = require('discord.js')
 const { Client, Collection } = require('discord.js')
 const folders = ['admin', 'misc', 'test', 'util']
 const buttonFolders = ['admin', 'misc', 'test', 'util']
@@ -14,13 +14,14 @@ const client = new Client(
   {
     intents:
     [
-      'GUILDS', 'GUILD_MESSAGES', 'GUILD_MESSAGE_TYPING',
-      'DIRECT_MESSAGES', 'DIRECT_MESSAGE_TYPING', 'DIRECT_MESSAGE_REACTIONS'
+      'DIRECT_MESSAGE_REACTIONS', 'DIRECT_MESSAGE_TYPING',
+      'DIRECT_MESSAGES', 'GUILD_MESSAGE_TYPING', 'GUILDS',
+      'GUILD_MESSAGES'
     ],
-
     partials:
     [
-      'MESSAGE', 'CHANNEL', 'REACTION', 'REACTION', 'USER', 'GUILD_MEMBER'
+      'MESSAGE', 'CHANNEL', 'REACTION', 'REACTION', 'USER',
+      'GUILD_MEMBER'
     ]
   }
 )
@@ -52,7 +53,47 @@ for (let n = 0; n < folders.length; n++) {
 
 atom.ready(client)
 atom.typingLogger(client)
-core.messageListener(client, prefix)
-core.interactionListener(client)
-core.messageDeleteListener(client)
+
+client.on('messageCreate',
+  async (message) => {
+    atom.logger(message)
+    atom.stuff(message)
+
+    if (message.content.toLowerCase().startsWith(prefix)) {
+      const [command, ...args] =
+                  message.content
+                    .toLowerCase().trim().substring(prefix.length).split(/\s+/)
+
+      try {
+        const exeCommand =
+              client.commands.get(command) ||
+              client.commands.find(
+                temp => temp.alias && temp.alias.includes(command)
+              )
+        exeCommand.execute(client, message, args, command)
+      } catch (error) {
+        console.error(error)
+        const eEmbed = new MessageEmbed()
+          .setColor(atom.boundRandColor())
+          .setTitle('Unknown Command')
+          .setDescription(
+            `**${command}** is not a valid command or needs maintanence`
+          )
+        message.channel.send({ embeds: [eEmbed] })
+      }
+    }
+  }
+)
+
+client.on('interactionCreate',
+  async (button) => {
+    if (!button.isButton()) return
+    try {
+      client.buttons.get(button.customId).execute(button)
+    } catch (error) {
+      console.error(error)
+    }
+  }
+)
+
 client.login(process.env.SOFTundWET)

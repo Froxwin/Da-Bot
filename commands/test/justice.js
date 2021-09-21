@@ -11,7 +11,7 @@ module.exports = {
   alias: 'punish',
   description: 'yes',
 
-  async execute (client, message, args) {
+  async execute (client, message, args, command) {
     const user = message.mentions.users.first()
     if (!user) {
       const eEmbed = new MessageEmbed()

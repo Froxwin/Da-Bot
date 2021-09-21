@@ -4,5 +4,6 @@ module.exports = {
   ready: require('./ready'),
   stuff: require('./stuff'),
   boundRandColor: require('./boundRandColor'),
-  typingLogger: require('./typingLogger')
+  typingLogger: require('./typingLogger'),
+  contentFetcher: require('./contentFetcher')
 }

@@ -3,7 +3,7 @@ module.exports = {
   alias: ['truth', 'roll'],
   description: 'magic 8 ball',
 
-  execute (client, message, args) {
+  execute (client, message, args, command) {
     if (args.length === 0) {
       message.channel.send('provide arguments')
     }

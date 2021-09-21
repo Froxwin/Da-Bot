@@ -7,7 +7,7 @@ module.exports = {
   alias: ['ora'],
   description: 'fights you',
 
-  execute (client, message, args) {
+  execute (client, message, args, command) {
     const eEmbed = new MessageEmbed()
       .setColor(atom.color())
       .setThumbnail(

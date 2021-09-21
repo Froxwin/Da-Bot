@@ -6,7 +6,7 @@ module.exports = {
   alias: ['embed-says', 'es'],
   description: 'says what you want me to say',
 
-  execute (client, message, args) {
+  execute (client, message, args, command) {
     message.delete()
     const messsaggge = args.slice(0, args.length)
     const send = messsaggge.toString()

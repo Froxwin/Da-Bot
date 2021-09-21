@@ -1,7 +1,7 @@
 module.exports = {
   name: 'sentence',
   alias: ['s', 'rs'],
-  execute (client, message, args) {
+  execute (client, message, args, command) {
     const english =
         [
           'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n',

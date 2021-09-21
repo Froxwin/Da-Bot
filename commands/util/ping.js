@@ -7,7 +7,7 @@ module.exports = {
   alias: ['latency', 'pong'],
   description: 'ping',
 
-  async execute (client, message, args) {
+  async execute (client, message, args, command) {
     const pingMsg = await message.channel.send('Pinging...')
     await pingMsg.edit('Ponged')
     await pingMsg.delete()

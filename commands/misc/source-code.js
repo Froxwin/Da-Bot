@@ -6,7 +6,7 @@ module.exports = {
   alias: ['source-code', 'src-code', 'sc'],
   description: 'shows my insides',
 
-  execute (client, message, args) {
+  execute (client, message, args, command) {
     message.channel.send('So you want to see me naked <:bot:849669570604171295>')
     const attachment = new MessageAttachment('..\\index.js')
     message.channel.send(attachment)
