@@ -1,6 +1,6 @@
 const { oneLine } = require('common-tags')
 const { MessageEmbed } = require('discord.js')
-const index = require('..\\..\\index')
+const config = require('..\\..\\base\\config')
 const contentFetcher = require('..\\..\\functions\\contentFetcher')
 
 module.exports = {
@@ -48,7 +48,7 @@ module.exports = {
                 )
               message.channel.send({ embeds: [eEmbed] })
             } else {
-              user.send(contentFetcher(message, index.prefix, command))
+              user.send(contentFetcher(message, config.prefix, command))
               const eEmbed = new MessageEmbed()
                 .setColor('#00FF00')
                 .setTitle('DM sent successfully')

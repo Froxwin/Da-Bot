@@ -1,4 +1,4 @@
-const index = require('..\\..\\index')
+const config = require('..\\..\\base\\config')
 const { contentFetcher } = require('../../functions')
 
 module.exports = {
@@ -8,6 +8,6 @@ module.exports = {
 
   execute (client, message, args, command) {
     message.delete()
-    message.channel.send(contentFetcher(message, index.prefix, command))
+    message.channel.send(contentFetcher(message, config.prefix, command))
   }
 }
