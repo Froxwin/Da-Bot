@@ -1,4 +1,4 @@
-const config = require('..\\base\\config')
+const config = require('../config/config')
 
 module.exports =
   (message, command) => {

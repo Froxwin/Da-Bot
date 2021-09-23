@@ -1,5 +1,5 @@
 require('dotenv').config()
-const config = require('.\\base\\config')
+const config = require('./config/config')
 const fs = require('fs')
 const atom = require('./functions')
 const client = config.client
