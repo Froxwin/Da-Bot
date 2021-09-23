@@ -10,8 +10,7 @@ module.exports = {
       const eEmbed = new MessageEmbed()
         .setColor(atom.color())
         .setImage(
-          message.author
-            .displayAvatarURL({ size: 1024, dynamic: true })
+          message.author.displayAvatarURL({ size: 1024, dynamic: true })
         )
         .setTitle(`${message.author.tag}`)
       message.channel.send({ embeds: [eEmbed] })

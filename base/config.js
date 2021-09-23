@@ -3,6 +3,7 @@ const { Client, Collection } = require('discord.js')
 const prefix = '='
 const folders = ['admin', 'misc', 'test', 'util']
 const buttonFolders = ['admin', 'misc', 'test', 'util']
+const groups = ['admin', 'misc', 'test', 'util']
 const client = new Client(
   {
     intents:
@@ -36,5 +37,6 @@ module.exports = {
   prefix,
   folders,
   buttonFolders,
-  client
+  client,
+  groups
 }

@@ -4,9 +4,11 @@ const atom = require('..\\..\\functions')
 
 module.exports = {
   name: 'random-nsfw-image-generator',
-  alias: [
-    'random-nsfw-image-generator', 'rand-nsfw',
-    'r-nsfw', 'rh', 'rand-unholy', 'r-unholy'],
+  alias:
+    [
+      'random-nsfw-image-generator', 'rand-nsfw',
+      'r-nsfw', 'rh', 'rand-unholy', 'r-unholy'
+    ],
   description: 'sends a random nsfw image',
 
   execute (client, message, args, command) {

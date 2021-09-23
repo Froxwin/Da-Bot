@@ -4,10 +4,11 @@ const atom = require('..\\..\\functions')
 
 module.exports = {
   name: 'random-anime-character-generator',
-  alias: [
-    'random-anime-character-generator',
-    'rand-anime', 'r-anime', 'ra'
-  ],
+  alias:
+    [
+      'random-anime-character-generator',
+      'rand-anime', 'r-anime', 'ra'
+    ],
   description: 'sends the image of a random anime character',
 
   execute (client, message, args, command) {

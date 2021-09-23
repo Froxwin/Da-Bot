@@ -1,9 +1,10 @@
 module.exports = {
   name: 'random-biquadratic-equation-generator',
-  alias: [
-    'random-biquadratic-equation-generator',
-    'rand-4-eq', 'r-4-eq', 'r4eq'
-  ],
+  alias:
+    [
+      'random-biquadratic-equation-generator',
+      'rand-4-eq', 'r-4-eq', 'r4eq'
+    ],
   description: 'sends a random equation with degree 4',
 
   execute (client, message, args, command) {

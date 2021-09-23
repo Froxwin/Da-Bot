@@ -13,7 +13,7 @@ for (let i = 0; i < config.folders.length; i++) {
     client.commands.set(command.name, command)
   }
 }
-for (let n = 0; n < config.folders.length; n++) {
+for (let n = 0; n < config.buttonFolders.length; n++) {
   const buttonFiles =
     fs.readdirSync(`.\\modules\\${config.buttonFolders[n]}`)
       .filter(file => file.endsWith('.js'))
@@ -53,12 +53,6 @@ client.on(
     } catch (error) {
       console.error(error)
     }
-  }
-)
-client.on(
-  'error',
-  async (error) => {
-    console.error(error)
   }
 )
 

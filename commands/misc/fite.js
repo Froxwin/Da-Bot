@@ -11,8 +11,9 @@ module.exports = {
     const eEmbed = new MessageEmbed()
       .setColor(atom.color())
       .setThumbnail(
-        oneLineTrim`https://c.tenor.com/yCKItdYY3scAAAAC/star
-                    -platinum-jojos-bizarre-adventure.gif`
+        oneLineTrim`
+        https://c.tenor.com/yCKItdYY3scAAAAC/star
+        -platinum-jojos-bizarre-adventure.gif`
       )
     message.channel.send({ embeds: [eEmbed] })
   }

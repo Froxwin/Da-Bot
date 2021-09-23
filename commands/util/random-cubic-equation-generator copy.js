@@ -1,9 +1,10 @@
 module.exports = {
   name: 'random-cubic-equation-generator',
-  alias: [
-    'random-cubic-equation-generator',
-    'rand-cu-eq', 'r-cu-eq', 'r3eq'
-  ],
+  alias:
+    [
+      'random-cubic-equation-generator',
+      'rand-cu-eq', 'r-cu-eq', 'r3eq'
+    ],
   description: 'sends a random cubic equation',
 
   execute (client, message, args, command) {

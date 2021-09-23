@@ -15,8 +15,10 @@ module.exports = {
       .setColor(atom.color())
       .setDescription(
         oneLine`Ponged
-        **${(pingMsg.editedTimestamp || pingMsg.createdTimestamp) -
-          (message.createdTimestamp || message.editedTimestamp)} ms**`
+        **${
+          (pingMsg.createdTimestamp || pingMsg.editedTimestamp) -
+          (message.createdTimestamp || message.editedTimestamp)
+        } ms**`
       )
     message.channel.send({ embeds: [eEmbed] })
   }

@@ -1,8 +1,10 @@
 module.exports = {
   name: 'random-quadratic-equation-generator',
-  alias: [
-    'random-quadratic-equation-generator',
-    'rand-qu-eq', 'r-qu-eq', 'r2eq'],
+  alias:
+    [
+      'random-quadratic-equation-generator',
+      'rand-qu-eq', 'r-qu-eq', 'r2eq'
+    ],
   description: 'sends a random quadratic equation',
 
   execute (client, message, args, command) {

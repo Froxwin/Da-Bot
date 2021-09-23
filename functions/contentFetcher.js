@@ -1,5 +1,9 @@
+const config = require('..\\base\\config')
+
 module.exports =
-  (message, prefix, command) => {
-    const returnText = message.content.substring((prefix.length + command.length), message.content.length)
+  (message, command) => {
+    const returnText =
+      message.content
+        .substring((config.prefix.length + command.length), message.content.length)
     return returnText
   }

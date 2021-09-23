@@ -2,7 +2,6 @@ const { MessageEmbed } = require('discord.js')
 const atom = require('..\\..\\functions')
 
 module.exports = {
-
   name: 'sus',
   alias: ['sus'],
   description: 'idek',
