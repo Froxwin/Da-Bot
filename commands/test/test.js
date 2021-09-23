@@ -1,4 +1,4 @@
-const Command = require('..\\..\\config\\command')
+const Command = require('../../config/command')
 const options =
 {
   name: 'test',

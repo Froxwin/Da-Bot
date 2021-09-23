@@ -10,20 +10,32 @@ module.exports =
           console.log(
             colors.bold.cyan(
               oneLineTrim`
-              @${client.user.tag} has logged in at 
-              ${client.readyAt.getHours() - 12}:
-              ${client.readyAt.getMinutes()}:
-              ${client.readyAt.getSeconds()} pm`
+                ${
+                  colors.bgCyan.black(
+                    oneLineTrim`
+                      @${client.user.tag} has logged in at 
+                      ${client.readyAt.getHours() - 12}:
+                      ${client.readyAt.getMinutes()}:
+                      ${client.readyAt.getSeconds()} pm`
+                  )
+                }
+              `
             )
           )
         } else {
           console.log(
             colors.bold.cyan(
               oneLineTrim`
-              @${client.user.tag} has logged in at 
-              ${client.readyAt.getHours()}:
-              ${client.readyAt.getMinutes()}:
-              ${client.readyAt.getSeconds()} am`
+                ${
+                  colors.bgCyan.black(
+                    oneLineTrim`
+                      @${client.user.tag} has logged in at 
+                      ${client.readyAt.getHours()}:
+                      ${client.readyAt.getMinutes()}:
+                      ${client.readyAt.getSeconds()} am`
+                  )
+                }
+              `
             )
           )
         }
