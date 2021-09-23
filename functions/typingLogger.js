@@ -8,10 +8,10 @@ module.exports =
       (message) => {
         if (message.channel.type === 'DM') {
           console.log(
-            colors.bold.magenta(
+            colors.bold.green(
               oneLine`
                 ${
-                  colors.bgMagenta.black.italic(
+                  colors.bgGreen.black.italic(
                     `@${message.user.tag} do be typing in da DMs`
                   )
                 }
@@ -20,10 +20,10 @@ module.exports =
           )
         } else {
           console.log(
-            colors.bold.magenta(
+            colors.bold.green(
               oneLine`
                 ${
-                  colors.bgMagenta.black.italic(
+                  colors.bgGreen.black.italic(
                     oneLine`
                       @${message.user.tag} do be typing in
                       #${message.channel.name} in
