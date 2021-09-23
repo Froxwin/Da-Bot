@@ -1,7 +1,6 @@
 require('dotenv').config()
 const config = require('./config/config')
 const fs = require('fs')
-const atom = require('./functions')
 const client = config.client
 
 for (let i = 0; i < config.folders.length; i++) {
@@ -22,38 +21,15 @@ for (let n = 0; n < config.buttonFolders.length; n++) {
     client.buttons.set(button.name, button)
   }
 }
-
-atom.ready(client)
-atom.typingLogger(client)
-
-client.on(
-  'messageCreate',
-  async (message) => {
-    atom.logger(message)
-    atom.stuff(message)
-    if (message.content.toLowerCase().startsWith(config.prefix)) {
-      const [command, ...args] = message.content.toLowerCase().trim()
-        .substring(config.prefix.length).split(/\s+/)
-      try {
-        const exeCommand = client.commands.get(command) ||
-          client.commands.find(tp => tp.alias && tp.alias.includes(command))
-        exeCommand.execute(client, message, args, command)
-      } catch (error) {
-        console.error(error)
-      }
-    }
+const events =
+  fs.readdirSync('.\\events').filter(file => file.endsWith('.js'))
+for (const file of events) {
+  const event = require(`./events/${file}`)
+  if (event.once) {
+    client.once(event.name, (...args) => event.execute(...args))
+  } else {
+    client.on(event.name, (...args) => event.execute(...args))
   }
-)
-client.on(
-  'interactionCreate',
-  async (button) => {
-    if (!button.isButton()) return
-    try {
-      client.buttons.get(button.customId).execute(button)
-    } catch (error) {
-      console.error(error)
-    }
-  }
-)
+}
 
 client.login(process.env.SOFTundWET)
