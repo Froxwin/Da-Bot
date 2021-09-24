@@ -13,7 +13,9 @@ module.exports = {
       try {
         const exeCommand = client.commands.get(command) ||
           client.commands.find(tp => tp.alias && tp.alias.includes(command))
+        console.time()
         exeCommand.execute(client, message, args, command)
+        console.timeEnd()
       } catch (error) {
         console.error(error)
       }

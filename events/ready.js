@@ -1,5 +1,6 @@
 const { oneLineTrim } = require('common-tags')
 const colors = require('colors')
+const fs = require('fs')
 
 module.exports = {
   name: 'ready',
@@ -21,6 +22,11 @@ module.exports = {
             \u001b[0m
           `)
       )
+      fs.appendFile(
+        'D:\\Non-Indexed\\Da-Bot\\logs\\loginLogs.log',
+        `@${client.user.tag} has logged in at ${client.readyAt.getHours() - 12}:${client.readyAt.getMinutes()}:${client.readyAt.getSeconds()} pm\n`,
+        (err) => { if (err) { console.log(err) } }
+      )
     } else {
       console.log(
         colors.bold(oneLineTrim`
@@ -35,6 +41,11 @@ module.exports = {
             \u001b[38;2;14;249;254m
             \u001b[0m
           `)
+      )
+      fs.appendFile(
+        'D:\\Non-Indexed\\Da-Bot\\logs\\loginLogs.log',
+        `@${client.user.tag} has logged in at ${client.readyAt.getHours()}:${client.readyAt.getMinutes()}:${client.readyAt.getSeconds()} am\n`,
+        (err) => { if (err) { console.log(err) } }
       )
     }
   }
