@@ -1,12 +1,14 @@
 const { MessageEmbed } = require('discord.js')
 const atom = require('..\\..\\functions')
+const Command = require('../../Classes/command')
 
-module.exports = {
+module.exports = new Command({
   name: 'simon-says-embed',
   alias: ['embed-says', 'es'],
   description: 'says what you want me to say',
+  group: 'misc',
 
-  execute (client, message, args, command) {
+  execute (message, args, command) {
     message.delete()
     const messsaggge = args.slice(0, args.length)
     const send = messsaggge.toString()
@@ -29,4 +31,4 @@ module.exports = {
       message.channel.send({ embed: [eEmbed] })
     })
   }
-}
+})

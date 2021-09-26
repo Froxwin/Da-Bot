@@ -7,7 +7,7 @@ module.exports = {
   memberName: 'kick',
   description: 'kicks the specified user',
 
-  async execute (client, message, args, command) {
+  async execute (message, args, command) {
     // eslint-disable-next-line no-unused-vars
 
     const user = message.mentions.users.first()

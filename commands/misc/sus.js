@@ -1,12 +1,14 @@
 const { MessageEmbed } = require('discord.js')
 const atom = require('..\\..\\functions')
+const Command = require('../../Classes/command')
 
-module.exports = {
+module.exports = new Command({
   name: 'sus',
   alias: ['sus'],
   description: 'idek',
+  group: 'misc',
 
-  execute (client, message, args, command) {
+  execute (message, args, command) {
     if (!message.mentions.users.first()) {
       const eEmbed = new MessageEmbed()
         .setColor(atom.color())
@@ -23,4 +25,4 @@ module.exports = {
       message.channel.send({ embeds: [eEmbed] })
     }
   }
-}
+})

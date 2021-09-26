@@ -1,13 +1,15 @@
 const { MessageEmbed } = require('discord.js')
 const { oneLineTrim } = require('common-tags')
 const atom = require('..\\..\\functions')
+const Command = require('../../Classes/command')
 
-module.exports = {
+module.exports = new Command({
   name: 'fite',
   alias: ['ora'],
   description: 'fights you',
+  group: 'misc',
 
-  execute (client, message, args, command) {
+  execute (message, args, command) {
     const eEmbed = new MessageEmbed()
       .setColor(atom.color())
       .setThumbnail(
@@ -17,4 +19,4 @@ module.exports = {
       )
     message.channel.send({ embeds: [eEmbed] })
   }
-}
+})

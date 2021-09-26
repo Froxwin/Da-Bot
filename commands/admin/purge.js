@@ -3,7 +3,7 @@ const { MessageEmbed } = require('discord.js')
 module.exports = {
   name: 'purge',
   description: 'deletes the amount if specified messages',
-  execute (client, message, args, command) {
+  execute (message, args, command) {
     const messageCountFinal = parseInt(args[0]) + 1
 
     if (!message.member.permissions.has('MANAGE_CHANNELS')) {

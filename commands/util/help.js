@@ -11,7 +11,8 @@ module.exports = {
   name: 'help',
   alias: ['help'],
 
-  async execute (client, message, args, command) {
+  async execute (message, args, command) {
+    /*
     const row = new MessageActionRow()
     for (const folder of folders.folders) {
       row.addComponents(
@@ -28,8 +29,8 @@ module.exports = {
         'Please select the group you want help for'
       )
     await message.channel.send({ embeds: [eEmbed], components: [row] })
-    /*
-    for (const [key, value] of client.commands) {
+    */
+    for (const [key, value] of message.client.commands) {
       console.log(value.description)
       var a
       a += `**${key}**\n\`${value.alias}\`\n\`\`\`${value.description}\`\`\`\n`
@@ -41,6 +42,5 @@ module.exports = {
       `${a}`
       )
     message.channel.send({ embeds: [eEmbed] })
-    */
   }
 }

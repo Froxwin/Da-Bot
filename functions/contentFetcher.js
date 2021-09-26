@@ -1,9 +1,9 @@
-const config = require('../config/config')
+const prefix = require('../config/prefix')
 
 module.exports =
   (message, command) => {
     const returnText =
       message.content
-        .substring((config.prefix.length + command.length), message.content.length)
+        .substring((prefix.length + command.length), message.content.length)
     return returnText
   }

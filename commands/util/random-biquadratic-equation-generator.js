@@ -7,7 +7,7 @@ module.exports = {
     ],
   description: 'sends a random equation with degree 4',
 
-  execute (client, message, args, command) {
+  execute (message, args, command) {
     // x^4 - (a+b+c+d)x^3 + (ab+bc+ca++cd+ad+bd)x^2 - (abc+acd+bcd+abd)x +abcd
     const a = Math.floor(Math.random() * 9)
     const b = Math.floor(Math.random() * 9)

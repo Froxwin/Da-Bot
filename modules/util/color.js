@@ -1,7 +1,8 @@
 const { MessageEmbed } = require('discord.js')
 const atom = require('..\\..\\functions')
+const Button = require('../../Classes/button')
 
-module.exports = {
+module.exports = new Button({
   name: 'color',
   execute (button) {
     const eEmbed = new MessageEmbed()
@@ -10,4 +11,4 @@ module.exports = {
 
     button.update({ embeds: [eEmbed] })
   }
-}
+})

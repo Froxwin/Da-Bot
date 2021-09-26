@@ -11,7 +11,7 @@ module.exports = {
   name: 'rand-color',
   alias: ['rc', 'color'],
   description: 'rand-color in all its glory',
-  async execute (client, message, args, command) {
+  async execute (message, args, command) {
     const row = new MessageActionRow()
       .addComponents(
         new MessageButton()

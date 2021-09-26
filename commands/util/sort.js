@@ -10,7 +10,7 @@ module.exports = {
   name: 'sort',
   description: 'well its bubble sort what else can i say',
 
-  execute (client, message, args, command) {
+  execute (message, args, command) {
     try {
     // eslint-disable-next-line no-unused-vars
       const [command, ...args] = message.content

@@ -1,18 +1,22 @@
-const Command = require('../../config/command')
-const options =
-{
-  name: 'test',
-  description: 'A simple test command or smth idk',
-  alias: ['t', 'a'],
-  group: 'Test',
-  permissions: ['NONE']
-}
-class test extends Command {
-  constructor () { super(options) }
+const { Permissions } = require('discord.js')
+const Command = require('../../Classes/command')
 
-  execute (client, message, args, command) {
-    message.channel.send('get nae nae\'d')
-    console.log(test.prototype.config)
+const test = new Command({
+  name: 'test',
+  permissions:
+  [
+    Permissions.FLAGS.KICK_MEMBERS,
+    Permissions.FLAGS.BAN_MEMBERS,
+    Permissions.FLAGS.ADMINISTRATOR,
+    Permissions.FLAGS.MUTE_MEMBERS
+  ],
+  execute (message, args, command) {
+    if (this.missingPerms(message)) {
+      return null
+    } else {
+      message.channel.send('get nae nae\'d')
+    }
   }
-}
+})
+
 module.exports = test

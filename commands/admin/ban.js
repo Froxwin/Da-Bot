@@ -4,7 +4,7 @@ const { oneLine } = require('common-tags')
 module.exports = {
   name: 'ban',
 
-  async execute (client, message, args, command) {
+  async execute (message, args, command) {
     const user = message.mentions.users.first()
 
     if (user) {

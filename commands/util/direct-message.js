@@ -7,7 +7,7 @@ module.exports = {
   alias: ['dm'],
   description: 'sends a dorect message to the mentioned user',
 
-  execute (client, message, args, command) {
+  execute (message, args, command) {
     try {
       const user = message.mentions.users.first()
       if (!user) {
@@ -47,7 +47,9 @@ module.exports = {
                 )
               message.channel.send({ embeds: [eEmbed] })
             } else {
-              user.send(contentFetcher(message, command))
+              const raw = contentFetcher(message, command)
+              const processed = raw.substring(args[0].length + 1, raw.length)
+              user.send(processed)
               const eEmbed = new MessageEmbed()
                 .setColor('#00FF00')
                 .setTitle('DM sent successfully')

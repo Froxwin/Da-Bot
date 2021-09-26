@@ -5,7 +5,7 @@ module.exports = {
   name: 'rate',
   alias: ['rate'],
   description: 'Rates stuff',
-  execute (client, message, args, command) {
+  execute (message, args, command) {
     if (args.length === 0) {
       message.channel.send('provide arguments')
     } else {

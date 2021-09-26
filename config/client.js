@@ -1,9 +1,5 @@
 const { Client, Collection } = require('discord.js')
 
-const prefix = '='
-const folders = ['admin', 'misc', 'test', 'util']
-const buttonFolders = ['admin', 'misc', 'test', 'util']
-const groups = ['admin', 'misc', 'test', 'util']
 const client = new Client(
   {
     intents:
@@ -33,10 +29,4 @@ const client = new Client(
 )
 client.commands = new Collection()
 client.buttons = new Collection()
-module.exports = {
-  prefix,
-  folders,
-  buttonFolders,
-  client,
-  groups
-}
+module.exports = client

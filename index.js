@@ -1,7 +1,6 @@
 require('dotenv').config()
-const config = require('./config/config')
 const fs = require('fs')
-const client = config.client
+const client = require('.\\config\\client')
 
 const commandFolders = fs.readdirSync('.\\commands')
 for (const folder of commandFolders) {
@@ -21,8 +20,8 @@ for (const folder of buttonFolders) {
     client.buttons.set(button.name, button)
   }
 }
-const events =
-  fs.readdirSync('.\\events').filter(file => file.endsWith('.js'))
+const events = fs.readdirSync('.\\events')
+  .filter(file => file.endsWith('.js'))
 for (const file of events) {
   const event = require(`./events/${file}`)
   if (event.once) {
