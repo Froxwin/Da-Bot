@@ -1,6 +1,6 @@
 require('dotenv').config()
 const fs = require('fs')
-const client = require('.\\config\\client')
+const client = require('./config/client')
 
 const commandFolders = fs.readdirSync('.\\commands')
 for (const folder of commandFolders) {

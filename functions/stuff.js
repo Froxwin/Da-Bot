@@ -1,6 +1,6 @@
 const { oneLineTrim } = require('common-tags')
 const { MessageEmbed } = require('discord.js')
-const randColor = require('.\\color')
+const randColor = require('./color')
 
 module.exports =
   (message) => {
