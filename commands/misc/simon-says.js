@@ -9,7 +9,7 @@ module.exports = new Command({
   group: 'misc',
 
   execute (message, args, command) {
-    // message.delete()
+    message.delete()
     message.channel.send(contentFetcher(message, command))
   }
 })

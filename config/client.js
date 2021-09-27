@@ -1,5 +1,15 @@
 const { Client, Collection } = require('discord.js')
 
+class SOFT_AND_WET extends Client {
+  constructor (options) {
+    super(options)
+    this.intents = options.intents
+    this.partials = options.partials
+    this.presence = options.presence
+
+  }
+}
+
 const client = new Client(
   {
     intents:
