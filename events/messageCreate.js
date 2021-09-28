@@ -1,5 +1,6 @@
+// @ts-check
 const prefix = require('../config/prefix')
-const atom = require('..\\functions')
+const atom = require('../functions')
 
 module.exports = {
   name: 'messageCreate',
@@ -11,8 +12,7 @@ module.exports = {
         .substring(prefix.length).split(/\s+/)
       try {
         const exeCommand = message.client.commands.get(command) ||
-          message.client.commands
-            .find(tp => tp.alias && tp.alias.includes(command))
+          message.client.commands.find(tp => tp.alias && tp.alias.includes(command))
         console.time()
         exeCommand.execute(message, args, command)
         console.timeEnd()

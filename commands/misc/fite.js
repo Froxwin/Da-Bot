@@ -14,7 +14,7 @@ module.exports = new Command({
       .setColor(atom.color())
       .setThumbnail(
         oneLineTrim`
-        https://c.tenor.com/yCKItdYY3scAAAAC/star
+        https://c.tenor.com/yCKItdYY3sc  AAA  AC/star
         -platinum-jojos-bizarre-adventure.gif`
       )
     message.channel.send({ embeds: [eEmbed] })

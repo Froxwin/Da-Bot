@@ -1,7 +1,15 @@
-require('dotenv').config()
+// @ts-check
 const { Client, Collection } = require('discord.js')
 
-const client = new Client(
+class SOFTandWET extends Client {
+  constructor (options) {
+    super(options)
+    this.commands = options.commands
+    this.buttons = options.buttons
+  }
+}
+
+const client = new SOFTandWET(
   {
     intents:
     [
@@ -21,13 +29,14 @@ const client = new Client(
       activities:
       [
         {
-          name: process.env.PRESENCE,
+          name: 'ur mom',
           type: 'PLAYING'
         }
       ]
-    }
+    },
+    commands: new Collection(),
+    buttons: new Collection()
   }
 )
-client.commands = new Collection()
-client.buttons = new Collection()
+
 module.exports = client

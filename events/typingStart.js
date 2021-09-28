@@ -1,3 +1,4 @@
+// @ts-check
 const { oneLine } = require('common-tags')
 const colors = require('colors')
 

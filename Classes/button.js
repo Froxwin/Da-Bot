@@ -1,3 +1,4 @@
+// @ts-check
 class Button {
   constructor (options) {
     this.name = options.name

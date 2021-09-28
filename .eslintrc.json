@@ -1,4 +1,5 @@
 {
+    "parser": "@typescript-eslint/parser",
     "env":
     {
         "commonjs": true,
@@ -12,5 +13,8 @@
     "parserOptions":
     {
         "ecmaVersion": 2021
-    }
+    },
+    "plugins": [
+        "@typescript-eslint"
+      ]
 }

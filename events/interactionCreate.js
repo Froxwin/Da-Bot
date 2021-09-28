@@ -1,3 +1,4 @@
+// @ts-check
 module.exports = {
   name: 'interactionCreate',
   async execute (button) {
