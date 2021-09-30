@@ -1,9 +1,11 @@
 // @ts-check
 const prefix = require('../config/prefix')
 const atom = require('../functions')
+const Event = require('../Classes/event')
 
-module.exports = {
+const messageCreate = new Event({
   name: 'messageCreate',
+  once: false,
   async execute (message) {
     atom.logger(message)
     atom.stuff(message)
@@ -21,4 +23,6 @@ module.exports = {
       }
     }
   }
-}
+})
+
+module.exports = messageCreate

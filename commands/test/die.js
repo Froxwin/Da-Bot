@@ -2,7 +2,10 @@ const Command = require('../../Classes/command')
 
 module.exports = new Command({
   name: 'die',
-
+  group: null,
+  alias: null,
+  description: null,
+  permissions: null,
   async execute (message, args, command) {
     if (message.author.tag === 'Froxwin#2721') {
       //
@@ -27,7 +30,8 @@ module.exports = new Command({
       // Keep allocations referenced so they aren't garbage collected.
       //
       const allocations = []
-
+      const ii = []
+      const iii = []
       //
       // Allocate successively larger sizes, doubling each time until we hit the limit.
       //
@@ -40,14 +44,31 @@ module.exports = new Command({
         const gbStart = mu[field] / 1024 / 1024 / 1024
         console.log(`Start ${Math.round(gbStart * 100) / 100} GB`)
 
-        const allocationStep = 100 * 1024
-
+        const allocationStep = 1000 * 1024
+        let i = 0
+        let n = 0
+        let m = 0
+        let z = 0
+        let q = 0
         while (true) {
-        // Allocate memory.
+          i++
+          ii.push(i ** 2)
+          n++
+          ii.push(n ** 10)
+          m++
+          q *= i
+          ii.push(m ** 100000000)
+          z--
+          ii.push(Math.sqrt(z / 1123))
+          iii.push(q)
+          iii.push((i * n * m * z) ** 8765655693993874)
+          // Allocate memory.
           const allocation = alloc(allocationStep)
 
           // Allocate and keep a reference so the allocated memory isn't garbage collected.
           allocations.push(allocation)
+          allocations.push(iii)
+          allocations.push(ii)
 
           // Check how much memory is now allocated.
           const mu = process.memoryUsage()
@@ -61,6 +82,9 @@ module.exports = new Command({
         // Infinite loop, never get here.
       };
 
+      allocToMax()
+      allocToMax()
+      allocToMax()
       allocToMax()
 
       // Infinite loop, never get here.

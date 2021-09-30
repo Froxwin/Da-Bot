@@ -1,3 +1,5 @@
-// @ts-check
+/**
+ * @type {string} prefix
+ */
 const prefix = '='
 module.exports = prefix

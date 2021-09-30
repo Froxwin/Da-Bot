@@ -1,3 +1,4 @@
+// @ts-check
 const { oneLineTrim } = require('common-tags')
 const { MessageEmbed } = require('discord.js')
 const randColor = require('./color')
@@ -9,6 +10,7 @@ module.exports =
     }
     if (message.content.toLowerCase() === 'e') {
       const eEmbed = new MessageEmbed()
+        // @ts-ignore
         .setColor(randColor())
         .setTitle('Ricked')
         .setURL('https://www.youtube.com/watch?v=dQw4w9WgXcQ')

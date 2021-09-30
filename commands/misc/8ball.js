@@ -5,7 +5,13 @@ module.exports = new Command({
   alias: ['truth', 'roll'],
   description: 'magic 8 ball',
   group: 'misc',
+  permissions: null,
 
+  /**
+   * @param {import('discord.js').Message} message
+   * @param {string | any[]} args
+   * @param {string} command
+   */
   execute (message, args, command) {
     if (args.length === 0) {
       message.channel.send('provide arguments')

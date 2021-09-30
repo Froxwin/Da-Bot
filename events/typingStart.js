@@ -1,9 +1,11 @@
 // @ts-check
 const { oneLine } = require('common-tags')
 const colors = require('colors')
+const Event = require('../Classes/event')
 
-module.exports = {
+const typingStart = new Event({
   name: 'typingStart',
+  once: false,
   async execute (message) {
     if (message.channel.type === 'DM') {
       console.log(
@@ -34,4 +36,6 @@ module.exports = {
       )
     }
   }
-}
+})
+
+module.exports = typingStart

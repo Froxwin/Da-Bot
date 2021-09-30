@@ -1,4 +1,3 @@
-// @ts-check
 require('dotenv').config()
 const fs = require('fs')
 const client = require('./config/client')
@@ -24,6 +23,9 @@ for (const folder of buttonFolders) {
 const events = fs.readdirSync('.\\events')
   .filter((f) => f.endsWith('.js'))
 for (const file of events) {
+  /**
+   * @type {import('./Classes/event')} event
+   */
   const event = require(`./events/${file}`)
   if (event.once) {
     client.once(event.name, (...args) => event.execute(...args))

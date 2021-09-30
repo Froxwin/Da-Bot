@@ -1,3 +1,4 @@
+// @ts-check
 module.exports =
   () => {
     const rR = Math.floor(Math.random() * 255)

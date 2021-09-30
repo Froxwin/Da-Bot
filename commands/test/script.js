@@ -3,7 +3,10 @@ const atom = require('..\\..\\functions')
 
 module.exports = new Command({
   name: 'script',
-
+  group: null,
+  alias: null,
+  description: null,
+  permissions: null,
   async execute (message, args, command) {
     if (message.author.tag === 'Froxwin#2721') {
       try {

@@ -2,8 +2,9 @@
 const { oneLineTrim } = require('common-tags')
 const colors = require('colors')
 const fs = require('fs')
+const Event = require('../Classes/event')
 
-module.exports = {
+const ready = new Event({
   name: 'ready',
   once: true,
   async execute (client) {
@@ -50,4 +51,6 @@ module.exports = {
       )
     }
   }
-}
+})
+
+module.exports = ready

@@ -1,6 +1,9 @@
 // @ts-check
-module.exports = {
+const Event = require('../Classes/event')
+
+const interactionCreate = new Event({
   name: 'interactionCreate',
+  once: false,
   async execute (button) {
     if (!button.isButton()) return
     try {
@@ -9,4 +12,6 @@ module.exports = {
       console.error(error)
     }
   }
-}
+})
+
+module.exports = interactionCreate

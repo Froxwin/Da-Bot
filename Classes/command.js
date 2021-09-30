@@ -3,21 +3,46 @@ const { oneLine } = require('common-tags')
 const { MessageEmbed } = require('discord.js')
 
 class Command {
+/**
+ * @param {{
+ *    name: string,
+ *    alias: Array<string>,
+ *    description: string,
+ *    execute: Function,
+ *    permissions: Array<import('discord.js').PermissionResolvable>,
+ *    group: string}} options
+ */
   constructor (options) {
-    this.name =
-      options.name
-    this.alias =
-      options.alias || 'No aliases available'
-    this.description =
-      options.description || 'No description provided'
-    this.execute =
-      options.execute
-    this.permissions =
-      options.permissions || 'No special permissions required'
-    this.group =
-      options.group || 'test'
+    /**
+     * @property {string} name
+     */
+    this.name = options.name
+    /**
+     * @property {string | any} alias
+     */
+    this.alias = options.alias || 'No aliases available'
+    /**
+     * @property {string} description
+     */
+    this.description = options.description || 'No description provided'
+    /**
+     * @property {Array<PermissionResolvable>} permissions
+     */
+    this.permissions = options.permissions || null
+    /**
+     * @property {string} group
+     */
+    this.group = options.group || 'test'
+    /**
+     * @property {Function} execute
+     */
+    this.execute = options.execute
   }
 
+  /**
+   * @param {import('discord.js').GuildMember} member
+   * @returns bool
+   */
   permCheck (member) {
     for (const perm of this.permissions) {
       if (member.permissions.has(perm)) {
@@ -26,6 +51,10 @@ class Command {
     }
   }
 
+  /**
+   * @param {import('discord.js').Message} message
+   * @returns bool
+   */
   missingPerms (message) {
     if (!this.permCheck(message.member)) {
       const eEmbed = new MessageEmbed()
