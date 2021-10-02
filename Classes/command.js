@@ -3,15 +3,18 @@ const { oneLine } = require('common-tags')
 const { MessageEmbed } = require('discord.js')
 
 class Command {
-/**
- * @param {{
- *    name: string,
- *    alias: Array<string>,
- *    description: string,
- *    execute: Function,
- *    permissions: Array<import('discord.js').PermissionResolvable>,
- *    group: string}} options
- */
+  /**
+   * @typedef {('admin' | 'misc' | 'test' | 'util')} group
+   */
+  /**
+   * @param {{
+   *    name: string,
+   *    alias: Array<string>,
+   *    description: string,
+   *    execute: Function,
+   *    permissions: Array<import('discord.js').PermissionResolvable>,
+   *    group: group}} options
+   */
   constructor (options) {
     /**
      * @property {string} name

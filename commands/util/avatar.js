@@ -1,9 +1,13 @@
 const { MessageEmbed } = require('discord.js')
 const atom = require('..\\..\\functions')
+const Command = require('../../Classes/command')
 
-module.exports = {
+module.exports = new Command({
   name: 'avatar',
   alias: ['pfp'],
+  description: null,
+  group: 'util',
+  permissions: null,
   /**
    * @param {import('discord.js').Message} message
    * @param {string | any[]} args
@@ -21,4 +25,4 @@ module.exports = {
       .setTitle(user.tag)
     message.channel.send({ embeds: [eEmbed] })
   }
-}
+})

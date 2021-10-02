@@ -7,7 +7,13 @@ module.exports = new Command({
   alias: ['sus'],
   description: 'idek',
   group: 'misc',
+  permissions: null,
 
+  /**
+   * @param {import('discord.js').Message} message
+   * @param {string | any[]} args
+   * @param {string} command
+   */
   execute (message, args, command) {
     if (!message.mentions.users.first()) {
       const eEmbed = new MessageEmbed()

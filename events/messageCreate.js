@@ -15,9 +15,7 @@ const messageCreate = new Event({
       try {
         const exeCommand = message.client.commands.get(command) ||
           message.client.commands.find(tp => tp.alias && tp.alias.includes(command))
-        console.time()
         exeCommand.execute(message, args, command)
-        console.timeEnd()
       } catch (error) {
         console.error(error)
       }

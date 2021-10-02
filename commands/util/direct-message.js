@@ -8,7 +8,7 @@ const directMessage = new Command({
   alias: ['dm'],
   description: 'sends a drect message to the mentioned user',
   permissions: null,
-  group: null,
+  group: 'util',
   /**
    * @param {import("discord.js").Message} message
    * @param {string[]} args

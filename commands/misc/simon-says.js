@@ -1,5 +1,4 @@
 const { contentFetcher } = require('../../functions')
-
 const Command = require('../../Classes/command')
 
 module.exports = new Command({

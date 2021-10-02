@@ -1,5 +1,8 @@
 // @ts-check
 module.exports =
+/**
+ * @returns {import("discord.js").ColorResolvable}
+ */
   () => {
     const rR = Math.floor(Math.random() * 255)
     const rG = Math.floor(Math.random() * 255)

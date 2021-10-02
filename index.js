@@ -33,4 +33,5 @@ for (const file of events) {
     client.on(event.name, (...args) => event.execute(...args))
   }
 }
+
 client.login(process.env.SOFTundWET)
