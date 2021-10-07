@@ -2,7 +2,6 @@ const { oneLine } = require('common-tags')
 const { MessageEmbed } = require('discord.js')
 const Command = require('../../Classes/command')
 const contentFetcher = require('..\\..\\functions\\contentFetcher')
-
 const directMessage = new Command({
   name: 'direct-message',
   alias: ['dm'],
@@ -21,13 +20,14 @@ const directMessage = new Command({
       if (user && member && !user.bot && args.length !== 1) {
         const raw = contentFetcher(message, command)
         const processed = raw.substring(args[0].length + 1, raw.length)
-        user.send(processed).then(() => {
-          const eEmbed = new MessageEmbed()
-            .setColor(0x00FF00)
-            .setTitle('DM sent successfully')
-            .setDescription(`Successfully sent DM to <@${user.id}>`)
-          message.channel.send({ embeds: [eEmbed] })
-        })
+        user.send(processed)
+          .then(() => {
+            const eEmbed = new MessageEmbed()
+              .setColor(0x00FF00)
+              .setTitle('DM sent successfully')
+              .setDescription(`Successfully sent DM to <@${user.id}>`)
+            message.channel.send({ embeds: [eEmbed] })
+          })
           .catch(() => {
             const eEmbed = new MessageEmbed()
               .setColor(0xFF0000)
