@@ -1,4 +1,3 @@
-// @ts-check
 const { Collection } = require('discord.js')
 const SOFTandWET = require('..\\Classes\\SOFTandWET')
 

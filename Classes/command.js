@@ -3,9 +3,7 @@ const { oneLine } = require('common-tags')
 const { MessageEmbed } = require('discord.js')
 
 class Command {
-  /**
-   * @typedef {('admin' | 'misc' | 'test' | 'util')} group
-   */
+  /** @typedef {('admin' | 'misc' | 'test' | 'util')} group */
   /**
    * @param {{
    *    name: string,
@@ -16,29 +14,17 @@ class Command {
    *    group: group}} options
    */
   constructor (options) {
-    /**
-     * @property {string} name
-     */
+    /** @property {string} name */
     this.name = options.name
-    /**
-     * @property {string | any} alias
-     */
+    /** @property {string | any} alias */
     this.alias = options.alias || 'No aliases available'
-    /**
-     * @property {string} description
-     */
+    /** @property {string} description */
     this.description = options.description || 'No description provided'
-    /**
-     * @property {Array<PermissionResolvable>} permissions
-     */
+    /** @property {Array<PermissionResolvable>} permissions */
     this.permissions = options.permissions || null
-    /**
-     * @property {string} group
-     */
+    /** @property {string} group */
     this.group = options.group || 'test'
-    /**
-     * @property {Function} execute
-     */
+    /** @property {Function} execute */
     this.execute = options.execute
   }
 

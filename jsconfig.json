@@ -4,6 +4,8 @@
       "target": "es6",
       "alwaysStrict": true,
       "checkJs": true,
+      "listFiles": true,
+      "pretty": true
     },
     "exclude": ["node_modules/", "**/node_modules/*", ".git/"]
 }
