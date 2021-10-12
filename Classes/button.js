@@ -1,8 +1,5 @@
-// @ts-check
-
 class Button {
 /**
- * Button Class
  * @param {{name: string, execute: Function}} options
  */
   constructor (options) {

@@ -1,19 +1,6 @@
 // @ts-check
-const { Client, Collection } = require('discord.js')
-
-class SOFTandWET extends Client {
-  /**
-   * @param {{
-   *    BaseClient: import('discord.js').ClientOptions,
-   *    commands: Collection<string, import('../Classes/command')>,
-   *    buttons: Collection<string, import('../Classes/button')>}} options
-   */
-  constructor (options) {
-    super(options.BaseClient)
-    this.commands = options.commands
-    this.buttons = options.buttons
-  }
-}
+const { Collection } = require('discord.js')
+const SOFTandWET = require('..\\Classes\\SOFTandWET')
 
 const client = new SOFTandWET(
   {

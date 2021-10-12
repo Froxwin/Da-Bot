@@ -1,33 +1,33 @@
-import { readdirSync } from 'fs'
-import { commands, buttons, once, on, login } from '.\\config\\client'
 require('dotenv').config()
-const commandFolders = readdirSync('.\\commands')
+const fs = require('fs')
+const client = require('.\\config\\client')
+const commandFolders = fs.readdirSync('.\\commands')
 for (const folder of commandFolders) {
-  const commandFiles = readdirSync(`.\\commands\\${folder}`)
+  const commandFiles = fs.readdirSync(`.\\commands\\${folder}`)
     .filter((file) => file.endsWith('.js'))
   for (const file of commandFiles) {
     const command = require(`.\\commands\\${folder}\\${file}`)
-    commands.set(command.name, command)
+    client.commands.set(command.name, command)
   }
 }
-const buttonFolders = readdirSync('.\\modules')
+const buttonFolders = fs.readdirSync('.\\modules')
 for (const folder of buttonFolders) {
-  const buttonFiles = readdirSync(`.\\modules\\${folder}`)
+  const buttonFiles = fs.readdirSync(`.\\modules\\${folder}`)
     .filter((file) => file.endsWith('.js'))
   for (const file of buttonFiles) {
     const button = require(`.\\modules\\${folder}\\${file}`)
-    buttons.set(button.name, button)
+    client.buttons.set(button.name, button)
   }
 }
-const events = readdirSync('.\\events')
+const events = fs.readdirSync('.\\events')
   .filter((file) => file.endsWith('.js'))
 for (const file of events) {
   /** @type {import('./Classes/event')} event */
   const event = require(`./events/${file}`)
   if (event.once) {
-    once(event.name, (...args) => event.execute(...args))
+    client.once(event.name, (...args) => event.execute(...args))
   } else {
-    on(event.name, (...args) => event.execute(...args))
+    client.on(event.name, (...args) => event.execute(...args))
   }
 }
-login(process.env.SOFTundWET)
+client.login(process.env.SOFTundWET)

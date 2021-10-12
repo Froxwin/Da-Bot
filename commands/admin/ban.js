@@ -1,8 +1,6 @@
 const { MessageEmbed } = require('discord.js')
-// const { oneLine } = require('common-tags')
 const { Permissions } = require('discord.js')
 const Command = require('../../Classes/command')
-// const contentFetcher = require('../../functions/contentFetcher')
 
 const ban = new Command({
   name: 'ban',
@@ -20,8 +18,8 @@ const ban = new Command({
     try {
       const user = message.mentions.users.first()
       const member = await message.guild.members.fetch(user)
-      if
-      (user && member && member.permissions.has('BAN_MEMBERS') &&
+      if (
+        user && member && member.permissions.has('BAN_MEMBERS') &&
         !(message.member.roles.highest.position <= member.roles.highest.position)
       ) {
         member
@@ -36,7 +34,7 @@ const ban = new Command({
           .then(() => {
             const eEmbed = new MessageEmbed()
               .setColor(0x00FF00)
-              .setTitle('Ban Successfull')
+              .setTitle('Ban Successful')
               .setDescription(
                 `<@${message.author.id}> Successfully banned <@${user.id}>`
               )
@@ -47,7 +45,7 @@ const ban = new Command({
           .catch((err) => {
             const eEmbed = new MessageEmbed()
               .setColor(0xFF0000)
-              .setTitle('Ban Unsuccessfull')
+              .setTitle('Ban Unsuccessful')
               .setDescription(
                 `<@${message.author.id}> I was unable to ban ${user.tag}`
               )
@@ -58,7 +56,7 @@ const ban = new Command({
       } else {
         const errDes =
           (!user)
-            ? ('You didn\'t mention the user to DM')
+            ? ('You didn\'t mention the user to ban')
             : (!member)
                 ? ('That user isn\'t in this guild')
                 : (ban.missingPerms(message))
@@ -71,7 +69,7 @@ const ban = new Command({
                         : (null)
         const eEmbed = new MessageEmbed()
           .setColor(0xFF0000)
-          .setTitle('Ban Unsuccessfull')
+          .setTitle('Ban Unsuccessful')
           .setDescription(`<@${message.author.id}> ${errDes}`)
         message.channel.send({ embeds: [eEmbed] })
       }

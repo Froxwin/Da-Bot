@@ -1,5 +1,3 @@
-/**
- * @type {string} prefix
- */
+/** @type {string} prefix */
 const prefix = '='
 module.exports = prefix
