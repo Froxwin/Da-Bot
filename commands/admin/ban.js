@@ -12,25 +12,34 @@ const ban = new Command({
   /**
    * @param {import("discord.js").Message} message
    * @param {Array<string>} args
-   * @param {Command} command
+   * @param {string} command
    */
   async execute (message, args, command) {
     try {
       const user = message.mentions.users.first()
       const member = await message.guild.members.fetch(user)
+      const authorRank = message.member.roles.highest.position
       if (
-        user && member && member.permissions.has('BAN_MEMBERS') &&
-        !(message.member.roles.highest.position <= member.roles.highest.position)
+        user && member && ban.permCheck(message.member) &&
+        !(authorRank <= member.roles.highest.position)
       ) {
         member
-          .ban(
-            {
-              reason:
-                message.content
-                  .substring(
-                    (args[0].length + args[1].length), message.content.length
-                  )
-            })
+          .ban({
+            reason:
+            args[2].length === 0
+              ? message.content.substring(
+                message.client.prefix.length + 2 +
+                command.length + user.toString().length,
+                message.content.length
+              )
+              : message.content.substring(
+                message.client.prefix.length + 2 +
+                command.length + user.toString().length +
+                args[2].length,
+                message.content.length
+              ),
+            days: args[2].length === 0 ? null : parseInt(args[2])
+          })
           .then(() => {
             const eEmbed = new MessageEmbed()
               .setColor(0x00FF00)
@@ -39,7 +48,6 @@ const ban = new Command({
                 `<@${message.author.id}> Successfully banned <@${user.id}>`
               )
               .setTimestamp()
-
             message.channel.send({ embeds: [eEmbed] })
           })
           .catch((err) => {
@@ -59,12 +67,9 @@ const ban = new Command({
             ? ('You didn\'t mention the user to ban')
             : (!member)
                 ? ('That user isn\'t in this guild')
-                : (ban.missingPerms(message))
+                : (ban.permCheck(message.member))
                     ? ('You do not have permissions to use this command')
-                    : (
-                        (message.member.roles.highest.position <=
-                        member.roles.highest.position)
-                      )
+                    : (authorRank <= member.roles.highest.position)
                         ? ('you are not high enough in the hierarchy to do that')
                         : (null)
         const eEmbed = new MessageEmbed()

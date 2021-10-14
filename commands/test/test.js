@@ -1,4 +1,3 @@
-// @ts-check
 const { Permissions } = require('discord.js')
 const Command = require('../../Classes/command')
 
@@ -20,11 +19,8 @@ const test = new Command({
    * @returns void | null
    */
   execute (message, args, command) {
-    if (test.missingPerms(message)) {
-      return null
-    } else {
-      message.channel.send('get nae nae\'d')
-    }
+    if (!test.permCheck(message.member)) return null
+    message.channel.send('get nae nae\'d')
   }
 })
 

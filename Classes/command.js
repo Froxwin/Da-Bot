@@ -1,8 +1,4 @@
-// @ts-check
-const { oneLine } = require('common-tags')
-const { MessageEmbed } = require('discord.js')
-
-class Command {
+module.exports = class Command {
   /** @typedef {('admin' | 'misc' | 'test' | 'util')} group */
   /**
    * @param {{
@@ -33,31 +29,10 @@ class Command {
    * @returns bool
    */
   permCheck (member) {
+    let result
     for (const perm of this.permissions) {
-      if (member.permissions.has(perm)) {
-        return true
-      }
+      result = member.permissions.has(perm)
     }
-  }
-
-  /**
-   * @param {import('discord.js').Message} message
-   * @returns bool
-   */
-  missingPerms (message) {
-    if (!this.permCheck(message.member)) {
-      const eEmbed = new MessageEmbed()
-        .setColor('#FF0000')
-        .setTitle('Fatal Error')
-        .setDescription(
-          oneLine`<@${message.author.id}>
-          you don't have permissions to use this command`)
-        .setTimestamp()
-
-      message.channel.send({ embeds: [eEmbed] })
-      return true
-    }
+    return result
   }
 }
-
-module.exports = Command

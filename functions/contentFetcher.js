@@ -1,5 +1,3 @@
-const prefix = require('../config/prefix')
-
 module.exports =
   /**
   * @param {import('discord.js').Message} message
@@ -9,6 +7,6 @@ module.exports =
   (message, command) => {
     const returnText =
       message.content
-        .substring((prefix.length + command.length), message.content.length)
+        .substring((message.client.prefix.length + command.length), message.content.length)
     return returnText
   }

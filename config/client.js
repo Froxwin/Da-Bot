@@ -34,7 +34,8 @@ const client = new SOFTandWET(
         }
     },
     commands: new Collection(),
-    buttons: new Collection()
+    buttons: new Collection(),
+    prefix: '='
   }
 )
 

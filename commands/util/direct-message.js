@@ -1,11 +1,10 @@
 const { oneLine } = require('common-tags')
 const { MessageEmbed } = require('discord.js')
 const Command = require('../../Classes/command')
-const contentFetcher = require('..\\..\\functions\\contentFetcher')
 const directMessage = new Command({
   name: 'direct-message',
   alias: ['dm'],
-  description: 'sends a drect message to the mentioned user',
+  description: 'sends a direct message to the mentioned user',
   permissions: null,
   group: 'util',
   /**
@@ -18,9 +17,13 @@ const directMessage = new Command({
       const user = message.mentions.users.first()
       const member = message.guild.members.fetch(user)
       if (user && member && !user.bot && args.length !== 1) {
-        const raw = contentFetcher(message, command)
-        const processed = raw.substring(args[0].length + 1, raw.length)
-        user.send(processed)
+        user.send(
+          message.content.substring(
+            message.client.prefix.length + 2 +
+            command.length + user.toString().length,
+            message.content.length
+          )
+        )
           .then(() => {
             const eEmbed = new MessageEmbed()
               .setColor(0x00FF00)
@@ -31,7 +34,7 @@ const directMessage = new Command({
           .catch(() => {
             const eEmbed = new MessageEmbed()
               .setColor(0xFF0000)
-              .setTitle('DM Unsuccessfull')
+              .setTitle('DM Unsuccessful')
               .setDescription(
                 oneLine`
                   ${message.author} 
@@ -48,12 +51,12 @@ const directMessage = new Command({
                 ? ('That user isn\'t in this guild')
                 : (user.bot)
                     ? ('I can not send a DM to a bot')
-                    : (args.length === 1)
-                        ? ('I cannot send a empty DM')
+                    : (args.length <= 1)
+                        ? ('I cannot send an empty DM')
                         : (null)
         const eEmbed = new MessageEmbed()
           .setColor(0xFF0000)
-          .setTitle('DM Unsuccessfull')
+          .setTitle('DM Unsuccessful')
           .setDescription(`<@${message.author.id}> ${errDes}`)
         message.channel.send({ embeds: [eEmbed] })
       }
