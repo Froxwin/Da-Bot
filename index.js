@@ -10,11 +10,9 @@ const load = (dir, collection) => {
     }
   }
 }
-load('commands', client.commands)
-load('modules', client.buttons)
+load('commands', client.commands); load('modules', client.buttons)
 for (const file of filter('.\\events')) {
-  /** @type {import('./Classes/event')} event */
-  const event = require(`./events/${file}`)
+  const event = require(`.\\events\\${file}`)
   event.once
     ? client.once(event.name, (...args) => event.execute(...args))
     : client.on(event.name, (...args) => event.execute(...args))

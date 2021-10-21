@@ -1,21 +1,27 @@
-const { MessageEmbed } = require('discord.js')
-
-module.exports = {
+const Command = require('../../Classes/command')
+const deleteChannel = new Command({
   name: 'delete-channel',
   alias: ['dc'],
+  group: 'admin',
+  description: 'Deletes the channel in which the command is run',
+  permissions: [require('discord.js').Permissions.FLAGS.MANAGE_CHANNELS],
 
-  execute (message, args, command) {
-    if (!message.member.permissions.has('MANAGE_CHANNELS')) {
-      const eEmbed = new MessageEmbed()
-        .setColor('#ff1100')
-        .setTitle('Delete Unsuccessfull')
-        .setDescription(
-          `${message.author} you dont have permission to use this command`
-        )
-        .setTimestamp()
-      message.channel.send({ embeds: [eEmbed] })
-    } else {
-      message.channel.delete()
-    }
+  /**
+   * @param {import("discord.js").Message} message
+   * @param {Array<string>} args
+   * @param {string} command
+   */
+  async execute (message, args, command) {
+    message.channel.delete().catch(err => {
+      message.channel.send({
+        embeds: [{
+          color: 0xFF0000,
+          title: 'Fatal Error',
+          description: `${err}`
+        }]
+      })
+    })
   }
-}
+})
+
+module.exports = deleteChannel

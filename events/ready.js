@@ -1,4 +1,3 @@
-// @ts-check
 const { oneLineTrim } = require('common-tags')
 const colors = require('colors')
 const fs = require('fs')
