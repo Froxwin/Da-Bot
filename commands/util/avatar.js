@@ -1,8 +1,6 @@
-const { MessageEmbed } = require('discord.js')
 const atom = require('..\\..\\functions')
 const Command = require('../../Classes/command')
-
-module.exports = new Command({
+const avatar = new Command({
   name: 'avatar',
   alias: ['pfp'],
   description: null,
@@ -15,14 +13,16 @@ module.exports = new Command({
    */
   execute (message, args, command) {
     const user =
-      (args.length === 0)
+      !args.length
         ? message.author
         : message.mentions.users.first()
-    const eEmbed = new MessageEmbed()
-    // @ts-ignore
-      .setColor(atom.color())
-      .setImage(user.displayAvatarURL({ size: 4096, dynamic: true }))
-      .setTitle(user.tag)
-    message.channel.send({ embeds: [eEmbed] })
+    message.channel.send({ embeds: [{
+      color: (atom.color()),
+      // @ts-ignore
+      image: user.displayAvatarURL({ size: 4096, dynamic: true}),
+      title: (user.tag)
+    }] })
   }
 })
+
+module.exports = avatar

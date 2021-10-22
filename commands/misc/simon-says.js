@@ -1,7 +1,6 @@
 const { contentFetcher } = require('../../functions')
 const Command = require('../../Classes/command')
-
-module.exports = new Command({
+const simonSays = new Command({
   name: 'simon-says',
   alias: ['say'],
   description: 'says what you want me to say',
@@ -18,3 +17,5 @@ module.exports = new Command({
     message.channel.send(contentFetcher(message, command))
   }
 })
+
+module.exports = simonSays

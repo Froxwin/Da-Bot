@@ -19,6 +19,7 @@ const ban = new Command({
         embeds: [{ title: 'Ban Unsuccessful', color: 0xFF0000, description: a }]
       })
     }
+    if (!ban.permCheck(message.member)) return null
     !user
       ? error('You didn\'t mention a user to ban')
       : !args[1]

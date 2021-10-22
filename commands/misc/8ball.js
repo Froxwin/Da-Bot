@@ -1,6 +1,5 @@
 const Command = require('../../Classes/command')
-
-module.exports = new Command({
+const truth = new Command({
   name: '8ball',
   alias: ['truth', 'roll'],
   description: 'magic 8 ball',
@@ -13,23 +12,21 @@ module.exports = new Command({
    * @param {string} command
    */
   execute (message, args, command) {
-    if (args.length === 0) {
-      message.channel.send('provide arguments')
-    } else {
-      const x = Math.floor(Math.random() * 3)
-      switch (x) {
-        case 0:
-          message.channel.send('Yes')
-          break
-        case 1:
-          message.channel.send('No')
-          break
-        case 2:
-          message.channel.send('Perhaps')
-          break
-        default:
-          break
-      }
+    if (!args.length) message.channel.send('provide arguments')
+    switch (Math.floor(Math.random() * 3)) {
+      case 0:
+        message.channel.send('Yes')
+        break
+      case 1:
+        message.channel.send('No')
+        break
+      case 2:
+        message.channel.send('Perhaps')
+        break
+      default:
+        break
     }
   }
 })
+
+module.exports = truth

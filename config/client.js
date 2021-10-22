@@ -1,6 +1,5 @@
 const { Collection } = require('discord.js')
 const SOFTandWET = require('..\\Classes\\SOFTandWET')
-
 const client = new SOFTandWET(
   {
     BaseClient:
@@ -38,5 +37,4 @@ const client = new SOFTandWET(
     prefix: '='
   }
 )
-
 module.exports = client
