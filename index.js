@@ -1,4 +1,3 @@
-require('dotenv').config()
 const fs = require('fs').readdirSync
 const client = require('.\\config\\client')
 const filter = a => fs(a).filter(f => f.endsWith('.js'))
@@ -14,4 +13,4 @@ filter('.\\events').forEach(file => {
     ? client.once(event.name, (...args) => event.execute(...args))
     : client.on(event.name, (...args) => event.execute(...args))
 })
-client.login(process.env.SOFTundWET)
+require('dotenv').config(); client.login(process.env.SOFTundWET)
