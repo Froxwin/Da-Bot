@@ -11,6 +11,7 @@ module.exports = class SOFTandWET extends Client {
    *        import('discord.js')
    *            .Collection<string, import('../Classes/button')>,
    *    prefix: string
+   *    load: Function
    * }} options
    */
   constructor (options) {
@@ -18,5 +19,6 @@ module.exports = class SOFTandWET extends Client {
     this.commands = options.commands
     this.buttons = options.buttons
     this.prefix = options.prefix
+    this.load = options.load
   }
 }

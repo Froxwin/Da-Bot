@@ -1,5 +1,7 @@
 const { Collection } = require('discord.js')
 const SOFTandWET = require('..\\Classes\\SOFTandWET')
+const fs = require('fs').readdirSync
+const filter = a => fs(a).filter(f => f.endsWith('.js'))
 const client = new SOFTandWET(
   {
     BaseClient:
@@ -34,7 +36,13 @@ const client = new SOFTandWET(
     },
     commands: new Collection(),
     buttons: new Collection(),
-    prefix: '='
+    prefix: '=',
+    load: (dir, collec) => fs(`${dir}`).forEach(folder =>
+      filter(`${dir}\\${folder}`).forEach(file => collec.set(
+        require(`${dir}\\${folder}\\${file}`).name,
+        require(`${dir}\\${folder}\\${file}`)
+      ))
+    )
   }
 )
 module.exports = client
