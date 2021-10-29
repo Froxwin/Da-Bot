@@ -5,7 +5,7 @@ const
     MessageEmbed
   } = require('discord.js')
 
-const atom = require('../../functions')
+const atom = require('../../functions/index.js')
 const folders = require('..\\..\\index')
 module.exports = {
   name: 'help',

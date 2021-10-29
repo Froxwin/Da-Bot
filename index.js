@@ -1,12 +1,12 @@
-const client = require('.\\config\\client')
-const filter = a => require('fs').readdirSync(a).filter(f => f.endsWith('.js'))
-client.load(`${process.cwd()}\\commands`, client.commands)
-client.load(`${process.cwd()}\\modules`, client.buttons)
-filter('.\\events').forEach(file => {
-  const event = require(`.\\events\\${file}`)
-  event.once
-    ? client.once(event.name, (...args) => event.execute(...args))
-    : client.on(event.name, (...args) => event.execute(...args))
-})
+const clt = require('.\\config\\client')
+clt.load(`${process.cwd()}\\commands`, clt.commands)
+clt.load(`${process.cwd()}\\modules`, clt.buttons)
+require('fs').readdirSync('.\\events').filter(f => f.endsWith('.js'))
+  .forEach(file => {
+    const evt = require(`.\\events\\${file}`)
+    evt.once
+      ? clt.once(evt.name, (...args) => evt.execute(...args))
+      : clt.on(evt.name, (...args) => evt.execute(...args))
+  })
 require('dotenv').config()
-client.login(process.env.SOFTundWET)
+clt.login(process.env.SOFTundWET)

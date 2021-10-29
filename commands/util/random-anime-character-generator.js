@@ -1,6 +1,6 @@
 const { MessageEmbed } = require('discord.js')
 const randomanime = require('random-anime')
-const atom = require('..\\..\\functions')
+const { color } = require('../../functions/index.js')
 
 module.exports = {
   name: 'random-anime-character-generator',
@@ -15,7 +15,7 @@ module.exports = {
     const anime = randomanime.anime()
     const embed = new MessageEmbed()
       .setImage(anime)
-      .setColor(atom.color())
+      .setColor(color())
       .setTimestamp()
     message.channel.send({ embeds: [embed] })
   }

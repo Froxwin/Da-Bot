@@ -1,5 +1,4 @@
 const Command = require('../../Classes/command')
-
 module.exports = new Command({
   name: 'cls',
   alias: null,
@@ -13,11 +12,9 @@ module.exports = new Command({
    * @param {Command} command
    */
   async execute (message, args, command) {
-    if (message.author.tag === 'Froxwin#2721') {
-      await message.channel.send('cls\'d')
-      console.clear()
-    } else {
+    (message.author.tag === 'Froxwin#2721' &&
+      message.channel.send('cls\'d').then(() =>
+        console.clear())) ||
       message.channel.send('daga kotowaru')
-    }
   }
 })

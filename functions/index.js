@@ -1,4 +1,3 @@
-// @ts-check
 module.exports = {
   logger: require('./logger'),
   color: require('./color'),

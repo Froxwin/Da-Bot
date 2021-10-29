@@ -1,5 +1,5 @@
 const { MessageEmbed } = require('discord.js')
-const atom = require('..\\..\\functions')
+const { color } = require('../../functions/index.js')
 const Button = require('../../Classes/button')
 
 module.exports = new Button({
@@ -7,8 +7,8 @@ module.exports = new Button({
   /** @param {import('discord.js').ButtonInteraction} button */
   execute (button) {
     const eEmbed = new MessageEmbed()
-      .setColor(atom.color())
-      .setTitle(atom.color().toUpperCase())
+      .setColor(color())
+      .setTitle(color().toUpperCase())
     button.update({ embeds: [eEmbed] })
   }
 })

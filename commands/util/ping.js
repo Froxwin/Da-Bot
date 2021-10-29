@@ -1,6 +1,6 @@
 const { oneLine } = require('common-tags')
 const { MessageEmbed } = require('discord.js')
-const atom = require('..\\..\\functions')
+const { color } = require('../../functions/index.js')
 
 module.exports = {
   name: 'ping',
@@ -12,7 +12,7 @@ module.exports = {
     await pingMsg.edit('Ponged')
     await pingMsg.delete()
     const eEmbed = new MessageEmbed()
-      .setColor(atom.color())
+      .setColor(color())
       .setDescription(
         oneLine`Ponged
         **${

@@ -1,12 +1,12 @@
 const { MessageEmbed } = require('discord.js')
-const atom = require('../../functions')
+const { color } = require('../../functions/index.js')
 const fs = require('fs')
 
 module.exports = {
   name: 'admin',
   execute (button) {
     const eEmbed = new MessageEmbed()
-      .setColor(atom.color())
+      .setColor(color())
       .setDescription('Admin help was selected')
 
     button.update({ embeds: [eEmbed], components: [] })

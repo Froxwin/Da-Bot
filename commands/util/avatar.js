@@ -1,4 +1,4 @@
-const atom = require('..\\..\\functions')
+const { color } = require('../../functions/index.js')
 const Command = require('../../Classes/command')
 const avatar = new Command({
   name: 'avatar',
@@ -16,12 +16,14 @@ const avatar = new Command({
       !args.length
         ? message.author
         : message.mentions.users.first()
-    message.channel.send({ embeds: [{
-      color: (atom.color()),
-      // @ts-ignore
-      image: user.displayAvatarURL({ size: 4096, dynamic: true}),
-      title: (user.tag)
-    }] })
+    message.channel.send({
+      embeds: [{
+        color: (color()),
+        // @ts-ignore
+        image: user.displayAvatarURL({ size: 4096, dynamic: true }),
+        title: (user.tag)
+      }]
+    })
   }
 })
 

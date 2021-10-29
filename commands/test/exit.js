@@ -13,11 +13,9 @@ module.exports = new Command({
    * @param {Command} command
    */
   async execute (message, args, command) {
-    if (message.author.tag === 'Froxwin#2721') {
-      await message.channel.send('sayonora')
-      message.client.destroy()
-    } else {
-      message.channel.send('daga kotowaru')
-    }
+    (message.author.tag === 'Froxwin#2721' &&
+      message.channel.send('sayonora').then(() =>
+        message.client.destroy())) ||
+    message.channel.send('daga kotowaru')
   }
 })

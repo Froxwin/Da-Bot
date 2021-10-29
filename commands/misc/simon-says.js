@@ -1,4 +1,4 @@
-const { contentFetcher } = require('../../functions')
+const { contentFetcher } = require('../../functions/index.js')
 const Command = require('../../Classes/command')
 const simonSays = new Command({
   name: 'simon-says',

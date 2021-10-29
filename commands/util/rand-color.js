@@ -1,11 +1,6 @@
-const
-  {
-    MessageActionRow,
-    MessageButton,
-    MessageEmbed
-  } = require('discord.js')
-
-const atom = require('..\\..\\functions')
+const { MessageActionRow, MessageButton, MessageEmbed } =
+  require('discord.js')
+const { color } = require('../../functions/index.js')
 
 module.exports = {
   name: 'rand-color',
@@ -21,8 +16,8 @@ module.exports = {
       )
 
     const eEmbed = new MessageEmbed()
-      .setColor(atom.color().toUpperCase())
-      .setTitle(atom.color().toUpperCase())
+      .setColor(color().toUpperCase())
+      .setTitle(color().toUpperCase())
 
     await message.channel.send({ embeds: [eEmbed], components: [row] })
   }

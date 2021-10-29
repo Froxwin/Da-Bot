@@ -1,6 +1,6 @@
 const { MessageEmbed } = require('discord.js')
 const randomanime = require('random-anime')
-const atom = require('..\\..\\functions')
+const { color } = require('../../functions/index.js')
 
 module.exports = {
   name: 'random-nsfw-image-generator',
@@ -15,7 +15,7 @@ module.exports = {
     const nsfw = randomanime.nsfw()
     const embed = new MessageEmbed()
       .setImage(nsfw)
-      .setColor(atom.color())
+      .setColor(color())
       .setTimestamp()
     message.channel.send({ embeds: [embed] })
   }

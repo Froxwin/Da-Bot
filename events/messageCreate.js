@@ -1,25 +1,18 @@
-const atom = require('../functions')
+const { logger, stuff } = require('../functions/index.js')
 const Event = require('../Classes/event')
 const messageCreate = new Event({
   name: 'messageCreate',
   once: false,
-  /**
-   * @param {import('discord.js').Message} message
-   */
-  async execute (message) {
-    atom.logger(message)
-    atom.stuff(message)
-    if (message.content.toLowerCase().startsWith(message.client.prefix)) {
-      const [command, ...args] = message.content.toLowerCase().trim()
-        .substring(message.client.prefix.length).split(/\s+/)
-      try {
-        const exeCommand = message.client.commands.get(command) ||
-          message.client.commands.find(tp => tp.alias && tp.alias.includes(command))
-        exeCommand.execute(message, args, command)
-      } catch (error) {
-        console.error(error)
-      }
-    }
+  /** @param {import('discord.js').Message} msg */
+  async execute (msg) {
+    logger(msg); stuff(msg)
+    if (!msg.content.toLowerCase().startsWith(msg.client.prefix)) return
+    const [command, ...args] = msg.content.toLowerCase().trim()
+      .substring(msg.client.prefix.length).split(/\s+/)
+    const exeCommand =
+        msg.client.commands.get(command) ||
+        msg.client.commands.find(tp => tp.alias && tp.alias.includes(command))
+    exeCommand.execute(msg, args, command)
   }
 })
 
