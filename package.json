@@ -5,8 +5,8 @@
   "description": "it's a bot",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon ./index.js",
-    "dev": "nodemon ./index.js",
+    "start": "node .",
+    "dev": "npx nodemon .",
     "update": "npm update",
     "document": "npx jsdoc -c jsdoc.json"
   },
