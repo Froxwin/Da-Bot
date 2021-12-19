@@ -13,16 +13,16 @@ const sort = new Command({
    * @returns void | null
    */
   execute (message, args, command) {
-    const x = Math.floor(Math.random() * 11);
-    (args.length === 0 &&
-      message.channel.send('provide arguments')) ||
-    (message.channel.send({
-      embeds: [{
-        color: color(),
-        title: `${x}/10`,
-        description: `I'd rate ${contentFetcher(message, command)} a ${x}/10`
-      }]
-    }))
+    const x = Math.floor(Math.random() * 11)
+    args.length === 0
+      ? message.channel.send('provide arguments')
+      : message.channel.send({
+        embeds: [{
+          color: color(),
+          title: `${x}/10`,
+          description: `I'd rate ${contentFetcher(message, command)} a ${x}/10`
+        }]
+      })
   }
 })
 

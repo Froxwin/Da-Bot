@@ -8,9 +8,8 @@ module.exports = new Command({
   description: null,
   permissions: null,
   async execute (message, args, command) {
-    (message.author.tag === 'Froxwin#2721' &&
-      // eslint-disable-next-line no-eval
-      await eval(contentFetcher(message, command))) ||
-    message.channel.send('daga kotowaru')
+    message.author.tag === 'Froxwin#2721'
+      ? await eval(contentFetcher(message, command))
+      : message.channel.send('daga kotowaru')
   }
 })

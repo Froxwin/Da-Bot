@@ -12,7 +12,7 @@ const truth = new Command({
    * @param {string} command
    */
   execute (message, args, command) {
-    if (!args.length) message.channel.send('provide arguments')
+    if (!args.length) {message.channel.send('provide arguments'); return}
     switch (Math.floor(Math.random() * 3)) {
       case 0:
         message.channel.send('Yes')

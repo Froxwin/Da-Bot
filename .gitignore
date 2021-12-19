@@ -3,4 +3,3 @@ node_modules/
 .vscode/
 .git/
 logs/
-package-lock.json

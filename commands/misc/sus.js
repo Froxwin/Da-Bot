@@ -14,20 +14,20 @@ module.exports = new Command({
    * @param {string} command
    */
   execute (message, args, command) {
-    (!message.mentions.users.first() &&
-      message.channel.send({
+    !message.mentions.users.first()
+      ? message.channel.send({
         embeds: [{
           color: color(),
           title: 'Failed',
           description: 'Mention a user'
         }]
-      })) ||
-    message.channel.send({
-      embeds: [{
-        color: color(),
-        title: 'SUS',
-        description: `**${message.mentions.users.first()} IS KINDA SUS NGL**`
-      }]
-    })
+      })
+      : message.channel.send({
+        embeds: [{
+          color: color(),
+          title: 'SUS',
+          description: `**${message.mentions.users.first()} IS KINDA SUS NGL**`
+        }]
+      })
   }
 })

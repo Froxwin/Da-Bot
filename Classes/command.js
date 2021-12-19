@@ -7,7 +7,8 @@ module.exports = class Command {
    *    description: string,
    *    execute: Function,
    *    permissions: Array<import('discord.js').PermissionResolvable>,
-   *    group: group}} options
+   *    group: group
+   * }} options
    */
   constructor (options) {
     /** @property {string} name */
