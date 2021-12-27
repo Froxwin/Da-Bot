@@ -1,4 +1,4 @@
-const Command = require('../../Classes/command')
+const Command = require('../../classes/command')
 const deleteChannel = new Command({
   name: 'delete-channel',
   alias: ['dc'],

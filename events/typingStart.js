@@ -1,7 +1,7 @@
 // @ts-check
 const { oneLine } = require('common-tags')
 const colors = require('colors')
-const Event = require('../Classes/event')
+const Event = require('../classes/event')
 
 const typingStart = new Event({
   name: 'typingStart',

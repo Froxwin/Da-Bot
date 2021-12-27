@@ -1,6 +1,6 @@
 const { MessageEmbed } = require('discord.js')
 const { color } = require('../../functions/index.js')
-const Button = require('../../Classes/button')
+const Button = require('../../classes/button')
 
 module.exports = new Button({
   name: 'color',

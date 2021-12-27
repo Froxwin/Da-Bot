@@ -1,5 +1,5 @@
 const { contentFetcher } = require('../../functions/index.js')
-const Command = require('../../Classes/command')
+const Command = require('../../classes/command')
 const simonSays = new Command({
   name: 'simon-says',
   alias: ['say'],

@@ -1,5 +1,5 @@
 const { Permissions } = require('discord.js')
-const Command = require('../../Classes/command')
+const Command = require('../../classes/command')
 
 const test = new Command({
   name: 'test',

@@ -1,5 +1,5 @@
 const { MessageAttachment } = require('discord.js')
-const Command = require('../../Classes/command')
+const Command = require('../../classes/command')
 
 module.exports = new Command({
   name: 'source-code',

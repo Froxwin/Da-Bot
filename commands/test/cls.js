@@ -1,4 +1,4 @@
-const Command = require('../../Classes/command')
+const Command = require('../../classes/command')
 module.exports = new Command({
   name: 'cls',
   alias: null,

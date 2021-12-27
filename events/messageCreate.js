@@ -1,5 +1,5 @@
 const { logger, stuff } = require('../functions/index.js')
-const Event = require('../Classes/event')
+const Event = require('../classes/event')
 const messageCreate = new Event({
   name: 'messageCreate',
   once: false,

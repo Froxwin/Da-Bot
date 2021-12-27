@@ -1,4 +1,4 @@
-const Command = require('../../Classes/command')
+const Command = require('../../classes/command')
 const purge = new Command({
   name: 'purge',
   alias: null,

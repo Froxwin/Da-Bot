@@ -1,5 +1,5 @@
 const { Collection } = require('discord.js')
-const SOFTandWET = require('..\\Classes\\SOFTandWET')
+const SOFTandWET = require('../classes/SOFTandWET')
 const fs = require('fs').readdirSync
 const filter = a => fs(a).filter(f => f.endsWith('.js'))
 const client = new SOFTandWET(

@@ -1,5 +1,5 @@
 const { color } = require('../../functions/index.js')
-const Command = require('../../Classes/command')
+const Command = require('../../classes/command')
 const { MessageEmbed } = require('discord.js')
 const avatar = new Command({
   name: 'avatar',

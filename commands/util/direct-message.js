@@ -1,6 +1,6 @@
 const { oneLine } = require('common-tags')
 const { MessageEmbed } = require('discord.js')
-const Command = require('../../Classes/command')
+const Command = require('../../classes/command')
 const directMessage = new Command({
   name: 'direct-message',
   alias: ['dm'],
@@ -37,8 +37,8 @@ const directMessage = new Command({
               .setTitle('DM Unsuccessful')
               .setDescription(
                 oneLine`
-                  ${message.author} 
-                  I cannot send a DM to that user they 
+                  ${message.author}
+                  I cannot send a DM to that user they
                   probably have DMs closed or have blocked me`
               )
             message.channel.send({ embeds: [eEmbed] })

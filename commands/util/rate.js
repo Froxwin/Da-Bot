@@ -1,5 +1,5 @@
 const { color, contentFetcher } = require('../../functions/index.js')
-const Command = require('../../Classes/command')
+const Command = require('../../classes/command')
 const sort = new Command({
   name: 'rate',
   alias: ['rate'],

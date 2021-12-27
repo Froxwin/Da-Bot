@@ -1,4 +1,4 @@
-const Event = require('../Classes/event')
+const Event = require('../classes/event')
 const interactionCreate = new Event({
   name: 'interactionCreate',
   once: false,
