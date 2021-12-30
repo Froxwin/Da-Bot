@@ -17,14 +17,14 @@ module.exports = new Command({
     !message.mentions.users.first()
       ? message.channel.send({
         embeds: [{
-          color: color(),
+          color: `#${color()}`,
           title: 'Failed',
           description: 'Mention a user'
         }]
       })
       : message.channel.send({
         embeds: [{
-          color: color(),
+          color: `#${color()}`,
           title: 'SUS',
           description: `**${message.mentions.users.first()} IS KINDA SUS NGL**`
         }]

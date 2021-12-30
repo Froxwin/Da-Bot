@@ -18,7 +18,7 @@ const sort = new Command({
       ? message.channel.send('provide arguments')
       : message.channel.send({
         embeds: [{
-          color: color(),
+          color: `#${color()}`,
           title: `${x}/10`,
           description: `I'd rate ${contentFetcher(message, command)} a ${x}/10`
         }]

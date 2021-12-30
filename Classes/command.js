@@ -1,6 +1,7 @@
 module.exports = class Command {
-  /** @typedef {('admin' | 'misc' | 'test' | 'util')} group */
+  /** @typedef {'admin' | 'misc' | 'test' | 'util'} group */
   /**
+   * Creates a Command
    * @param {{
    *    name: string,
    *    alias: Array<string>,
@@ -8,32 +9,14 @@ module.exports = class Command {
    *    execute: Function,
    *    permissions: Array<import('discord.js').PermissionResolvable>,
    *    group: group
-   * }} options
+   * }} options - Command config
    */
   constructor (options) {
-    /** @property {string} name */
     this.name = options.name
-    /** @property {string | any} alias */
-    this.alias = options.alias || 'No aliases available'
-    /** @property {string} description */
-    this.description = options.description || 'No description provided'
-    /** @property {Array<PermissionResolvable>} permissions */
-    this.permissions = options.permissions || null
-    /** @property {string} group */
-    this.group = options.group || 'test'
-    /** @property {Function} execute */
+    this.alias = options.alias ?? 'No aliases available'
+    this.description = options.description ?? 'No description provided'
+    this.permissions = options.permissions ?? 'No perms required'
+    this.group = options.group ?? 'test'
     this.execute = options.execute
-  }
-
-  /**
-   * @param {import('discord.js').GuildMember} member
-   * @returns bool
-   */
-  permCheck (member) {
-    let result
-    for (const perm of this.permissions) {
-      result = member.permissions.has(perm)
-    }
-    return result
   }
 }

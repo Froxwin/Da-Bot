@@ -15,7 +15,7 @@ module.exports = {
     const anime = randomanime.anime()
     const embed = new MessageEmbed()
       .setImage(anime)
-      .setColor(color())
+      .setColor(`#${color()}`)
       .setTimestamp()
     message.channel.send({ embeds: [embed] })
   }

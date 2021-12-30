@@ -6,7 +6,7 @@ module.exports = {
   name: 'admin',
   execute (button) {
     const eEmbed = new MessageEmbed()
-      .setColor(color())
+      .setColor(`#${color()}`)
       .setDescription('Admin help was selected')
 
     button.update({ embeds: [eEmbed], components: [] })

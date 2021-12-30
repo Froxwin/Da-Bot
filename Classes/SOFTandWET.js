@@ -4,11 +4,9 @@ module.exports = class SOFTandWET extends Client {
   /**
    * @param {{
    *    BaseClient: import('discord.js').ClientOptions,
-   *    commands:
-   *        import('discord.js')
+   *    commands: import('discord.js')
    *            .Collection<string, import('./command')>,
-   *    buttons:
-   *        import('discord.js')
+   *    buttons: import('discord.js')
    *            .Collection<string, import('./button')>,
    *    prefix: string
    *    load: Function

@@ -12,7 +12,7 @@ module.exports = {
     await pingMsg.edit('Ponged')
     await pingMsg.delete()
     const eEmbed = new MessageEmbed()
-      .setColor(color())
+      .setColor(`#${color()}`)
       .setDescription(
         oneLine`Ponged
         **${

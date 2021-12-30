@@ -1,17 +1,11 @@
-const { Permissions } = require('discord.js')
 const Command = require('../../classes/command')
 
 const test = new Command({
   name: 'test',
-  permissions:
-  [
-    Permissions.FLAGS.KICK_MEMBERS,
-    Permissions.FLAGS.BAN_MEMBERS,
-    Permissions.FLAGS.ADMINISTRATOR
-  ],
-  group: null,
+  permissions: null,
+  group: 'test',
   alias: null,
-  description: null,
+  description: 'Test Command',
   /**
    * @param {import("discord.js").Message} message
    * @param {Array<string>} args
@@ -19,8 +13,12 @@ const test = new Command({
    * @returns void | null
    */
   execute (message, args, command) {
-    if (!test.permCheck(message.member)) return null
     message.channel.send('get nae nae\'d')
+    console.log(
+      '\x1b[38;2;0;255;0m' +
+      'Test Passed' +
+      '\x1b[0m'
+    )
   }
 })
 

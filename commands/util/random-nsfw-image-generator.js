@@ -15,7 +15,7 @@ module.exports = {
     const nsfw = randomanime.nsfw()
     const embed = new MessageEmbed()
       .setImage(nsfw)
-      .setColor(color())
+      .setColor(`#${color()}`)
       .setTimestamp()
     message.channel.send({ embeds: [embed] })
   }

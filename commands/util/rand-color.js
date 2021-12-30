@@ -16,7 +16,7 @@ module.exports = {
       )
 
     const eEmbed = new MessageEmbed()
-      .setColor(color().toUpperCase())
+      .setColor(`#${color()}`)
       .setTitle(color().toUpperCase())
 
     await message.channel.send({ embeds: [eEmbed], components: [row] })

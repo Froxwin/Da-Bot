@@ -36,7 +36,7 @@ module.exports = {
       a += `**${key}**\n\`${value.alias}\`\n\`\`\`${value.description}\`\`\`\n`
     }
     const eEmbed = new MessageEmbed()
-      .setColor(atom.color())
+      .setColor(`#${atom.color()}`)
       .setTitle('Help was provided')
       .setDescription(
       `${a}`
