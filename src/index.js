@@ -7,5 +7,9 @@ require('fs').readdirSync('./events').forEach(file => {
     evt.name, (...args) => evt.execute(...args)
   )
 })
-require('dotenv').config()
+require('fs').readFileSync('../.env', { encoding: 'utf-8' })
+  .trim().replace(/\r+/, '').split((/\n+/)).forEach(Δ => {
+    const λ = Δ.split(/=/)
+    process.env[λ[0]] = λ[1]
+  })
 clt.login(process.env.SOFTundWET)

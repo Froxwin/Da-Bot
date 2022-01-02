@@ -1,4 +1,4 @@
-#Requires -Version 5
+#Requires -Version 7
 
 [CmdletBinding()]
 param([switch][alias('l')]$lolcat)
