@@ -7,7 +7,6 @@
   "scripts": {
     "start": "cd ./src && node .",
     "dev": "cd ./src && npx nodemon .",
-    "update": "npm update",
     "document": "npx jsdoc -c jsdoc.json"
   },
   "keywords": [],
