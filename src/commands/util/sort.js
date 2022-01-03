@@ -1,79 +1,36 @@
-const { MessageEmbed } = require('discord.js')
-const { oneLine } = require('common-tags')
-const randBlue = Math.floor(Math.random() * 255)
-const randGreen = Math.floor(Math.random() * 255)
-const color = '#' + (0).toString(16) +
-              (randGreen).toString(16) +
-              (randBlue).toString(16)
+const Command = require('../../classes/command')
 
-module.exports = {
+const sort = new Command({
   name: 'sort',
-  description: 'well its bubble sort what else can i say',
-
+  permissions: null,
+  group: 'util',
+  alias: null,
+  description: null,
+  /**
+  * @param {import('discord.js').Message} message
+  * @param {Array<string>} args
+  * @param {Command} command
+  * @returns void | null
+  */
   execute (message, args, command) {
-    try {
-    // eslint-disable-next-line no-unused-vars
-      const [command, ...args] = message.content
-        .trim()
-        .split(/\s+/)
-      const argsInt = args.map((i) => Number(i))
-
-      const bubbleSort = (arrayyy) => {
-        let swapped = false
-
-        const a = [...argsInt]
-
-        for (let i = 1; i < a.length - 1; i++) {
-          swapped = false
-
-          for (let j = 0; j < a.length - i; j++) {
-            if (a[j + 1] < a[j]) {
-              ;[a[j], a[j + 1]] = [a[j + 1], a[j]]
-              swapped = true
-            }
-          }
-          const eEmbed = new MessageEmbed()
-            .setTitle('Inefficient Sorting lmao')
-            .setColor(color)
-            .addFields(
-              {
-                name: 'Unsorted',
-                value: oneLine`${argsInt}`,
-                inline: true
-              },
-              {
-                name: 'Sorted',
-                value: oneLine`${a}`,
-                inline: true
-              }
-            )
-
-          if (!swapped) {
-            message.channel.send(eEmbed)
-            return
+    console.log('\x1b[32m' + 'Sortin' + '\x1b[0m\n')
+    const array = [23, 32414, 14, 241, 4, 0, 2, -21]
+    for (let o = 0; o < array.length; o++) {
+      let p = o + 1
+      if (array[o] > array[p]) {
+        for (let i = 0; i < array.length; i++) {
+          let n = i + 1
+          if (array[i] > array[n]) {
+            let a = array[i]
+            let b = array[n]
+            array[n] = a
+            array[i] = b
           }
         }
-        const eEmbed = new MessageEmbed()
-          .setTitle('Inefficient Sorting lmao')
-          .setColor('#C69B6D')
-          .addFields(
-            {
-              name: 'Unsorted',
-              value: oneLine`${argsInt}`,
-              inline: true
-            },
-            {
-              name: 'Sorted',
-              value: oneLine`${a}`,
-              inline: true
-            }
-          )
-        message.channel.send(eEmbed)
       }
-
-      bubbleSort(argsInt)
-    } catch (err) {
-
     }
+    console.log(array)
   }
-}
+})
+
+module.exports = sort

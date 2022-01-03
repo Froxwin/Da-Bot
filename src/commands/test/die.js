@@ -20,8 +20,8 @@ module.exports = new Command({
         const numbers = size / 8
         const arr = []
         arr.length = numbers // Simulate allocation of 'size' bytes.
-        for (let i = 0; i < numbers; i++) {
-          arr[i] = i
+        for (let Σ = 0; Σ < numbers; Σ++) {
+          arr[Σ] = Σ
         }
         return arr
       };
