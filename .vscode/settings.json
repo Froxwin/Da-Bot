@@ -10,5 +10,8 @@
     "editor.renderWhitespace": "trailing",
     "editor.minimap.maxColumn": 70,
     "window.zoomLevel": 0.25,
-    "editor.minimap.size": "proportional"
+    "editor.minimap.size": "proportional",
+    "files.exclude": {
+        "**/.git": false
+      }
 }

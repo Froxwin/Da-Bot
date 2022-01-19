@@ -4,10 +4,10 @@
 param([switch][alias('l')]$lolcat)
 
 Write-Host ('|||Repairing Files||>') -ForegroundColor Green
-npm.ps1 install
+npm install
 Write-Host ('|||Updating Dependencies||>') -ForegroundColor Green
-npm.ps1 update
+npm update
 Write-Host ('|||Auditing Dependencies||>') -ForegroundColor Green
-npm.ps1 audit
+npm audit
 Write-Host ('|||Dependencies for current workspace||>') -ForegroundColor Cyan
 $lolcat ? (npm ls | lolcat) : (npm ls)
