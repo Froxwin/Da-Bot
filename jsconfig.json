@@ -7,9 +7,5 @@
       "listFiles": true,
       "pretty": true
     },
-    "exclude": [
-        "node_modules/",
-        "**/node_modules/*",
-        ".git/"
-    ]
+    "exclude": ["node_modules/"]
 }

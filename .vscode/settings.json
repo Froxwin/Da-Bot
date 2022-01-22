@@ -9,9 +9,9 @@
     "files.autoSave": "afterDelay",
     "editor.renderWhitespace": "trailing",
     "editor.minimap.maxColumn": 70,
-    "window.zoomLevel": 0.25,
+    "window.zoomLevel": 0,
     "editor.minimap.size": "proportional",
     "files.exclude": {
         "**/.git": false
-      }
+    }
 }
