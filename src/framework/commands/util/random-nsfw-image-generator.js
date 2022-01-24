@@ -11,7 +11,7 @@ module.exports = {
     ],
   description: 'sends a random nsfw image',
 
-  execute (message, args, command) {
+  execute (message, _args, _command) {
     const nsfw = randomanime.nsfw()
     const embed = new MessageEmbed()
       .setImage(nsfw)

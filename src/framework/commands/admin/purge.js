@@ -11,7 +11,7 @@ const purge = new Command({
    * @param {Array<string>} args
    * @param {Command} command
    */
-  execute (message, args, command) {
+  execute (message, args, _command) {
     if (message.channel.type === 'DM') return
     if (!args[0]) return
     parseInt(args[0]) <= 0 || parseInt(args[0]) >= 100
@@ -23,7 +23,7 @@ const purge = new Command({
               `${message.author} I can not delete ${args[0]} messages`
         }]
       })
-      : message.channel.bulkDelete(parseInt(args[0]) + 1).then((v) => {
+      : message.channel.bulkDelete(parseInt(args[0]) + 1).then((_v) => {
         message.channel.send({
           embeds: [{
             color: 0x00FF00,

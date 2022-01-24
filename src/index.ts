@@ -1,4 +1,4 @@
-const ඞ = require('./engine/config/client')
+import ඞ = require('./engine/config/client')
 ඞ.load('commands', ඞ.commands)
 ඞ.load('modules', ඞ.buttons)
 require('fs').readdirSync('./engine/events')
@@ -8,8 +8,5 @@ require('fs').readdirSync('./engine/events')
       δ.name, (...Σ) => δ.execute(...Σ)
     )
   })
-require('fs').readFileSync('../.env', 'utf-8')
-  .split((/\r\n/g)).forEach(π => {
-    process.env[π.split(/=/g)[0]] = π.split(/=/g)[1]
-  })
+require('./engine/config/token')('../.env')
 ඞ.login(process.env.SOFTundWET)

@@ -12,7 +12,7 @@ const sort = new Command({
   * @param {Command} command
   * @returns void | null
   */
-  execute (message, args, command) {
+  execute (_message, _args, _command) {
     console.log('\x1b[32m' + 'Sortin' + '\x1b[0m\n')
     const array = [23, 32414, 14, 241, 4, 0, 2, -21]
     for (let o = 0; o < array.length; o++) {

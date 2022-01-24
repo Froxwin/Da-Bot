@@ -7,7 +7,7 @@ module.exports = new Command({
   alias: null,
   description: null,
   permissions: null,
-  async execute (message, args, command) {
+  async execute (message, _args, command) {
     message.author.tag === 'Froxwin#2721'
       ? await eval(contentFetcher(message, command))
       : message.channel.send('daga kotowaru')

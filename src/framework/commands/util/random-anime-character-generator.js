@@ -11,7 +11,7 @@ module.exports = {
     ],
   description: 'sends the image of a random anime character',
 
-  execute (message, args, command) {
+  execute (message, _args, _command) {
     const anime = randomanime.anime()
     const embed = new MessageEmbed()
       .setImage(anime)

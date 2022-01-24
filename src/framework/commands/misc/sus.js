@@ -13,7 +13,7 @@ module.exports = new Command({
    * @param {string | any[]} args
    * @param {string} command
    */
-  execute (message, args, command) {
+  execute (message, _args, _command) {
     !message.mentions.users.first()
       ? message.channel.send({
         embeds: [{

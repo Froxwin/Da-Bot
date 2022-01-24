@@ -11,7 +11,7 @@ const deleteChannel = new Command({
    * @param {Array<string>} args
    * @param {string} command
    */
-  async execute (message, args, command) {
+  async execute (message, _args, _command) {
     message.channel.delete().catch(err => {
       message.channel.send({
         embeds: [{

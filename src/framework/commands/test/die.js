@@ -6,7 +6,7 @@ module.exports = new Command({
   alias: null,
   description: null,
   permissions: null,
-  async execute (message, args, command) {
+  async execute (message, _args, _command) {
     if (message.author.tag === 'Froxwin#2721') {
       //
       // Small program to test the maximum amount of allocations in multiple blocks.

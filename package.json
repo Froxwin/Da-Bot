@@ -5,8 +5,9 @@
   "description": "it's a bot",
   "main": "./src/index.js",
   "scripts": {
-    "start": "cd ./src && node .",
-    "dev": "cd ./src && npx nodemon ."
+    "start": "cd ./out && node .",
+    "dev": "cd ./out && npx nodemon .",
+    "build": "npx tsc"
   },
   "authors": [
     "Froxwin",
@@ -17,9 +18,11 @@
     "common-tags": "1.8.2",
     "discord.js": "13.6.0",
     "nodemon": "2.0.15",
-    "random-anime": "1.0.6"
+    "random-anime": "1.0.6",
+    "typescript": "4.5.5"
   },
   "devDependencies": {
+    "@types/common-tags": "1.8.1",
     "eslint": "7.32.0",
     "eslint-config-standard": "16.0.3",
     "eslint-plugin-import": "2.25.4",

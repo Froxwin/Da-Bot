@@ -15,6 +15,7 @@ module.exports = {
   },
   ignorePatterns: [
     '**/node_modules/**',
-    '.git/**'
-  ],
+    '.git/**',
+    '**/out/**'
+  ]
 }

@@ -9,9 +9,9 @@ const ban = new Command({
   /**
    * @param {import("discord.js").Message} message
    * @param {Array<string>} args
-   * @param {string} command
+   * @param {string} _command
    */
-  async execute (message, args, command) {
+  async execute (message, args, _command) {
     const user = message.mentions.users.first()
     const member = await message.guild.members.fetch(user)
     const error = a => {
@@ -19,7 +19,7 @@ const ban = new Command({
         embeds: [{ title: 'Ban Unsuccessful', color: 0xFF0000, description: a }]
       })
     }
-    if (!ban.permCheck(message.member)) return null
+    // if (!ban.permCheck(message.member)) return null
     !user
       ? error('You didn\'t mention a user to ban')
       : !args[1]

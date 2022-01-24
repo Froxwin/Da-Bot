@@ -1,5 +1,6 @@
 const { oneLine } = require('common-tags')
 const { MessageEmbed } = require('discord.js')
+const client = require('../../../engine/config/client')
 const Command = require('../../../engine/classes/command')
 const directMessage = new Command({
   name: 'direct-message',
@@ -19,7 +20,7 @@ const directMessage = new Command({
       if (user && member && !user.bot && args.length !== 1) {
         user.send(
           message.content.substring(
-            message.client.prefix.length + 2 +
+            client.prefix.length + 2 +
             command.length + user.toString().length,
             message.content.length
           )

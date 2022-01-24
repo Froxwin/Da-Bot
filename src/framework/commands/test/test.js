@@ -12,7 +12,7 @@ const test = new Command({
    * @param {Command} command
    * @returns void | null
    */
-  execute (message, args, command) {
+  execute (message, _args, _command) {
     message.channel.send('get nae nae\'d')
     message.client.channels.cache.get('863657474056781864')
       .fetch().then(channel => {

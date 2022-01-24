@@ -1,6 +1,6 @@
 #Requires -Version 7
 
-Get-ChildItem ('../src/commands') |
+Get-ChildItem ('../src/framework/commands') |
   ForEach-Object {
     Write-Host `
       ("`e[1;38;2;226;165;255m[$($_.BaseName.ToUpper())]")

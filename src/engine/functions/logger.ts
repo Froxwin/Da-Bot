@@ -1,7 +1,7 @@
-const { oneLineTrim } = require('common-tags')
-const { rainbow } = require('colors')
+import { oneLineTrim } from 'common-tags'
+import { rainbow } from 'colors'
 
-module.exports = msg => {
+export = msg => {
   const pref = msg.channel.type === 'DM'
     ? (oneLineTrim`
         \x1b[1;38;2;255;71;156m

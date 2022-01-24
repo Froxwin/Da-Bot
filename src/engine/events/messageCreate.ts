@@ -1,12 +1,12 @@
-const { logger, stuff } = require('../functions/index.js')
-const Event = require('../classes/event')
-const client = require('../config/client')
+import { logger, stuff } from '../functions/index.js'
+import Event = require('../classes/event')
+import client = require('../config/client')
+import { Message } from 'discord.js'
 
 const messageCreate = new Event({
   name: 'messageCreate',
   once: false,
-  /** @param {import('discord.js').Message} msg */
-  async execute (msg) {
+  async execute (msg: Message) {
     logger(msg); stuff(msg)
     if (!msg.content.startsWith(client.prefix) ||
       msg.author.bot) return
@@ -24,4 +24,4 @@ const messageCreate = new Event({
   }
 })
 
-module.exports = messageCreate
+export = messageCreate

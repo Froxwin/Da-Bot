@@ -12,7 +12,7 @@ const simonSays = new Command({
    * @param {string | any[]} args
    * @param {string} command
    */
-  execute (message, args, command) {
+  execute (message, _args, command) {
     message.delete()
     message.channel.send(contentFetcher(message, command))
   }

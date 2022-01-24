@@ -12,7 +12,7 @@ const time = new Command({
    * @param {Command} command
    * @returns void | null
    */
-  execute (message, args, command) {
+  execute (message, _args, _command) {
     const a = new Date()
     message.channel.send(
         `${a.getHours() > 12 ? a.getHours() - 12 + ' PM' : a.getHours()} : ${a.getMinutes()} : ${a.getSeconds()}`)

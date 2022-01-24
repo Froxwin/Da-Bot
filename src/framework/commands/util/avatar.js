@@ -13,7 +13,7 @@ const avatar = new Command({
    * @param {string | any[]} args
    * @param {string} command
    */
-  execute (message, args, command) {
+  execute (message, args, _command) {
     const user =
       !args.length
         ? message.author

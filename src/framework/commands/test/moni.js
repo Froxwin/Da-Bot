@@ -3,11 +3,11 @@ const fs = require('fs')
 module.exports = {
   name: 'moni',
   description: 'moni lmao',
-  execute (message, args, command) {
+  execute (message, _args, _command) {
     message.channel.send('(beta)')
     if (!fs.existsSync(`./data/${message.author.id}.txt`)) {
       message.channel.send('New Player Detected')
-      fs.open(`./data/${message.author.id}.txt`, 'w', function (err, file) {
+      fs.open(`./data/${message.author.id}.txt`, 'w', function (err, _file) {
         if (err) throw err
         console.log('Saved')
       })

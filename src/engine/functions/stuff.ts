@@ -1,26 +1,23 @@
-const { oneLineTrim } = require('common-tags')
-const randColor = require('./color')
+import { oneLineTrim } from 'common-tags'
+import randColor = require('./color')
 
-module.exports = msg => {
+export = msg => {
   const m = msg.content.toLowerCase()
+  const Γ = content => msg.channel.send(content)
 
-  m === 'hello there' &&
-    msg.channel.send('general kakyoin')
-  m === 'ay' &&
-    msg.channel.send('<@384664284401106956>hOw aRe yOu')
-  m.includes('gay') &&
-    msg.channel.send('no u')
+  m === 'hello there' && Γ('general kakyoin')
+  m === 'ay' && Γ('<@384664284401106956>hOw aRe yOu')
   m === 'sup' &&
-    msg.channel.send(oneLineTrim`
+    Γ(oneLineTrim`
       https://tenor.com/view/rick-astley-rick
       -roll-dancing-dance-moves-gif-14097983`
     )
   m === 'burn' &&
     msg.delete().then(() =>
-      msg.channel.send(' <:elmofire:743509390073528461>')
+      Γ('<:elmofire:743509390073528461>')
     )
   m === 'e' &&
-    msg.channel.send({
+    Γ({
       embeds: [{
         color: randColor(),
         title: 'Ricked',

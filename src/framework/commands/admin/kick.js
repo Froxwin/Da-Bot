@@ -11,7 +11,7 @@ const kick = new Command({
    * @param {Array<string>} args
    * @param {string} command
    */
-  async execute (message, args, command) {
+  async execute (message, args, _command) {
     const user = message.mentions.users.first()
     const member = await message.guild.members.fetch(user)
     const error = a => {

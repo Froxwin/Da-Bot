@@ -13,7 +13,7 @@ module.exports = new Command({
    * @param {string | any[]} args
    * @param {string} command
    */
-  execute (message, args, command) {
+  execute (message, _args, _command) {
     message.channel.send('So you want to see me naked <:bot:849669570604171295>')
     const attachment = new MessageAttachment('..\\index.js')
     message.channel.send({ files: [attachment] })

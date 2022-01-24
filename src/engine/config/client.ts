@@ -1,6 +1,6 @@
-const { Collection } = require('discord.js')
-const SOFTandWET = require('../classes/SOFTandWET')
-const fs = require('fs').readdirSync
+import { Collection } from 'discord.js'
+import SOFTandWET = require('../classes/SOFTandWET')
+import { readdirSync as fs } from 'fs'
 const filter = a => fs(a).filter(f => f.endsWith('.js'))
 
 const client = new SOFTandWET({
@@ -45,4 +45,4 @@ const client = new SOFTandWET({
           )))
 })
 
-module.exports = client
+export = client
