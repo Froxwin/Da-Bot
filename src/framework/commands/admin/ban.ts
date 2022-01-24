@@ -1,4 +1,5 @@
-const Command = require('../../../engine/classes/command')
+import Command = require('../../../engine/classes/command')
+import { Message } from 'discord.js'
 const ban = new Command({
   name: 'ban',
   alias: null,
@@ -6,14 +7,9 @@ const ban = new Command({
   description: 'bans the specified user',
   permissions: [require('discord.js').Permissions.FLAGS.BAN_MEMBERS],
 
-  /**
-   * @param {import("discord.js").Message} message
-   * @param {Array<string>} args
-   * @param {string} _command
-   */
-  async execute (message, args, _command) {
+  async execute (message: Message, args: Array<string>, _command: string) {
     const user = message.mentions.users.first()
-    const member = await message.guild.members.fetch(user)
+    const member = await message.guild!.members.fetch(user!)
     const error = a => {
       message.channel.send({
         embeds: [{ title: 'Ban Unsuccessful', color: 0xFF0000, description: a }]
@@ -26,7 +22,7 @@ const ban = new Command({
           ? error('You didn\'t provide a ban duration')
           : member.ban({
             reason: message.content.replace(`=ban ${args[0]} ${args[1]}`, ''),
-            days: args[1] ? null : parseInt(args[2])
+            days: args[1] ? undefined : parseInt(args[2])
           }).then(() => {
             message.channel.send({
               embeds: [{
@@ -42,4 +38,4 @@ const ban = new Command({
   }
 })
 
-module.exports = ban
+export = ban

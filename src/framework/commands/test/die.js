@@ -2,7 +2,7 @@ const Command = require('../../../engine/classes/command')
 
 module.exports = new Command({
   name: 'die',
-  group: null,
+  group: 'test',
   alias: null,
   description: null,
   permissions: null,

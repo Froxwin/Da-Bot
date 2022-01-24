@@ -14,7 +14,9 @@
     "diagnostics": true,
     "pretty": true,
     "newLine": "crlf",
-    "noImplicitAny": false
+    "noImplicitAny": false,
+    "strict": true,
+    "strictNullChecks": true
   },
   "include": ["./src/**/*"],
   "exclude": ["node_modules"]

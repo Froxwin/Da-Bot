@@ -10,7 +10,7 @@ const test = new Command({
   execute (message: Message, _args, _command) {
     message.channel.send('get nae nae\'d')
     message.client.channels.cache.get('863657474056781864')
-      .fetch().then(channel => {
+      ?.fetch().then(channel => {
         channel.send('hmm')
       })
     console.log(

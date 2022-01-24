@@ -1,17 +1,18 @@
+import { PermissionResolvable } from 'discord.js'
 type group = 'admin' | 'misc' | 'test' | 'util'
 export = class Command {
   description: string
   name: string
   alias: string | string[]
-  permissions: any
+  permissions: PermissionResolvable | string
   group: group
   execute: Function
   constructor (options: {
       name: string
-      alias: Array<string>
-      description: string
+      alias: Array<string> | null
+      description: string | null
       execute: Function
-      permissions: Array<import('discord.js').PermissionResolvable>
+      permissions: PermissionResolvable | null
       group: group
     }) {
     this.name = options.name

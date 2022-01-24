@@ -8,12 +8,7 @@ const avatar = new Command({
   description: 'Sends the user avatar',
   group: 'util',
   permissions: null,
-  /**
-   * @param {import('discord.js').Message} message
-   * @param {string | any[]} args
-   * @param {string} command
-   */
-  execute (message, args, _command) {
+  execute (message: import('discord.js').Message, args: string | any[], _command) {
     const user =
       !args.length
         ? message.author
@@ -22,8 +17,8 @@ const avatar = new Command({
       embeds: [
         new MessageEmbed()
           .setColor(`#${color()}`)
-          .setImage(user.displayAvatarURL({ size: 4096, dynamic: true }))
-          .setTitle(user.tag)
+          .setImage(user!.displayAvatarURL({ size: 4096, dynamic: true }))
+          .setTitle(user!.tag)
       ]
     })
   }

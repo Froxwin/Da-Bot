@@ -11,16 +11,12 @@ const messageCreate = new Event({
     if (!msg.content.startsWith(client.prefix) ||
       msg.author.bot) return
 
-    const [command, ...args] =
-      msg.content.toLowerCase().trim()
-        .substring(client.prefix.length).split(/\s+/)
+    const [command, ...args] = msg.content.toLowerCase()
+      .trim().substring(client.prefix.length).split(/\s+/);
 
-    const exeCommand =
-      client.commands.get(command) ||
-      client.commands.find(Δ => Δ.alias &&
-        Δ.alias.includes(command))
-
-    exeCommand.execute(msg, args, command)
+    (client.commands.get(command) ||
+      client.commands.find(Δ =>Δ.alias!.includes(command)))
+    ?.execute(msg, args, command)
   }
 })
 

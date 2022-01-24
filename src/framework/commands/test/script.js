@@ -3,7 +3,7 @@ const { contentFetcher } = require('../../../engine/functions/index.js')
 
 module.exports = new Command({
   name: 'script',
-  group: null,
+  group: 'test',
   alias: null,
   description: null,
   permissions: null,

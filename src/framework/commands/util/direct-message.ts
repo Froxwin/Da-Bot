@@ -1,22 +1,17 @@
-const { oneLine } = require('common-tags')
-const { MessageEmbed } = require('discord.js')
-const client = require('../../../engine/config/client')
-const Command = require('../../../engine/classes/command')
+import { oneLine } from 'common-tags'
+import { MessageEmbed } from 'discord.js'
+import client = require('../../../engine/config/client')
+import Command = require('../../../engine/classes/command')
 const directMessage = new Command({
   name: 'direct-message',
   alias: ['dm'],
   description: 'sends a direct message to the mentioned user',
   permissions: null,
   group: 'util',
-  /**
-   * @param {import("discord.js").Message} message
-   * @param {string[]} args
-   * @param {string} command
-   */
-  execute (message, args, command) {
+  execute (message: import("discord.js").Message, args: string[], command: string) {
     try {
       const user = message.mentions.users.first()
-      const member = message.guild.members.fetch(user)
+      const member = message.guild!.members.fetch(user!)
       if (user && member && !user.bot && args.length !== 1) {
         user.send(
           message.content.substring(
@@ -67,4 +62,4 @@ const directMessage = new Command({
   }
 })
 
-module.exports = directMessage
+export = directMessage
