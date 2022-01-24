@@ -1,4 +1,5 @@
-const Command = require('../../../engine/classes/command')
+import Command = require('../../../engine/classes/command')
+import { Message } from 'discord.js'
 
 const test = new Command({
   name: 'test',
@@ -6,13 +7,7 @@ const test = new Command({
   group: 'test',
   alias: null,
   description: 'Test Command',
-  /**
-   * @param {import("discord.js").Message} message
-   * @param {Array<string>} args
-   * @param {Command} command
-   * @returns void | null
-   */
-  execute (message, _args, _command) {
+  execute (message: Message, _args, _command) {
     message.channel.send('get nae nae\'d')
     message.client.channels.cache.get('863657474056781864')
       .fetch().then(channel => {
@@ -26,4 +21,4 @@ const test = new Command({
   }
 })
 
-module.exports = test
+export = test

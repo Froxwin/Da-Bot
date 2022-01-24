@@ -1,11 +1,21 @@
 {
     "compilerOptions": {
-      "module": "commonjs",
-      "target": "es6",
+      "outDir": "./out",
+      "allowJs": true,
+      "target": "ESNext",
+      "moduleResolution": "Node",
+      "module": "CommonJS",
+      "removeComments": true,
+      "noEmitOnError": true,
       "alwaysStrict": true,
+      "noUnusedLocals": true,
+      "noUnusedParameters": true,
       "checkJs": true,
-      "listFiles": true,
-      "pretty": true
+      "diagnostics": true,
+      "pretty": true,
+      "newLine": "crlf",
+      "noImplicitAny": false
     },
-    "exclude": ["node_modules/"]
-}
+    "include": ["./src/**/*"],
+    "exclude": ["node_modules"]
+  }

@@ -2,7 +2,7 @@ import ඞ = require('./engine/config/client')
 ඞ.load('commands', ඞ.commands)
 ඞ.load('modules', ඞ.buttons)
 require('fs').readdirSync('./engine/events')
-  .forEach(Φ => {
+  .forEach((Φ: File) => {
     const δ = require(`./engine/events/${Φ}`)
     ඞ[δ.once ? 'once' : 'on'](
       δ.name, (...Σ) => δ.execute(...Σ)

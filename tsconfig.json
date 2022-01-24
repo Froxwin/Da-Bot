@@ -13,7 +13,8 @@
     "checkJs": true,
     "diagnostics": true,
     "pretty": true,
-    "newLine": "crlf"
+    "newLine": "crlf",
+    "noImplicitAny": false
   },
   "include": ["./src/**/*"],
   "exclude": ["node_modules"]
