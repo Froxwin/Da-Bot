@@ -1,5 +1,5 @@
 import { PermissionResolvable } from 'discord.js'
-type group = 'admin' | 'misc' | 'test' | 'util'
+type group = 'admin' | 'misc' | 'test' | 'util' | 'dev'
 export = class Command {
   description: string
   name: string

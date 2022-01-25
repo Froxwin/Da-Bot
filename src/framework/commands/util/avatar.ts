@@ -1,6 +1,6 @@
-const { color } = require('../../../engine/functions/index.js')
-const Command = require('../../../engine/classes/command')
-const { MessageEmbed } = require('discord.js')
+import { color } from '../../../engine/functions/index.js'
+import Command = require('../../../engine/classes/command')
+import { Message, MessageEmbedImage } from 'discord.js'
 
 const avatar = new Command({
   name: 'avatar',
@@ -8,18 +8,22 @@ const avatar = new Command({
   description: 'Sends the user avatar',
   group: 'util',
   permissions: null,
-  execute (message: import('discord.js').Message, args: string | any[], _command) {
+  execute (message: Message, args: string[], _command) {
     const user =
       !args.length
         ? message.author
         : message.mentions.users.first()
+    const image = user!.displayAvatarURL({
+      size: 4096, dynamic: true, format: 'png'
+    })
+    const eImage: MessageEmbedImage =
+      image as MessageEmbedImage
     message.channel.send({
-      embeds: [
-        new MessageEmbed()
-          .setColor(`#${color()}`)
-          .setImage(user!.displayAvatarURL({ size: 4096, dynamic: true }))
-          .setTitle(user!.tag)
-      ]
+      embeds: [{
+        color: `#${color()}`,
+        image: eImage,
+        title: user!.tag
+      }]
     })
   }
 })

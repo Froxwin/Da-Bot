@@ -2,20 +2,12 @@ const Command = require('../../../engine/classes/command')
 
 module.exports = new Command({
   name: 'die',
-  group: 'test',
+  group: 'dev',
   alias: null,
   description: null,
   permissions: null,
   async execute (message, _args, _command) {
     if (message.author.tag === 'Froxwin#2721') {
-      //
-      // Small program to test the maximum amount of allocations in multiple blocks.
-      // This script searches for the largest allocation amount.
-      //
-
-      //
-      // Allocate a certain size to test if it can be done.
-      //
       function alloc (size) {
         const numbers = size / 8
         const arr = []
@@ -24,17 +16,10 @@ module.exports = new Command({
           arr[Σ] = Σ
         }
         return arr
-      };
-
-      //
-      // Keep allocations referenced so they aren't garbage collected.
-      //
+      }
       const allocations = []
       const ii = []
       const iii = []
-      //
-      // Allocate successively larger sizes, doubling each time until we hit the limit.
-      //
       function allocToMax () {
         console.log('Start')
 
@@ -75,19 +60,13 @@ module.exports = new Command({
           const mbNow = mu[field] / 1024 / 1024 / 1024
           // console.log(`Total allocated       ${Math.round(mbNow * 100) / 100} GB`);
           console.log(`Allocated since start ${Math.round((mbNow - gbStart) * 100) / 100} GB`)
-
-        // Infinite loop, never get here.
         }
-
-        // Infinite loop, never get here.
       };
 
       allocToMax()
       allocToMax()
       allocToMax()
       allocToMax()
-
-      // Infinite loop, never get here.
     } else {
       message.channel.send('daga kotowaru')
     }
