@@ -16,7 +16,17 @@
     "newLine": "crlf",
     "noImplicitAny": false,
     "strict": true,
-    "strictNullChecks": true
+    "strictNullChecks": true,
+    "baseUrl": ".",
+    "paths": {
+        "@engine/*": ["src/engine"],
+        "@classes/*": ["src/engine/classes/*"],
+        "@config/*": ["src/engine/config/*"],
+        "@events/*": ["src/engine/events/*"],
+        "@functions/*": ["src/engine/functions/*"]
+    },
+    "sourceMap": true,
+    "rootDir": "./src"
   },
   "include": ["./src/**/*"],
   "exclude": ["node_modules"]

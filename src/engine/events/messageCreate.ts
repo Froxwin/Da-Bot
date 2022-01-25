@@ -14,9 +14,13 @@ const messageCreate = new Event({
     const [command, ...args] = msg.content.toLowerCase()
       .trim().substring(client.prefix.length).split(/\s+/);
 
-    (client.commands.get(command) ||
+    try {
+      (client.commands.get(command) ||
       client.commands.find(Δ =>Δ.alias!.includes(command)))
     ?.execute(msg, args, command)
+    } catch (err) {
+      console.log(err)
+    }
   }
 })
 
