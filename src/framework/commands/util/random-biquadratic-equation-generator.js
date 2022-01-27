@@ -1,10 +1,14 @@
-module.exports = {
+const Command = require('../../../engine/classes/command')
+
+module.exports = new Command({
   name: 'random-biquadratic-equation-generator',
   alias:
     [
       'random-biquadratic-equation-generator',
       'rand-4-eq', 'r-4-eq', 'r4eq'
     ],
+  permissions: null,
+  group: 'util',
   description: 'sends a random equation with degree 4',
 
   execute (message, _args, _command) {
@@ -25,4 +29,4 @@ module.exports = {
       `${p} - ${sum}${q} + ${sump}${r} - ${sumq}${s} + ${pro}`
     )
   }
-}
+})

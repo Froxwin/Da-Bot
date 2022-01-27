@@ -1,10 +1,13 @@
-module.exports = {
+const Command = require('../../../engine/classes/command')
+
+module.exports = new Command({
   name: 'random-cubic-equation-generator',
-  alias:
-    [
-      'random-cubic-equation-generator',
-      'rand-cu-eq', 'r-cu-eq', 'r3eq'
-    ],
+  alias: [
+    'random-cubic-equation-generator',
+    'rand-cu-eq', 'r-cu-eq', 'r3eq'
+  ],
+  permissions: null,
+  group: 'util',
   description: 'sends a random cubic equation',
 
   execute (message, _args, _command) {
@@ -20,4 +23,4 @@ module.exports = {
     const d = 'x'
     message.channel.send(`${f} - ${sum}${e} + ${sump}${d} - ${pro}`)
   }
-}
+})

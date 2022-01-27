@@ -18,14 +18,7 @@
     "strict": true,
     "strictNullChecks": true,
     "baseUrl": ".",
-    "paths": {
-        "@engine/*": ["src/engine"],
-        "@classes/*": ["src/engine/classes/*"],
-        "@config/*": ["src/engine/config/*"],
-        "@events/*": ["src/engine/events/*"],
-        "@functions/*": ["src/engine/functions/*"]
-    },
-    "sourceMap": true,
+    "sourceMap": false,
     "rootDir": "./src"
   },
   "include": ["./src/**/*"],

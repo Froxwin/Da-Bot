@@ -16,8 +16,8 @@ const messageCreate = new Event({
 
     try {
       (client.commands.get(command) ||
-      client.commands.find(Δ =>Δ.alias!.includes(command)))
-    ?.execute(msg, args, command)
+      client.commands.find(Δ => Δ.alias.includes(command)))
+        ?.execute(msg, args, command)
     } catch (err) {
       console.log(err)
     }

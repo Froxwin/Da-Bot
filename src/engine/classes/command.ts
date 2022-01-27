@@ -9,7 +9,7 @@ export = class Command {
   execute: Function
   constructor (options: {
       name: string
-      alias: Array<string> | null
+      alias: string[] | null
       description: string | null
       execute: Function
       permissions: PermissionResolvable | null

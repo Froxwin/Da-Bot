@@ -9,9 +9,8 @@ module.exports = new Command({
 
   async execute (message: Message, _args, _command) {
     message.author.tag === 'Froxwin#2721'
-      ? message.channel.send('cls\'d').then(() =>
-          console.clear()
-        )
+      ? message.channel.send('cls\'d')
+          .then(() => console.clear())
       : message.channel.send('daga kotowaru')
   }
 })

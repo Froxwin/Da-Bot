@@ -9,8 +9,13 @@ const sourceCode = new Command({
   permissions: null,
 
   async execute (message: Message, _args, _command) {
-    await message.channel.send('So you want to see me naked <:bot:849669570604171295>')
-    message.channel.send({ files: [{attachment: './src/index.ts'}] })
+    await message.channel.send(
+      'So you want to see me naked' +
+      '<:bot:849669570604171295>'
+    )
+    message.channel.send({
+      files: [{attachment: '../src/index.ts'}]
+    })
   }
 })
 

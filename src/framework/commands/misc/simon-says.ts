@@ -8,21 +8,21 @@ const simonSays = new cmd({
   group: 'misc',
   permissions: null,
 
-  async execute (message: msg, args: string[], command: cmd) {
-    if (message.channel.type === 'DM') {
-      message.channel.send(
+  async execute (msg: msg, args: string[], cmd: cmd) {
+    if (msg.channel.type === 'DM') {
+      msg.channel.send(
         'That command is unavailable in a DM channel'
       )
       return
     }
     if (!args.length) {
-      message.channel.send('Provide arguments')
+      msg.channel.send('Provide arguments')
       return
     }
-    await message.delete()
-    message.channel.send(
+    await msg.delete()
+    msg.channel.send(
       require('../../../engine/functions/contentFetcher')(
-        message, command
+        msg, cmd
       )
     )
   }

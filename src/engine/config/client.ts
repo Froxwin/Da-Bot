@@ -30,16 +30,16 @@ const client = new SOFTandWET({
   buttons: new Collection(),
   prefix: '=',
   load: (dir, collec) =>
-    fs(`${process.cwd()}\\out\\framework\\${dir}`)
+    fs(`${process.cwd()}\\framework\\${dir}`)
       .forEach(folder =>
-        filter(`${process.cwd()}\\out\\framework\\${dir}\\${folder}`)
+        filter(`${process.cwd()}\\framework\\${dir}\\${folder}`)
           .forEach(file => collec.set(
             require(
-              `${process.cwd()}\\out\\framework\\${dir}\\` +
+              `${process.cwd()}\\framework\\${dir}\\` +
               `${folder}\\${file}`
             ).name,
             require(
-              `${process.cwd()}\\out\\framework\\${dir}\\` +
+              `${process.cwd()}\\framework\\${dir}\\` +
               `${folder}\\${file}`
             )
           )))

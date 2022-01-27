@@ -11,7 +11,7 @@ const truth = new Command({
   execute (message: Message, args: string, _command) {
     const ア = ['Yes', 'No', 'Perhaps']
     args.length
-      ? message.channel.send(ア[Math.round(Math.random() * ア.length)])
+      ? message.channel.send(ア[Math.floor(Math.random() * ア.length)])
       : message.channel.send('Provide Arguments')
   }
 })

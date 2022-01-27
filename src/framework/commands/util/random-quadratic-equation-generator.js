@@ -1,10 +1,14 @@
-module.exports = {
+const Command = require('../../../engine/classes/command')
+
+module.exports = new Command({
   name: 'random-quadratic-equation-generator',
   alias:
     [
       'random-quadratic-equation-generator',
       'rand-qu-eq', 'r-qu-eq', 'r2eq'
     ],
+  permissions: null,
+  group: 'util',
   description: 'sends a random quadratic equation',
 
   execute (message, _args, _command) {
@@ -17,4 +21,4 @@ module.exports = {
     const d = 'x'
     message.channel.send(`${c} - ${sum}${d} + ${pro}`)
   }
-}
+})

@@ -1,10 +1,10 @@
 import { color } from '../../../engine/functions/index.js'
 import Command = require('../../../engine/classes/command')
-import { Message, MessageEmbedImage } from 'discord.js'
+import { Message, MessageEmbed } from 'discord.js'
 
 const avatar = new Command({
   name: 'avatar',
-  alias: ['pfp'],
+  alias: ['pfp', 'profile'],
   description: 'Sends the user avatar',
   group: 'util',
   permissions: null,
@@ -13,17 +13,17 @@ const avatar = new Command({
       !args.length
         ? message.author
         : message.mentions.users.first()
-    const image = user!.displayAvatarURL({
-      size: 4096, dynamic: true, format: 'png'
-    })
-    const eImage: MessageEmbedImage =
-      image as MessageEmbedImage
     message.channel.send({
-      embeds: [{
-        color: `#${color()}`,
-        image: eImage,
-        title: user!.tag
-      }]
+      embeds: [
+        new MessageEmbed()
+          .setColor(`#${color()}`)
+          .setTitle(user!.tag)
+          .setImage(
+            user!.displayAvatarURL({
+              size: 4096, dynamic: true, format: 'png'
+            })
+          )
+      ]
     })
   }
 })
