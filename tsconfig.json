@@ -5,13 +5,14 @@
     "target": "ESNext",
     "moduleResolution": "Node",
     "module": "CommonJS",
+    "lib": ["ESNext"],
     "removeComments": true,
     "noEmitOnError": true,
     "alwaysStrict": true,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
     "checkJs": true,
-    "diagnostics": true,
+    "diagnostics": false,
     "pretty": true,
     "newLine": "crlf",
     "noImplicitAny": false,
@@ -19,7 +20,9 @@
     "strictNullChecks": true,
     "baseUrl": ".",
     "sourceMap": false,
-    "rootDir": "./src"
+    "rootDir": "./src",
+    "strictFunctionTypes": true,
+    "strictPropertyInitialization": true
   },
   "include": ["./src/**/*"],
   "exclude": ["node_modules"]

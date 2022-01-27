@@ -14,16 +14,18 @@ const ping = new Command({
     const pingMsg = await message.channel.send('Pinging...')
     await pingMsg.edit('Ponged')
     await pingMsg.delete()
-    message.channel.send({ embeds: [{
-      color: `#${color()}`,
-      description: oneLine`Ponged
+    message.channel.send({
+      embeds: [{
+        color: `#${color()}`,
+        description: oneLine`Ponged
       **${
         (pingMsg.createdTimestamp ||
           pingMsg.editedTimestamp)! -
         (message.createdTimestamp ||
           message.editedTimestamp)!
       } ms**`
-    }] })
+      }]
+    })
   }
 })
 

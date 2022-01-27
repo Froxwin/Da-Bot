@@ -1,5 +1,5 @@
 const { MessageEmbed } = require('discord.js')
-const { color } = require('../../../engine/functions/index.js')
+const { color } = require('../../../engine/functions/index')
 const fs = require('fs')
 
 module.exports = {

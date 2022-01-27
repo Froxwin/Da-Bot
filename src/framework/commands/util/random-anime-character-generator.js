@@ -1,7 +1,7 @@
 const Command = require('../../../engine/classes/command')
 const { MessageEmbed } = require('discord.js')
 const randomanime = require('random-anime')
-const { color } = require('../../../engine/functions/index.js')
+const { color } = require('../../../engine/functions/index')
 
 module.exports = new Command({
   name: 'random-anime-character-generator',

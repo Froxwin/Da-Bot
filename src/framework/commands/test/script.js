@@ -1,5 +1,5 @@
 const Command = require('../../../engine/classes/command')
-const { contentFetcher } = require('../../../engine/functions/index.js')
+const { contentFetcher } = require('../../../engine/functions/index')
 
 module.exports = new Command({
   name: 'script',

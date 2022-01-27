@@ -1,4 +1,4 @@
-import { logger, stuff } from '../functions/index.js'
+import { logger, stuff } from '../functions/index'
 import Event = require('../classes/event')
 import client = require('../config/client')
 import { Message } from 'discord.js'
@@ -12,7 +12,7 @@ const messageCreate = new Event({
       msg.author.bot) return
 
     const [command, ...args] = msg.content.toLowerCase()
-      .trim().substring(client.prefix.length).split(/\s+/);
+      .trim().substring(client.prefix.length).split(/\s+/)
 
     try {
       (client.commands.get(command) ||

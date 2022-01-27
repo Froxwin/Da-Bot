@@ -8,7 +8,7 @@ const directMessage = new Command({
   description: 'sends a direct message to the mentioned user',
   permissions: null,
   group: 'util',
-  execute (message: import("discord.js").Message, args: string[], command: string) {
+  execute (message: import('discord.js').Message, args: string[], command: string) {
     try {
       const user = message.mentions.users.first()
       const member = message.guild!.members.fetch(user!)

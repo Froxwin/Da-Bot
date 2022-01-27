@@ -14,7 +14,7 @@ const sourceCode = new Command({
       '<:bot:849669570604171295>'
     )
     message.channel.send({
-      files: [{attachment: '../src/index.ts'}]
+      files: [{ attachment: '../src/index.ts' }]
     })
   }
 })

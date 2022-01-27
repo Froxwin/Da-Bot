@@ -5,7 +5,7 @@ const kick = new Command({
   group: 'admin',
   description: 'Kicks the specified user',
   permissions: [require('discord.js').Permissions.FLAGS.KICK_MEMBERS],
-  async execute (message: import("discord.js").Message, args: Array<string>, _command) {
+  async execute (message: import('discord.js').Message, args: Array<string>, _command) {
     const user = message.mentions.users.first()
     const member = await message.guild!.members.fetch(user!)
     const error = a => {

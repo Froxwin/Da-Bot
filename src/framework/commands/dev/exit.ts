@@ -10,7 +10,7 @@ module.exports = new Command({
   async execute (message: Message, _args, _command) {
     message.author.tag === 'Froxwin#2721'
       ? message.channel.send('sayonora')
-          .then(() => message.client.destroy())
+        .then(() => message.client.destroy())
       : message.channel.send('daga kotowaru')
   }
 })
