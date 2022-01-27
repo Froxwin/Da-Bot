@@ -1,3 +1,8 @@
-**rwead me swenpai uwu** <br>
-**U\\\\w\\\\U** <br>
-Soft and wet is a multipurpose discord bot which makes use of the javascript wrapper for the discord API. The name comes from Josuke Higashikata's stand "Soft and Wet"(Part 8)
+# SOFTandWET
+
+I'll get into filling this out later, gotta stay tuned for now.
+
+## Author
+
+**SOFTandWet** © [Froxwin](https://github.com/Froxwin).  
+Authored and maintained by Froxwin.
