@@ -1,9 +1,9 @@
-const { MessageEmbed } = require('discord.js')
-const randomanime = require('random-anime')
-const Command = require('../../../engine/classes/command')
-const { color } = require('../../../engine/functions/index')
+import { Message, MessageEmbed } from 'discord.js'
+import randomanime = require('random-anime')
+import Command = require('../../../engine/classes/command')
+import { color } from '../../../engine/functions/index'
 
-module.exports = new Command({
+const randNSFW = new Command({
   name: 'random-nsfw-image-generator',
   alias: [
     'random-nsfw-image-generator', 'rand-nsfw',
@@ -13,7 +13,7 @@ module.exports = new Command({
   group: 'util',
   description: 'sends a random nsfw image',
 
-  execute (message, _args, _command) {
+  async execute (message: Message, _args, _command) {
     const nsfw = randomanime.nsfw()
     const embed = new MessageEmbed()
       .setImage(nsfw)
@@ -22,3 +22,5 @@ module.exports = new Command({
     message.channel.send({ embeds: [embed] })
   }
 })
+
+export = randNSFW

@@ -13,7 +13,7 @@ const randColor = new Command({
   async execute (message: Message, _args, _command) {
     await message.channel.send({
       embeds: [{
-        color: `#${color}`,
+        color: `#${color()}`,
         title: color.toUpperCase()
       }],
       components: [
