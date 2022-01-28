@@ -6,8 +6,10 @@
   "main": "./src/index.ts",
   "scripts": {
     "clean": "rmdir /s /q out",
-    "start": "npm run build && cd out && node .",
-    "build": "rmdir /s /q out && npx tsc",
+    "build": "npx tsc",
+    "start": "cd out && node .",
+
+    "dev": "npm run clean && npm run build && npm run start",
     "lint": "npx eslint . --ext .ts",
     "update": "npm install && npm update && npm audit && npm ls"
   },
