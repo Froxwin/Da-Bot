@@ -15,10 +15,11 @@
   },
   "author": "Froxwin",
   "repository": {
-      "type": "git",
-      "url": "https://github.com/Froxwin/Da-Bot"
+    "type": "git",
+    "url": "https://github.com/Froxwin/Da-Bot"
   },
   "dependencies": {
+    "@types/jest": "27.4.0",
     "colors": "1.4.0",
     "common-tags": "1.8.2",
     "discord.js": "13.6.0",
@@ -26,7 +27,6 @@
   },
   "devDependencies": {
     "@types/common-tags": "1.8.1",
-    "@types/jest": "27.4.0",
     "@types/node": "17.0.12",
     "@typescript-eslint/eslint-plugin": "5.10.1",
     "@typescript-eslint/parser": "5.10.1",
