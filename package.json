@@ -5,7 +5,6 @@
   "description": "it's a bot",
   "main": "./out/index",
   "scripts": {
-    "test": "jest",
     "clean": "tsc --build --clean",
     "build": "tsc --build",
     "start": "cd out && node .",
