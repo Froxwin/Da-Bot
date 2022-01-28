@@ -1,6 +1,6 @@
 import { Message, MessageEmbed } from 'discord.js'
 import randomanime = require('random-anime')
-import Command = require('../../../engine/classes/command')
+import Command = require('../../../engine/base/classes/command')
 import { color } from '../../../engine/functions/index'
 
 const randNSFW = new Command({

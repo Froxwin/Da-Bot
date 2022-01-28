@@ -1,5 +1,5 @@
 import { color } from '../../../engine/functions/index.js'
-import Command = require('../../../engine/classes/command')
+import Command = require('../../../engine/base/classes/command')
 import { Message, MessageEmbed } from 'discord.js'
 
 const avatar = new Command({

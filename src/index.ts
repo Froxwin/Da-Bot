@@ -1,4 +1,4 @@
-import ඞ = require('./engine/config/client');
+import ඞ = require('./engine/base/config/client');
 ඞ.load('commands', ඞ.commands)
 ඞ.load('modules', ඞ.buttons)
 require('fs').readdirSync('./engine/events')

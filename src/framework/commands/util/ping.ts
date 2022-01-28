@@ -1,4 +1,4 @@
-import Command = require('../../../engine/classes/command')
+import Command = require('../../../engine/base/classes/command')
 import { oneLine } from 'common-tags'
 import { Message } from 'discord.js'
 import { color } from '../../../engine/functions/index.js'

@@ -1,4 +1,4 @@
-const Command = require('../../../engine/classes/command')
+const Command = require('../../../engine/base/classes/command')
 
 const deleteChannel = new Command({
   name: 'delete-channel',
