@@ -14,7 +14,7 @@ const randColor = new Command({
     await message.channel.send({
       embeds: [{
         color: `#${color()}`,
-        title: color.toUpperCase()
+        title: color().toUpperCase()
       }],
       components: [
         new MessageActionRow()

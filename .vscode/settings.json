@@ -13,5 +13,6 @@
     "editor.minimap.size": "proportional",
     "files.exclude": {
         "**/.git": false
-    }
+    },
+    "discord.enabled": false
 }
