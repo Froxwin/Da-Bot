@@ -24,6 +24,11 @@
     "strictFunctionTypes": true,
     "strictPropertyInitialization": true
   },
-  "include": ["./src/**/*"],
-  "exclude": ["node_modules"]
+  "include": ["node_modules/@types", "./src/**/*"],
+  "exclude": ["node_modules"],
+  "typeAcquisition": {
+    "include": [
+        "jest"
+    ]
+  }
 }
