@@ -1,6 +1,7 @@
 # SOFTandWET
 
 [![build](https://github.com/Froxwin/Da-Bot/actions/workflows/build.yml/badge.svg)](https://github.com/Froxwin/Da-Bot/actions/workflows/build.yml)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 This readme is a work in progress
 <br>
