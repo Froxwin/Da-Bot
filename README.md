@@ -1,7 +1,8 @@
 # SOFTandWET
 
 [![build](https://github.com/Froxwin/Da-Bot/actions/workflows/build.yml/badge.svg)](https://github.com/Froxwin/Da-Bot/actions/workflows/build.yml)
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://github.com/Froxwin/DaBot/blob/b47b90859b6e2cb38c8c16b9c77b1531d529ef35/LICENSE)
+[![Minimum node.js version](https://badgen.net/npm/node/express)](https://nodejs.org/en/)
 
 This readme is a work in progress
 <br>
