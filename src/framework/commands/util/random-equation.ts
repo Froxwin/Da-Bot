@@ -20,6 +20,11 @@ const randomEquation = new Command({
         new MessageActionRow()
           .addComponents([
             new MessageButton({
+              customId: 'linear',
+              label: '1',
+              style: 'PRIMARY'
+            }),
+            new MessageButton({
               customId: 'quadratic',
               label: '2',
               style: 'PRIMARY'
