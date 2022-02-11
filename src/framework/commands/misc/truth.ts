@@ -1,5 +1,5 @@
 import { Message } from 'discord.js'
-import Command = require('../../../engine/base/classes/command')
+import Command = require('../../../engine/classes/command')
 
 const truth = new Command({
   name: 'truth',

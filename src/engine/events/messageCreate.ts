@@ -1,4 +1,4 @@
-import { logger, stuff } from '../../functions/index'
+import { logger, stuff } from '../functions/index'
 import Event = require('../classes/event')
 import client = require('../config/client')
 import { Message } from 'discord.js'

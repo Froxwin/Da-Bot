@@ -1,4 +1,4 @@
-import Command = require('../../../engine/base/classes/command')
+import Command = require('../../../engine/classes/command')
 import { color } from '../../../engine/functions/index'
 import { Message, MessageActionRow, MessageButton } from
   'discord.js'

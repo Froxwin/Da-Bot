@@ -1,4 +1,4 @@
-import Command = require('../../../engine/base/classes/command')
+import Command = require('../../../engine/classes/command')
 const kick = new Command({
   name: 'kick',
   alias: null,

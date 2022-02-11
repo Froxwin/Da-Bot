@@ -1,6 +1,6 @@
 {
   "compilerOptions": {
-    "outDir": "./out",
+    "outDir": "out",
     "allowJs": true,
     "target": "ESNext",
     "moduleResolution": "Node",
@@ -19,16 +19,11 @@
     "strict": true,
     "strictNullChecks": true,
     "baseUrl": ".",
-    "sourceMap": false,
+    "sourceMap": true,
     "rootDir": "./src",
     "strictFunctionTypes": true,
     "strictPropertyInitialization": true
   },
   "include": ["node_modules/@types", "./src/**/*"],
-  "exclude": ["node_modules"],
-  "typeAcquisition": {
-    "include": [
-        "jest"
-    ]
-  }
+  "exclude": ["node_modules"]
 }

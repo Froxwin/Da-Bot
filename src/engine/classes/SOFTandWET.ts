@@ -8,6 +8,7 @@ interface SOFTandWEToptions {
   buttons: Collection<string, Button>
   prefix: string
   load: Function
+  loadAsync: Function
 }
 
 export = class SOFTandWET extends Client {
@@ -15,11 +16,13 @@ export = class SOFTandWET extends Client {
   buttons: Collection<string, Button>
   prefix: string
   load: Function
+  loadAsync: Function
   constructor (options: SOFTandWEToptions) {
     super(options.BaseClient)
     this.commands = options.commands
     this.buttons = options.buttons
     this.prefix = options.prefix ?? '='
     this.load = options.load
+    this.loadAsync = options.loadAsync
   }
 }

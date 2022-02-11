@@ -1,4 +1,4 @@
-import Command = require('../../../engine/base/classes/command')
+import Command = require('../../../engine/classes/command')
 import { Message } from 'discord.js'
 module.exports = new Command({
   name: 'cls',

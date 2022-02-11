@@ -1,6 +1,6 @@
 import { color, contentFetcher } from
   '../../../engine/functions/index.js'
-import Command = require('../../../engine/base/classes/command')
+import Command = require('../../../engine/classes/command')
 import { Message as msg } from 'discord.js'
 import { oneLine } from 'common-tags'
 

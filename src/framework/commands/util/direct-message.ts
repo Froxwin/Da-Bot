@@ -1,7 +1,7 @@
 import { oneLine } from 'common-tags'
 import { MessageEmbed } from 'discord.js'
-import client = require('../../../engine/base/config/client')
-import Command = require('../../../engine/base/classes/command')
+import client = require('../../../engine/config/client')
+import Command = require('../../../engine/classes/command')
 const directMessage = new Command({
   name: 'direct-message',
   alias: ['dm'],

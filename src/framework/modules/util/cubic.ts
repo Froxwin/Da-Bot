@@ -1,4 +1,4 @@
-import Button = require('../../../engine/base/classes/button')
+import Button = require('../../../engine/classes/button')
 import { ButtonInteraction } from 'discord.js'
 
 export = new Button({

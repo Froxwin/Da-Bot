@@ -1,4 +1,4 @@
-import Button = require('../../../engine/base/classes/button')
+import Button = require('../../../engine/classes/button')
 import { MessageEmbed, ButtonInteraction } from 'discord.js'
 import { color } from '../../../engine/functions/index.js'
 

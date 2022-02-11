@@ -1,4 +1,4 @@
-import Command = require('../../../engine/base/classes/command')
+import Command = require('../../../engine/classes/command')
 import { Message, MessageEmbed } from 'discord.js'
 import randomanime = require('random-anime')
 import { color } from '../../../engine/functions/index'
