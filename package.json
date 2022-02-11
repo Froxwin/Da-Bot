@@ -6,8 +6,9 @@
   "main": "./out/index",
   "scripts": {
     "clean": "tsc --build --clean",
+    "hard-clean": "rmdir /s /Q out",
     "build": "tsc --build",
-    "start": "cd out && node .",
+    "start": "node .",
     "dev": "npm run clean && npm run build && npm run start",
     "lint": "npx eslint . --ext .ts",
     "update": "npm install && npm update && npm audit && npm ls"

@@ -14,5 +14,6 @@ require(Ω(__dirname, '/engine/config/token'))()
 ඞ.login(process.env.SOFTundWET)
 process.stdout.write(
   `NODE: \x1b[93m${process.version}\x1b[0m | ` +
-  `PID: \x1b[93m${process.pid}\x1b[0m\n`
+  `PID: \x1b[93m${process.pid}\x1b[0m | ` +
+  `OS: \x1b[93m${process.platform}\x1b[0m\n`
 )
