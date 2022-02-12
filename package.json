@@ -6,7 +6,7 @@
   "main": "./out/index",
   "scripts": {
     "clean": "tsc --build --clean",
-    "hard-clean": "rmdir /s /Q out",
+    "hard-clean": "rmdir /s /q out",
     "build": "tsc --build",
     "start": "node .",
     "dev": "npm run clean && npm run build && npm run start",
@@ -19,7 +19,6 @@
     "url": "https://github.com/Froxwin/Da-Bot"
   },
   "dependencies": {
-    "colors": "1.4.0",
     "common-tags": "1.8.2",
     "discord.js": "13.6.0",
     "random-anime": "1.0.6"

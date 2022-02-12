@@ -20,4 +20,4 @@ const sourceCode = new Command({
   }
 })
 
-export default sourceCode
+export = sourceCode

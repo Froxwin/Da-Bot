@@ -1,5 +1,4 @@
 import { oneLineTrim } from 'common-tags'
-import { rainbow } from 'colors'
 
 export = msg => {
   const pref = msg.channel.type === 'DM'
@@ -32,7 +31,7 @@ export = msg => {
         \x1b[1;38;2;121;241;247m█
         \x1b[1;48;2;28;28;28m
         \x1b[1;38;2;121;241;247m
-        \x1b[1;48;2;28;28;28m ${rainbow(msg.content)}
+        \x1b[1;48;2;28;28;28m ${msg.content}
         \x1b[1;38;2;28;28;28m█
         \x1b[0m
         \x1b[1;38;2;28;28;28m

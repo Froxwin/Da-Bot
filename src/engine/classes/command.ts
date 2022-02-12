@@ -22,7 +22,7 @@ export = class Command {
     this.alias = options.alias ?? 'No aliases available'
     this.description = options.description ?? 'No description provided'
     this.permissions = options.permissions ?? 'No perms required'
-    this.group = options.group ?? 'test'
+    this.group = options.group
     this.execute = options.execute
   }
 }
