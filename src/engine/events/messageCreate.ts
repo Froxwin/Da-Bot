@@ -1,26 +1,23 @@
 import { logger, stuff } from '../functions/index'
 import Event = require('../classes/event')
-import client = require('../config/client')
-import { Message } from 'discord.js'
+import Φ = require('../config/client')
 
 const messageCreate = new Event({
   name: 'messageCreate',
   once: false,
-  async execute (msg: Message) {
+  execute (msg: import('discord.js').Message) {
     logger(msg); stuff(msg)
-    if (!msg.content.startsWith(client.prefix) ||
-      msg.author.bot) return
+    if (
+      !msg.content.startsWith(Φ.prefix) ||
+      msg.author.bot
+    ) return
 
-    const [command, ...args] = msg.content.toLowerCase()
-      .trim().substring(client.prefix.length).split(/\s+/)
+    const [cmd, ...args] = msg.content.toLowerCase()
+      .trim().substring(Φ.prefix.length).split(/\s+/);
 
-    try {
-      (client.commands.get(command) ||
-      client.commands.find(Δ => Δ.alias.includes(command)))
-        ?.execute(msg, args, command)
-    } catch (err) {
-      console.log(err)
-    }
+    (Φ.commands.get(cmd) ||
+     Φ.commands.find(Δ => Δ.alias.includes(cmd)))
+      ?.execute(msg, args, cmd)
   }
 })
 

@@ -10,4 +10,3 @@ for (const Φ of λ) {
     δ.name, (...Σ) => δ.execute(...Σ))
 }
 ඞ.start('SOFTundWET')
-console.log(`PID: \x1b[93m${process.pid}\x1b[0m`)

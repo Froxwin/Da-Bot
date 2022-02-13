@@ -5,17 +5,13 @@ const ready = new Event({
   name: 'ready',
   once: true,
   async execute (client: SOFTandWet) {
+    console.clear()
     console.log(
-      '\x1b[38;2;14;249;254m' +
-      '\x1b[48;2;14;249;254;38;2;28;28;28m' +
-      `${client.user?.tag} has logged in at ` +
-      `${(client.readyAt!.getHours() > 12)
-          ? client.readyAt!.getHours() - 12
-          : client.readyAt!.getHours()
-        }:` +
-      `${client.readyAt!.getMinutes()}:` +
-      `${client.readyAt!.getSeconds()} pm` +
-      '\x1b[0m\x1b[38;2;14;249;254m\x1b[0m'
+      '\n\x1b[38;2;255;185;99m[ \x1b[0m' +
+      `\x1b[38;2;252;204;255m${client.user?.tag} \x1b[0m` +
+      '\x1b[38;2;161;255;247mis running on process\x1b[0m' +
+      ` \x1b[93m${process.pid}\x1b[0m` +
+      '\x1b[38;2;255;185;99m ]\x1b[0m\n'
     )
   }
 })
