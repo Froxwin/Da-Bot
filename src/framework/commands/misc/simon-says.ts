@@ -5,7 +5,6 @@ const simonSays = new Cmd({
   name: 'simon-says',
   alias: ['say'],
   description: 'says what you want me to say',
-  group: 'misc',
   permissions: null,
 
   async execute (msg: msg, args: string[], cmd: Cmd) {

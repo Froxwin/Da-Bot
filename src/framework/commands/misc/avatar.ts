@@ -6,7 +6,6 @@ const avatar = new Command({
   name: 'avatar',
   alias: ['pfp', 'profile'],
   description: 'Sends the user avatar',
-  group: 'util',
   permissions: null,
   execute (message: Message, args: string[], _command) {
     const user =

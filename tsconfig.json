@@ -22,7 +22,8 @@
     "sourceMap": true,
     "rootDir": "./src",
     "strictFunctionTypes": true,
-    "strictPropertyInitialization": true
+    "strictPropertyInitialization": true,
+    "listFiles": true
   },
   "include": ["node_modules/@types", "./src/**/*"],
   "exclude": ["node_modules"]

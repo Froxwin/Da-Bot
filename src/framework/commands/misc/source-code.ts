@@ -6,7 +6,6 @@ const sourceCode = new Command({
   name: 'source-code',
   alias: ['src-code', 'sc'],
   description: 'shows my insides',
-  group: 'misc',
   permissions: null,
 
   async execute (message: Message, _args, _command) {

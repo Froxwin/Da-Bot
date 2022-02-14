@@ -4,7 +4,6 @@ import { Message } from 'discord.js'
 const test = new Command({
   name: 'test',
   permissions: null,
-  group: 'dev',
   alias: null,
   description: 'Test Command',
   execute (message: Message, _args, _command) {

@@ -7,7 +7,6 @@ const directMessage = new Command({
   alias: ['dm'],
   description: 'sends a direct message to the mentioned user',
   permissions: null,
-  group: 'util',
   execute (message: import('discord.js').Message, args: string[], command: string) {
     try {
       const user = message.mentions.users.first()

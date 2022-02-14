@@ -5,7 +5,6 @@ const truth = new Command({
   name: 'truth',
   alias: ['8ball', 'roll'],
   description: 'Magic 8 Ball',
-  group: 'misc',
   permissions: null,
 
   execute (message: Message, args: string, _command) {

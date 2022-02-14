@@ -4,13 +4,12 @@ import Command = require('../../../engine/classes/command')
 import { color } from '../../../engine/functions/index'
 
 const randNSFW = new Command({
-  name: 'random-nsfw-image-generator',
+  name: 'random-nsfw',
   alias: [
     'random-nsfw-image-generator', 'rand-nsfw',
     'r-nsfw', 'rh', 'rand-unholy', 'r-unholy'
   ],
   permissions: null,
-  group: 'util',
   description: 'sends a random nsfw image',
 
   async execute (message: Message, _args, _command) {

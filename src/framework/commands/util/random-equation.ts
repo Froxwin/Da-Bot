@@ -7,7 +7,6 @@ const randomEquation = new Command({
   name: 'random-equation',
   alias: ['rand-eq', 're'],
   permissions: null,
-  group: 'util',
   description: 'sends a random equation',
 
   async execute (message: Message, _args, _command) {

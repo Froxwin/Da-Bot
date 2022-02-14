@@ -7,7 +7,6 @@ const randColor = new Command({
   name: 'rand-color',
   alias: ['rc', 'color'],
   permissions: null,
-  group: 'util',
   description: 'rand-color in all its glory',
 
   async execute (message: Message, _args, _command) {

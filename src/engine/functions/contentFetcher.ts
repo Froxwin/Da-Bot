@@ -1,5 +1,5 @@
-export = (message, command) =>
-  message.content.substring(
-    message.client.prefix.length + command.length,
-    message.content.length
+export = (msg, cmd) =>
+  msg.content.substring(
+    msg.client.prefix.length + cmd.length,
+    msg.content.length
   )

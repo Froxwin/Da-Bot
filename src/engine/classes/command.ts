@@ -1,28 +1,34 @@
-import { PermissionResolvable } from 'discord.js'
+import { PermissionString } from 'discord.js'
+import { join as Ω } from 'path'
+import { readdirSync as Γ } from 'fs'
 
-type group = 'admin' | 'misc' | 'test' | 'util' | 'dev'
 interface CommandOptions {
   name: string
   alias: string[] | null
   description: string | null
   execute: Function
-  permissions: PermissionResolvable | null
-  group: group
+  permissions: PermissionString[] | null
 }
 
 export = class Command {
   name: string
   description: string
   alias: string | string[]
-  permissions: PermissionResolvable | string
-  group: group
+  permissions: PermissionString[] | string
+  group!: string
   execute: Function
   constructor (options: CommandOptions) {
     this.name = options.name
     this.alias = options.alias ?? 'No aliases available'
     this.description = options.description ?? 'No description provided'
     this.permissions = options.permissions ?? 'No perms required'
-    this.group = options.group
     this.execute = options.execute
+    const dir = '../../framework/commands'
+    Γ(Ω(__dirname, dir)).forEach(grp =>
+      Γ(Ω(__dirname, `${dir}/${grp}`)).forEach(cmd =>
+        (cmd.split('.')[0] === this.name) &&
+          (this.group = grp)
+      )
+    )
   }
 }

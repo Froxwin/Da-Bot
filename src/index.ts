@@ -1,12 +1,12 @@
 import { join as Ω } from 'path'
-const ඞ = require(Ω(__dirname, '/engine/config/client'))
+import ඞ = require('./engine/config/client')
 ඞ.load('commands'); ඞ.load('buttons')
-const π = '/engine/events/'
-const λ = require('fs').readdirSync(Ω(__dirname, π))
-  .filter(f => f.endsWith('.js'))
-for (const Φ of λ) {
-  const δ = require(Ω(__dirname, (π + Φ)))
-  ඞ[δ.once ? 'once' : 'on'](
-    δ.name, (...Σ) => δ.execute(...Σ))
-}
+require('fs').readdirSync(Ω(__dirname, '/engine/events/'))
+  .filter(file => file.endsWith('.js'))
+  .forEach(Φ => {
+    const δ = require(Ω(__dirname, `/engine/events/${Φ}`))
+    ඞ[δ.once ? 'once' : 'on'](
+      δ.name, (...Σ) => δ.execute(...Σ)
+    )
+  })
 ඞ.start('SOFTundWET')

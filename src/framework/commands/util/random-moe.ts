@@ -4,14 +4,13 @@ import randomanime = require('random-anime')
 import { color } from '../../../engine/functions/index'
 
 const randAnime = new Command({
-  name: 'random-anime-character-generator',
+  name: 'random-moe',
   alias:
     [
       'random-anime-character-generator',
       'rand-anime', 'r-anime', 'ra'
     ],
   permissions: null,
-  group: 'util',
   description: 'sends the image of a random anime character',
 
   async execute (message: Message, _args, _command) {

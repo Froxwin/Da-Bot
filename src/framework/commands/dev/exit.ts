@@ -3,7 +3,6 @@ import { Message } from 'discord.js'
 module.exports = new Command({
   name: 'exit',
   alias: null,
-  group: 'dev',
   description: null,
   permissions: null,
 

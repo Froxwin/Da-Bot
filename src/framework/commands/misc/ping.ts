@@ -6,7 +6,6 @@ import { color } from '../../../engine/functions/index.js'
 const ping = new Command({
   name: 'ping',
   permissions: null,
-  group: 'util',
   alias: ['latency', 'pong'],
   description: 'ping',
 

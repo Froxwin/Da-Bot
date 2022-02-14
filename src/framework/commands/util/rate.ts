@@ -8,7 +8,6 @@ const sort = new Command({
   name: 'rate',
   alias: null,
   description: 'Rates stuff',
-  group: 'util',
   permissions: null,
 
   execute (message: msg, args: string[], command: string) {

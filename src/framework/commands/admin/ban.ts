@@ -3,9 +3,8 @@ import { Message } from 'discord.js'
 const ban = new Command({
   name: 'ban',
   alias: null,
-  group: 'admin',
   description: 'bans the specified user',
-  permissions: [require('discord.js').Permissions.FLAGS.BAN_MEMBERS],
+  permissions: ['BAN_MEMBERS'],
 
   async execute (message: Message, args: Array<string>, _command: string) {
     const user = message.mentions.users.first()

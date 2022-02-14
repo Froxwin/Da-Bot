@@ -1,11 +1,10 @@
 import Command = require('../../../engine/classes/command')
-import { Message, Permissions } from 'discord.js'
+import { Message } from 'discord.js'
 const purge = new Command({
   name: 'purge',
   alias: null,
-  group: 'admin',
   description: 'Deletes the amount if specified messages',
-  permissions: [Permissions.FLAGS.MANAGE_MESSAGES],
+  permissions: ['MANAGE_MESSAGES'],
 
   execute (message: Message, args: string[], _command) {
     if (message.channel.type === 'DM') return
