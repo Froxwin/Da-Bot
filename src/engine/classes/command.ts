@@ -1,6 +1,6 @@
 import { PermissionString } from 'discord.js'
 import { join as Ω } from 'path'
-import { readdirSync as Γ } from 'fs'
+import { readdir as Γ } from 'fs/promises'
 
 interface CommandOptions {
   name: string
@@ -22,13 +22,16 @@ export = class Command {
     this.alias = options.alias ?? 'No aliases available'
     this.description = options.description ?? 'No description provided'
     this.permissions = options.permissions ?? 'No perms required'
-    this.execute = options.execute
-    const dir = '../../framework/commands'
-    Γ(Ω(__dirname, dir)).forEach(grp =>
-      Γ(Ω(__dirname, `${dir}/${grp}`)).forEach(cmd =>
-        (cmd.split('.')[0] === this.name) &&
-          (this.group = grp)
-      )
-    )
+    this.execute = options.execute;
+    (async (dir) =>
+      (await Γ((Ω(__dirname, dir))))
+        .forEach(async grp =>
+          (await Γ(Ω(__dirname, `${dir}/${grp}`)))
+            .forEach(cmd =>
+              (cmd.split('.')[0] === this.name) &&
+              (this.group = grp)
+            )
+        )
+    )('../../framework/commands')
   }
 }
