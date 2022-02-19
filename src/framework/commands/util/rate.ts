@@ -1,10 +1,10 @@
-import { color, contentFetcher } from
-  '../../../engine/functions/index.js'
 import Command = require('../../../engine/classes/command')
 import { Message as msg } from 'discord.js'
 import { oneLine } from 'common-tags'
+import { color, contentFetcher } from
+  '../../../engine/functions/index.js'
 
-const sort = new Command({
+const rate = new Command({
   name: 'rate',
   alias: null,
   description: 'Rates stuff',
@@ -27,4 +27,4 @@ const sort = new Command({
   }
 })
 
-export = sort
+export = rate

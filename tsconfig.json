@@ -23,7 +23,7 @@
     "rootDir": "./src",
     "strictFunctionTypes": true,
     "strictPropertyInitialization": true,
-    "listFiles": true
+    "listFiles": false
   },
   "include": ["node_modules/@types", "./src/**/*"],
   "exclude": ["node_modules"]

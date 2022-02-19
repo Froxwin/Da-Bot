@@ -21,3 +21,6 @@ trim_trailing_whitespace = false
 
 [*.ps1]
 indent_size = 2
+
+[*.env]
+insert_final_newline = false

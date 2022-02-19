@@ -17,7 +17,7 @@ export = new Button({
       description +=
         '```\n' +
         `Name: ${cmd.name}\n` +
-        `Aias: ${cmd.alias.toString()}\n` +
+        `Alias: ${cmd.alias.toString()}\n` +
         `Description: ${cmd.description}\n` +
         `Permissions: ${cmd.permissions.toString()}\n` +
         '```'

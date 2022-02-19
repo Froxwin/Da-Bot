@@ -1,6 +1,7 @@
 import { Client, ClientOptions, Collection }
   from 'discord.js'
 import { readdir } from 'fs/promises'
+import { readFileSync } from 'fs'
 import Command = require('./command')
 import Button = require('./button')
 import { join as Ω } from 'path'
@@ -22,12 +23,17 @@ export = class SOFTandWET extends Client {
     this.prefix = options.prefix ?? '='
   }
 
-  start (pswd) {
-    require(Ω(__dirname, '../config/token'))()
+  start (pswd: string) {
+    readFileSync(Ω(__dirname, '../../../.env'), 'utf-8')
+      .split(/\r\n/g)
+      .forEach(π => {
+        const [key, value] = π.split(/=/g)
+        process.env[key] = value
+      })
     this.login(process.env[pswd])
   }
 
-  async load (D) {
+  async load (D: string) {
     const R = '../../framework';
     (await readdir(Γ(`${R}/${D}`)))
       .forEach(async S =>

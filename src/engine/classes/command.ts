@@ -23,7 +23,7 @@ export = class Command {
     this.description = options.description ?? 'No description provided'
     this.permissions = options.permissions ?? 'No perms required'
     this.execute = options.execute;
-    (async (dir) =>
+    (async dir =>
       (await Γ((Ω(__dirname, dir))))
         .forEach(async grp =>
           (await Γ(Ω(__dirname, `${dir}/${grp}`)))

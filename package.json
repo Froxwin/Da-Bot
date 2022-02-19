@@ -5,13 +5,12 @@
   "description": "it's a bot",
   "main": "./out/index",
   "scripts": {
-    "clean": "tsc --build --clean",
-    "hard-clean": "rmdir /s /q out",
-    "build": "tsc --build",
+    "clean": "tsc -b --clean",
+    "CLEAN": "rmdir /s /q out",
+    "build": "tsc -b --verbose",
     "start": "node .",
-    "dev": "npm run clean && npm run build && npm run start",
-    "lint": "npx eslint . --ext .ts",
-    "update": "npm install && npm update && npm audit && npm ls"
+    "dev": "npm run CLEAN && npm run build && npm run start",
+    "lint": "npx eslint . --ext .ts"
   },
   "author": "Froxwin",
   "repository": {
