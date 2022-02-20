@@ -1,4 +1,4 @@
-import { Message } from 'discord.js'
+import { Message } from 'discord.js';
 import Command = require('../../../engine/classes/command')
 
 const truth = new Command({
@@ -8,11 +8,11 @@ const truth = new Command({
   permissions: null,
 
   execute (message: Message, args: string, _command) {
-    const ア = ['Yes', 'No', 'Perhaps']
+    const ア = ['Yes', 'No', 'Perhaps'];
     args.length
       ? message.channel.send(ア[Math.floor(Math.random() * ア.length)])
-      : message.channel.send('Provide Arguments')
+      : message.channel.send('Provide Arguments');
   }
-})
+});
 
 export = truth

@@ -1,7 +1,7 @@
 import Command = require('../../../engine/classes/command')
 import { Message, MessageActionRow, MessageButton } from
-  'discord.js'
-import { color } from '../../../engine/functions/index.js'
+  'discord.js';
+import { color } from '../../../engine/functions/index.js';
 
 const randColor = new Command({
   name: 'rand-color',
@@ -25,8 +25,8 @@ const randColor = new Command({
             })
           )
       ]
-    })
+    });
   }
-})
+});
 
 export = randColor

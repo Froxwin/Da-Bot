@@ -24,6 +24,6 @@ const client = new SOFTandWET({
     }
   },
   prefix: '='
-})
+});
 
 export = client

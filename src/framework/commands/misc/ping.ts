@@ -1,7 +1,6 @@
 import Command = require('../../../engine/classes/command')
-import { oneLine } from 'common-tags'
-import { Message } from 'discord.js'
-import { color } from '../../../engine/functions/index.js'
+import { Message } from 'discord.js';
+import { color } from '../../../engine/functions/index.js';
 
 const ping = new Command({
   name: 'ping',
@@ -9,23 +8,21 @@ const ping = new Command({
   alias: ['latency', 'pong'],
   description: 'ping',
 
-  async execute (message: Message, _args, _command) {
-    const pingMsg = await message.channel.send('Pinging...')
-    await pingMsg.edit('Ponged')
-    await pingMsg.delete()
-    message.channel.send({
+  async execute (msg: Message, _args, _command) {
+    const tmp = await msg.channel.send('Pinging...');
+    await tmp.edit('Ponged');
+    await tmp.delete();
+    msg.channel.send({
       embeds: [{
         color: `#${color()}`,
-        description: oneLine`Ponged
-      **${
-        (pingMsg.createdTimestamp ||
-          pingMsg.editedTimestamp)! -
-        (message.createdTimestamp ||
-          message.editedTimestamp)!
-      } ms**`
+        description:
+          'Ponged **' +
+          ((tmp.createdTimestamp || tmp.editedTimestamp)! -
+          (msg.createdTimestamp || msg.editedTimestamp)!) +
+          ' ms**'
       }]
-    })
+    });
   }
-})
+});
 
 export = ping

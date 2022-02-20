@@ -1,5 +1,5 @@
 import Command = require('../../../engine/classes/command')
-import { Message } from 'discord.js'
+import { Message } from 'discord.js';
 
 const directMessage = new Command({
   name: 'direct-message',
@@ -10,9 +10,9 @@ const directMessage = new Command({
   async execute (msg: Message, _args, _command) {
     // eslint-disable-next-line no-unused-vars
     const [_cmd, _ping, ...text] = msg.content
-      .toLowerCase().trim().split(/\s+/)
-    const user = msg.mentions.users.first()
-    const member = await msg.guild!.members.fetch(user!)
+      .toLowerCase().trim().split(/\s+/);
+    const user = msg.mentions.users.first();
+    const member = await msg.guild!.members.fetch(user!);
 
     try {
       member.send(text.join(' '))
@@ -25,7 +25,7 @@ const directMessage = new Command({
                 description:
                   `Successfully sent DM to <@${member.id}>`
               }]
-            })
+            });
           },
           reason => {
             msg.channel.send({
@@ -34,9 +34,9 @@ const directMessage = new Command({
                 title: 'DM Unsuccessful',
                 description: reason.toString()
               }]
-            })
+            });
           }
-        )
+        );
     } catch (err: any) {
       msg.channel.send({
         embeds: [{
@@ -44,9 +44,9 @@ const directMessage = new Command({
           title: 'DM Unsuccessful',
           description: err.toString()
         }]
-      })
+      });
     }
   }
-})
+});
 
 export = directMessage

@@ -1,6 +1,6 @@
-import { color } from '../../../engine/functions/index.js'
+import { color } from '../../../engine/functions/index.js';
 import Command = require('../../../engine/classes/command')
-import { Message, MessageEmbed } from 'discord.js'
+import { Message, MessageEmbed } from 'discord.js';
 
 const avatar = new Command({
   name: 'avatar',
@@ -11,7 +11,7 @@ const avatar = new Command({
     const user =
       !args.length
         ? message.author
-        : message.mentions.users.first()
+        : message.mentions.users.first();
     message.channel.send({
       embeds: [
         new MessageEmbed()
@@ -23,8 +23,8 @@ const avatar = new Command({
             })
           )
       ]
-    })
+    });
   }
-})
+});
 
-module.exports = avatar
+module.exports = avatar;

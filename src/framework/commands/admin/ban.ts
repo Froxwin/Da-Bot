@@ -1,5 +1,5 @@
 import Command = require('../../../engine/classes/command')
-import { Message } from 'discord.js'
+import { Message } from 'discord.js';
 const ban = new Command({
   name: 'ban',
   alias: null,
@@ -7,13 +7,13 @@ const ban = new Command({
   permissions: ['BAN_MEMBERS'],
 
   async execute (message: Message, args: Array<string>, _command: string) {
-    const user = message.mentions.users.first()
-    const member = await message.guild!.members.fetch(user!)
+    const user = message.mentions.users.first();
+    const member = await message.guild!.members.fetch(user!);
     const error = a => {
       message.channel.send({
         embeds: [{ title: 'Ban Unsuccessful', color: 0xFF0000, description: a }]
-      })
-    }
+      });
+    };
     // if (!ban.permCheck(message.member)) return null
     !user
       ? error('You didn\'t mention a user to ban')
@@ -30,11 +30,11 @@ const ban = new Command({
                 description:
                   `<@${message.author.id}> Successfully banned <@${user.id}>`
               }]
-            })
+            });
           }).catch((err) => {
-            error(`${err}`)
-          })
+            error(`${err}`);
+          });
   }
-})
+});
 
 export = ban

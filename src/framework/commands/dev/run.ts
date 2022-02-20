@@ -1,6 +1,6 @@
 import Command = require('../../../engine/classes/command')
-import { exec } from 'child_process'
-import { Message } from 'discord.js'
+import { exec } from 'child_process';
+import { Message } from 'discord.js';
 import contentFetcher = require('../../../engine/functions/contentFetcher')
 module.exports = new Command({
   name: 'run',
@@ -12,9 +12,9 @@ module.exports = new Command({
     message.author.tag !== 'Froxwin#2721'
       ? message.channel.send('daga kotowaru')
       : exec(contentFetcher(message, command), (err, out, stderr) => {
-        err && message.channel.send(err.message.toString())
-        stderr && message.channel.send(stderr.toString())
-        out && message.channel.send(out.toString())
-      })
+        err && message.channel.send(err.message.toString());
+        stderr && message.channel.send(stderr.toString());
+        out && message.channel.send(out.toString());
+      });
   }
-})
+});

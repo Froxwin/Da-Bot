@@ -1,8 +1,8 @@
-import { Message, MessageActionRow, MessageButton } from 'discord.js'
+import { Message, MessageActionRow, MessageButton } from 'discord.js';
 import Command = require('../../../engine/classes/command')
-import { color } from '../../../engine/functions'
-import { readdir } from 'fs/promises'
-import { join as Ω } from 'path'
+import { color } from '../../../engine/functions';
+import { readdir } from 'fs/promises';
+import { join as Ω } from 'path';
 
 const truth = new Command({
   name: 'help',
@@ -19,7 +19,7 @@ const truth = new Command({
           customId: group, label: group, style: 'PRIMARY'
         })
       )
-    )
+    );
 
     msg.channel.send({
       embeds: [{
@@ -28,8 +28,8 @@ const truth = new Command({
       components: [
         new MessageActionRow().addComponents(btnArray)
       ]
-    })
+    });
   }
-})
+});
 
 export = truth

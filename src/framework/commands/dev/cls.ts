@@ -1,5 +1,5 @@
 import Command = require('../../../engine/classes/command')
-import { Message } from 'discord.js'
+import { Message } from 'discord.js';
 module.exports = new Command({
   name: 'cls',
   alias: null,
@@ -10,6 +10,6 @@ module.exports = new Command({
     message.author.tag === 'Froxwin#2721'
       ? message.channel.send('cls\'d')
         .then(() => console.clear())
-      : message.channel.send('daga kotowaru')
+      : message.channel.send('daga kotowaru');
   }
-})
+});

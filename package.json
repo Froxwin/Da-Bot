@@ -1,32 +1,31 @@
 {
-  "type": "commonjs",
   "name": "da-bot",
+  "author": "Froxwin",
   "version": "1.0.0",
   "description": "it's a bot",
+  "license": "MIT",
+  "type": "commonjs",
   "main": "./out/index",
   "scripts": {
     "clean": "tsc -b --clean",
     "CLEAN": "rmdir /s /q out",
     "build": "tsc -b --verbose",
-    "start": "node .",
-    "dev": "npm run CLEAN && npm run build && npm run start",
+    "start": "node --enable-source-maps .",
+    "dev": "npm run clean && npm run build && npm run start",
     "lint": "npx eslint . --ext .ts"
   },
-  "author": "Froxwin",
   "repository": {
     "type": "git",
     "url": "https://github.com/Froxwin/Da-Bot"
   },
   "dependencies": {
-    "common-tags": "1.8.2",
     "discord.js": "13.6.0",
     "random-anime": "1.0.6"
   },
   "devDependencies": {
-    "@types/common-tags": "1.8.1",
-    "@types/node": "17.0.12",
-    "@typescript-eslint/eslint-plugin": "5.10.1",
-    "@typescript-eslint/parser": "5.10.1",
+    "@types/node": "17.0.18",
+    "@typescript-eslint/eslint-plugin": "5.12.0",
+    "@typescript-eslint/parser": "5.12.0",
     "eslint": "7.32.0",
     "eslint-config-standard": "16.0.3",
     "eslint-plugin-import": "2.25.4",
@@ -35,6 +34,7 @@
     "typescript": "4.5.5"
   },
   "engines": {
-    "node": ">=17.5.0"
+    "node": ">=17.5.0",
+    "npm": "8.4.1"
   }
 }

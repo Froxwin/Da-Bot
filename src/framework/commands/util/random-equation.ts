@@ -1,7 +1,7 @@
 import Command = require('../../../engine/classes/command')
-import { color } from '../../../engine/functions/index'
+import { color } from '../../../engine/functions/index';
 import { Message, MessageActionRow, MessageButton } from
-  'discord.js'
+  'discord.js';
 
 const randomEquation = new Command({
   name: 'random-equation',
@@ -40,8 +40,8 @@ const randomEquation = new Command({
             })
           ])
       ]
-    })
+    });
   }
-})
+});
 
 export = randomEquation

@@ -1,4 +1,4 @@
-import { Message as msg } from 'discord.js'
+import { Message as msg } from 'discord.js';
 import Cmd = require('../../../engine/classes/command')
 
 const simonSays = new Cmd({
@@ -11,20 +11,20 @@ const simonSays = new Cmd({
     if (msg.channel.type === 'DM') {
       msg.channel.send(
         'That command is unavailable in a DM channel'
-      )
-      return
+      );
+      return;
     }
     if (!args.length) {
-      msg.channel.send('Provide arguments')
-      return
+      msg.channel.send('Provide arguments');
+      return;
     }
-    await msg.delete()
+    await msg.delete();
     msg.channel.send(
       require('../../../engine/functions/contentFetcher')(
         msg, cmd
       )
-    )
+    );
   }
-})
+});
 
 export = simonSays

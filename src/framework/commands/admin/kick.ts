@@ -5,13 +5,13 @@ const kick = new Command({
   description: 'Kicks the specified user',
   permissions: ['KICK_MEMBERS'],
   async execute (message: import('discord.js').Message, args: Array<string>, _command) {
-    const user = message.mentions.users.first()
-    const member = await message.guild!.members.fetch(user!)
+    const user = message.mentions.users.first();
+    const member = await message.guild!.members.fetch(user!);
     const error = a => {
       message.channel.send({
         embeds: [{ title: 'Kick Unsuccessful', color: 0xFF0000, description: a }]
-      })
-    }
+      });
+    };
     !user
       ? error('You didn\'t mention a user to kick')
       : member.kick(
@@ -24,12 +24,12 @@ const kick = new Command({
             description:
                   `<@${message.author.id}> Successfully kicked <@${user.id}>`
           }]
-        })
+        });
       }).catch((err) => {
-        error(`${err}`)
-        console.error(err)
-      })
+        error(`${err}`);
+        console.error(err);
+      });
   }
-})
+});
 
 export = kick

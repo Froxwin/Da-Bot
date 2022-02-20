@@ -9,8 +9,8 @@ export = class Event {
   once: boolean
   execute: Function
   constructor (options: EventOptions) {
-    this.name = options.name
-    this.once = options.once
-    this.execute = options.execute
+    this.name = options.name;
+    this.once = options.once;
+    this.execute = options.execute;
   }
 }

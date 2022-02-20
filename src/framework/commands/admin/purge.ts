@@ -1,5 +1,5 @@
 import Command = require('../../../engine/classes/command')
-import { Message } from 'discord.js'
+import { Message } from 'discord.js';
 const purge = new Command({
   name: 'purge',
   alias: null,
@@ -7,8 +7,8 @@ const purge = new Command({
   permissions: ['MANAGE_MESSAGES'],
 
   execute (message: Message, args: string[], _command) {
-    if (message.channel.type === 'DM') return
-    if (!args[0]) return
+    if (message.channel.type === 'DM') return;
+    if (!args[0]) return;
     parseInt(args[0]) <= 0 || parseInt(args[0]) >= 100
       ? message.channel.send({
         embeds: [{
@@ -25,7 +25,7 @@ const purge = new Command({
             title: 'Messages Deleted',
             description: `Deleted ${args[0]} messages`
           }]
-        })
+        });
       }).catch((err) => {
         message.channel.send({
           embeds: [{
@@ -33,9 +33,9 @@ const purge = new Command({
             title: 'Delete Unsuccessful',
             description: `${err}`
           }]
-        })
-      })
+        });
+      });
   }
-})
+});
 
-module.exports = purge
+module.exports = purge;
