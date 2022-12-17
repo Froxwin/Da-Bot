@@ -1,5 +1,5 @@
 name: build
-on: [push, pull_request]
+on: push
 
 jobs:
   build:
@@ -11,13 +11,14 @@ jobs:
         os: [ubuntu-latest, windows-latest, macOS-latest]
 
     steps:
-      - uses: actions/checkout@v2
-      - name: Use Node.js ${{ matrix.node_version }}
-      - uses: actions/setup-node@v2.5.1
-        with:
-          node-version: ${{ matrix.node_version }}
-      - name: Clean install dependencies check formating and build
-      - run: |
-          npm install
-          npm run lint
-          npm run build
+    - uses: actions/checkout@v2
+    - name: Use Node.js ${{ matrix.node_version }}
+      uses: actions/setup-node@v2.5.1
+      with:
+        node-version: ${{ matrix.node_version }}
+
+    - name: Clean install dependencies check formating and build
+      run: |
+        npm install
+        npm run lint
+        npm run build
