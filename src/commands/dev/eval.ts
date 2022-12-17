@@ -1,3 +1,4 @@
+/* eslint-disable no-eval */
 import { client } from '../../index.js';
 import { fetchContent } from '../../engine/util.js';
 

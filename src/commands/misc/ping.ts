@@ -8,7 +8,7 @@ client.newCommand({
   description: 'ping',
   isDmOnly: false,
   execute(msg: Message, _args, _command) {
-    (async function() {
+    (async function () {
       const tmp = await msg.channel.send('Pinging...');
       await tmp.edit('Ponged');
       await tmp.delete();
