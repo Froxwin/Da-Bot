@@ -3,13 +3,20 @@ on: [push, pull_request]
 
 jobs:
   build:
-    runs-on: [ubuntu-latest, macos-latest, windows-latest]
+    name: Test on node ${{ matrix.node_version }} and ${{ matrix.os }}
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        node_version: ['19', '16']
+        os: [ubuntu-latest, windows-latest, macOS-latest]
+
     steps:
-      - name: Clean install dependencies check formating and build
       - uses: actions/checkout@v2
+      - name: Use Node.js ${{ matrix.node_version }}
       - uses: actions/setup-node@v2.5.1
         with:
-          node-version: 19
+          node-version: ${{ matrix.node_version }}
+      - name: Clean install dependencies check formating and build
       - run: |
           npm install
           npm run lint
