@@ -4,37 +4,71 @@
   "version": "1.0.0",
   "description": "it's a bot",
   "license": "MIT",
-  "type": "commonjs",
+  "type": "module",
   "main": "./out/index",
   "scripts": {
-    "clean": "tsc -b --clean",
-    "CLEAN": "rmdir /s /q out",
-    "build": "tsc -b --verbose",
+    "clean": "if exist out (rmdir /s /q out)",
+    "build": "tsc -b",
+    "make": "make.ps1",
     "start": "node --enable-source-maps .",
-    "dev": "npm run clean && npm run build && npm run start",
-    "lint": "npx eslint . --ext .ts"
+    "dev": "npm run clean && npm run make && npm run start",
+    "lint": "npx prettier -c ./src && npx eslint ./src --ext .ts",
+    "format": "npx prettier -w . && npx eslint . --ext .ts --fix"
+  },
+  "prettier": {
+    "printWidth": 75,
+    "singleQuote": true,
+    "trailingComma": "none",
+    "arrowParens": "avoid"
+  },
+  "eslintConfig": {
+    "env": {
+      "es2021": true,
+      "node": true
+    },
+    "extends": [
+      "standard"
+    ],
+    "parser": "@typescript-eslint/parser",
+    "parserOptions": {
+      "ecmaVersion": "latest",
+      "sourceType": "module"
+    },
+    "plugins": [
+      "@typescript-eslint"
+    ],
+    "rules": {
+      "semi": [
+        "error",
+        "always"
+      ],
+      "space-before-function-paren": [
+        "error",
+        "never"
+      ],
+      "indent": "off"
+    }
   },
   "repository": {
     "type": "git",
     "url": "https://github.com/Froxwin/Da-Bot"
   },
   "dependencies": {
-    "discord.js": "13.6.0",
-    "random-anime": "1.0.6"
+    "discord.js": "^14.7.1",
+    "random-anime": ">=1.0.6"
   },
   "devDependencies": {
-    "@types/node": "17.0.18",
-    "@typescript-eslint/eslint-plugin": "5.12.0",
-    "@typescript-eslint/parser": "5.12.0",
-    "eslint": "7.32.0",
-    "eslint-config-standard": "16.0.3",
-    "eslint-plugin-import": "2.25.4",
-    "eslint-plugin-node": "11.1.0",
-    "eslint-plugin-promise": "5.2.0",
-    "typescript": "4.5.5"
+    "@types/node": ">=18.11.13",
+    "@typescript-eslint/eslint-plugin": "^5.46.0",
+    "@typescript-eslint/parser": "^5.46.0",
+    "eslint": "^8.29.0",
+    "eslint-config-standard": "^17.0.0",
+    "eslint-plugin-import": "^2.26.0",
+    "eslint-plugin-n": "^15.6.0",
+    "eslint-plugin-promise": "^6.1.1",
+    "typescript": ">=4.9.4"
   },
   "engines": {
-    "node": ">=17.5.0",
-    "npm": "8.4.1"
+    "node": ">=19.1.0"
   }
 }

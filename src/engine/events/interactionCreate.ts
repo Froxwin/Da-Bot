@@ -1,14 +1,11 @@
-import Event = require('../classes/event')
-import client = require('../config/client')
+import { client } from '../../index.js';
 import { ButtonInteraction } from 'discord.js';
 
-const interactionCreate = new Event({
+client.newEvent({
   name: 'interactionCreate',
   once: false,
-  async execute (button: ButtonInteraction) {
+  async exec(button: ButtonInteraction) {
     if (!button.isButton()) return;
     client.buttons.get(button.customId)?.execute(button);
   }
 });
-
-export = interactionCreate

@@ -1,25 +1,30 @@
-import { logger, stuff } from '../functions/index';
-import Event = require('../classes/event')
-import Φ = require('../config/client')
-import { Message } from 'discord.js';
+import { client } from '../../index.js';
+import { ChannelType, Message } from 'discord.js';
+import { rainbow } from '../util.js';
 
-const messageCreate = new Event({
+client.newEvent({
   name: 'messageCreate',
   once: false,
-  execute (msg: Message) {
-    logger(msg); stuff(msg);
-    if (!msg.content.startsWith(Φ.prefix)) return;
-    if (msg.author.bot) return;
-    const [cmd, ...args] = msg.content
-      .toLowerCase()
-      .trim()
-      .substring(Φ.prefix.length)
-      .split(/\s+/);
+  async exec(msg: Message) {
+    console.log(`[${msg.author}]${rainbow(msg.content)}`);
 
-    (Φ.commands.get(cmd) ||
-     Φ.commands.find(Δ => Δ.alias.includes(cmd))
-    )?.execute(msg, args, cmd);
+    const regex = RegExp(`^${client.prefix}|^<@${client.user?.id}>`);
+    if (msg.author.bot || !msg.content.match(regex)) return;
+
+    const [command, ...args] = msg.content
+      .trim()
+      .substring(msg.content.match(regex)?.length!)
+      .split(/\s+/g);
+
+    const cmdx = client.commands.find(cmd => cmd.alias.includes(command));
+    if (!cmdx) return;
+    if (msg.channel.type === ChannelType.DM && !cmdx?.isDmOnly) {
+      await msg.reply(
+        `The \`${cmdx.name}\` command is not available in DMs`
+      );
+      return;
+    }
+
+    cmdx.execute(msg, args, cmdx);
   }
 });
-
-export = messageCreate
